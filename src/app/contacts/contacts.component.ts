@@ -1,161 +1,97 @@
 import { Component } from '@angular/core'
+import { Contact } from '../data-access/contacts/contact'
+import { ContactsDataAccessService } from '../data-access/contacts/contacts-data-access.service'
 
 @Component({
   template: `
-    <div class=" pb-24 bg-gray-100 flex items-start lg:items-center justify-center">
-      <div class="container mx-auto px-4 h-full">
-        <h2
-          class="text-gray-800 font-semibold tracking-tight leading-loose text-center text-3xl lg:text-4xl lg:text-5xl my-2 lg:my-8"
-        >
-          Frequently Asked Questions
-        </h2>
-
-        <section
-          x-data="{ selectedItem: 1 }"
-          class="shadow-md bg-gray-200 overflow-hidden rounded-lg mt-6 sm:shadow-lg lg:mt-16 lg:mx-auto lg:max-w-4xl"
-        >
-          <article class="border-gray-400 border-b hover:bg-gray-300">
-            <div>
-              <header
-                (click)="selectedItem === 1 ? (selectedItem = 0) : (selectedItem = 1)"
-                [class]="{ 'bg-gray-300': selectedItem === 1 }"
-                class="flex justify-between items-center p-5 pl-8 pr-8 cursor-pointer select-none"
-              >
-                <h3 class="font-semibold text-xl text-gray-800">Do you offer team pricing?</h3>
-                <div class="rounded-full border w-7 h-7 flex items-center justify-center hover:bg-gray-200">
-                  <div
-                    *ngIf="selectedItem !== 1"
-                    class="rounded-full text-gray-500 w-7 h-7 flex items-center justify-center"
-                  >
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        fill-rule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
+    <div class="bg-gray-100">
+      <div class="flex items-start lg:items-center justify-center">
+        <div class="container mx-auto px-4 h-full flex">
+          <div class="w-3/12">
+            <div class=" p-4 bg-grey-lighter py-8">
+              <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <div class="sm:flex sm:items-center px-2 py-4">
+                  <div class="flex-grow">
+                    <h3 class="font-normal px-2 py-3 leading-tight">Add Contacts</h3>
+                    <input
+                      #name
+                      type="text"
+                      required="required"
+                      placeholder="Name"
+                      class="my-2 w-full text-sm bg-blue-100 text-grey-darkest rounded h-10 p-3 focus:outline-none"
+                    />
+                    <input
+                      #email
+                      type="email"
+                      required="required"
+                      placeholder="Email"
+                      class="my-2 w-full text-sm bg-blue-100 text-grey-darkest rounded h-10 p-3 focus:outline-none"
+                    />
+                    <div class="sm:flex bg-grey-light sm:items-center px-2 py-4">
+                      <div class="flex-grow text-right">
+                        <button
+                          class="bg-green-400 hover:bg-blue-dark text-white py-2 px-4 rounded"
+                          (click)="addContact(name, email)"
+                        >
+                          Add Contact
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div
-                    *ngIf="selectedItem === 1"
-                    class="rounded-full text-gray-500 w-7 h-7 flex items-center justify-center"
-                  >
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-              </header>
-              <div *ngIf="selectedItem === 1">
-                <div class="pl-8 pr-8 py-5 bg-gray-100 text-gray-700">
-                  <p>
-                    Yes, we do! Team pricing is available for any plan. You can take advantage of 30% off for signing up
-                    for team pricing of 10 users or more.
-                  </p>
                 </div>
               </div>
             </div>
-          </article>
-
-          <article class="border-gray-400 border-b hover:bg-gray-300">
-            <div>
-              <header
-                (click)="selectedItem === 2 ? (selectedItem = 0) : (selectedItem = 2)"
-                [class]="{ 'bg-gray-300': selectedItem === 2 }"
-                class="flex justify-between items-center p-5 pl-8 pr-8 cursor-pointer select-none"
-              >
-                <h3 class="font-semibold text-xl text-gray-800">How do I add a custom domain?</h3>
-                <div class="rounded-full border w-7 h-7 flex items-center justify-center hover:bg-gray-200">
-                  <div
-                    *ngIf="selectedItem !== 2"
-                    class="rounded-full text-gray-500 w-7 h-7 flex items-center justify-center"
-                  >
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        fill-rule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
+          </div>
+          <div class="w-9/12">
+            <div class=" p-4 bg-grey-lighter py-8">
+              <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <div class="sm:flex sm:items-center px-2 py-4">
+                  <div class="flex-grow">
+                    <h3 class="font-normal px-2 py-3 leading-tight">Contacts</h3>
+                    <div class="w-full">
+                      <ng-container *ngFor="let contact of contacts$ | async">
+                        <div class="flex cursor-pointer my-1 hover:bg-blue-lightest rounded">
+                          <div class="w-3/5 h-10 py-3 px-1">
+                            <p class="hover:text-blue-dark">{{ contact.name }}</p>
+                          </div>
+                          <div class="w-2/5 h-10 text-right p-3">
+                            <p class="text-sm text-grey-dark">{{ contact.email }}</p>
+                          </div>
+                          <div class="py-3">
+                            <button class="btn btn-primary" (click)="deleteContact(contact)">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
                   </div>
-                  <div
-                    *ngIf="selectedItem === 2"
-                    class="rounded-full text-gray-500 w-7 h-7 flex items-center justify-center"
-                  >
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-              </header>
-              <div *ngIf="selectedItem === 2">
-                <div class="pl-8 pr-8 py-5 bg-gray-100 text-gray-700">
-                  <p>
-                    You can easily change your site settings inside of your site dashboard by clicking the top right
-                    menu and clicking the settings button.
-                  </p>
                 </div>
               </div>
             </div>
-          </article>
-
-          <article class="border-gray-400 border-b hover:bg-gray-300">
-            <div>
-              <header
-                (click)="selectedItem === 3 ? (selectedItem = 0) : (selectedItem = 3)"
-                [class]="{ 'bg-gray-300': selectedItem === 3 }"
-                class="flex justify-between items-center p-5 pl-8 pr-8 cursor-pointer select-none"
-              >
-                <h3 class="font-semibold text-xl text-gray-800">How does it work?</h3>
-                <div class="rounded-full border w-7 h-7 flex items-center justify-center hover:bg-gray-200">
-                  <div
-                    *ngIf="selectedItem !== 3"
-                    class="rounded-full text-gray-500 w-7 h-7 flex items-center justify-center"
-                  >
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        fill-rule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div
-                    *ngIf="selectedItem === 3"
-                    class="rounded-full text-gray-500 w-7 h-7 flex items-center justify-center"
-                  >
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-              </header>
-              <div *ngIf="selectedItem === 3">
-                <div class="pl-8 pr-8 py-5 bg-gray-100 text-gray-700">
-                  <p>
-                    Our platform works with your content to provides insights and metrics on how you can grow your
-                    business and scale your infastructure.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </article>
-        </section>
+          </div>
+        </div>
       </div>
     </div>
   `,
 })
 export class ContactsComponent {
-  selectedItem = 1
+  contacts$ = this.service.contacts$
+  constructor(private readonly service: ContactsDataAccessService) {
+    // this.service.addContact({ email: 'beeman@beeman.nl', name: 'beeman' })
+  }
+
+  public addContact(name: HTMLInputElement, email: HTMLInputElement): void {
+    this.service.addContact({ email: email.value, name: name.value }).subscribe((res) => {
+      // console.log('Contact added', res)
+      email.value = ''
+      name.value = ''
+    })
+  }
+
+  public deleteContact(contact: Contact): void {
+    this.service.deleteContact(contact).subscribe((res) => {
+      console.log('Contact deleted', res)
+    })
+  }
 }
