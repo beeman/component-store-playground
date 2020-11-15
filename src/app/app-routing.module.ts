@@ -7,10 +7,10 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'home' },
+      { path: '', pathMatch: 'full', redirectTo: 'todos' },
       {
-        path: 'contacts',
-        loadChildren: () => import('./contacts/contacts.module').then((m) => m.ContactsModule),
+        path: 'todos',
+        loadChildren: () => import('./todos/todos.module').then((m) => m.TodosModule),
       },
       {
         path: 'home',

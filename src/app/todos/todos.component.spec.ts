@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ContactsComponent } from './contacts.component'
+import { TodosComponent } from './todos.component'
 
 describe('FormsComponent', () => {
-  let component: ContactsComponent
-  let fixture: ComponentFixture<ContactsComponent>
+  let component: TodosComponent
+  let fixture: ComponentFixture<TodosComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ContactsComponent],
+      declarations: [TodosComponent],
     }).compileComponents()
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContactsComponent)
+    fixture = TestBed.createComponent(TodosComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
