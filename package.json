@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "format": "prettier --write '**/*.{js,json,css,scss,less,md,ts,tsx,html,component.html,graphql}'"
   },
   "private": true,
   "dependencies": {
@@ -15,23 +16,31 @@
     "@angular/common": "~11.0.0",
     "@angular/compiler": "~11.0.0",
     "@angular/core": "~11.0.0",
+    "@angular/fire": "^6.1.0-rc.3",
     "@angular/forms": "~11.0.0",
     "@angular/platform-browser": "~11.0.0",
     "@angular/platform-browser-dynamic": "~11.0.0",
     "@angular/router": "~11.0.0",
     "@ngneat/tailwind": "^1.0.8",
+    "firebase": "^7.0.0 || ^8.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "10.0.1",
+    "@angular-devkit/architect": ">= 0.900 < 0.1200",
     "@angular-devkit/build-angular": "~0.1100.0",
     "@angular/cli": "~11.0.0",
     "@angular/compiler-cli": "~11.0.0",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "firebase-tools": "^8.0.0",
+    "fuzzy": "^0.1.3",
+    "husky": "^4.3.0",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.1.0",
@@ -39,14 +48,27 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "lint-staged": "^10.5.1",
+    "open": "^7.0.3",
     "postcss": "8.1.7",
     "postcss-import": "13.0.0",
     "postcss-loader": "4.0.4",
     "postcss-scss": "3.0.4",
+    "prettier": "^2.1.2",
     "protractor": "~7.0.0",
     "tailwindcss": "1.9.6",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,scss,md,ts,html,graphql}": [
+      "yarn run format"
+    ]
   }
 }
