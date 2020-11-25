@@ -9,7 +9,21 @@ import { WorkflowsDataAccessService } from '../../data-access/workflows/workflow
     <app-page>
       <ng-container *ngIf="workflow$ | async as workflow">
         <div class="flex-grow">
-          <h3 class="font-normal px-2 py-3 leading-tight">{{ workflow.name }}</h3>
+          <div class="p-2 flex justify-between">
+            <div>
+              <h3 class="font-normal px-2 py-1 leading-tight">
+                {{ workflow.name }}
+              </h3>
+            </div>
+            <div>
+              <button
+                class="bg-green-400 hover:bg-green-500 text-white py-1 px-2 rounded"
+                (click)="saveWorkflow(workflow)"
+              >
+                Save
+              </button>
+            </div>
+          </div>
           <div class="w-full">
             <app-loading [loading]="loading"></app-loading>
 
@@ -34,4 +48,7 @@ export class WorkflowDetailComponent {
   saving = false
   loading = true
   constructor(private readonly service: WorkflowsDataAccessService, private readonly route: ActivatedRoute) {}
+  saveWorkflow(workflow: Workflow): void {
+    this.service.updateWorkflow(workflow).subscribe()
+  }
 }

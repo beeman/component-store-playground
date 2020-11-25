@@ -16,7 +16,10 @@ export class WorkflowsDataAccessService {
   )
 
   workflow$(id: string): Observable<Workflow | undefined> {
-    return this.collection.doc(id).valueChanges()
+    return this.collection
+      .doc(id)
+      .valueChanges()
+      .pipe(map((item) => ({ id, ...item })))
   }
 
   constructor(private readonly afs: AngularFirestore) {}

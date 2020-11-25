@@ -82,23 +82,7 @@ export class WorkflowListComponent {
         group: {
           id: randomId(),
           type: WorkflowType.group,
-          children: [
-            {
-              id: randomId(),
-              type: WorkflowType.group,
-              children: [{ id: randomId(), type: WorkflowType.condition }],
-            },
-            {
-              id: randomId(),
-              type: WorkflowType.group,
-              children: [{ id: randomId(), type: WorkflowType.condition }],
-            },
-            {
-              id: randomId(),
-              type: WorkflowType.group,
-              children: [{ id: randomId(), type: WorkflowType.condition }],
-            },
-          ],
+          children: [],
         },
       })
       .subscribe(() => {
