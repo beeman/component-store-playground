@@ -13,7 +13,7 @@ import { randomId } from '../../util/random-id'
           </button>
           Group: {{ node?.id }}
         </div>
-        <div *ngIf="node.parentId">
+        <div *ngIf="node?.parentId">
           <button (click)="deleteNode(node, node)" class="text-gray-700">
             <i class="fa fa-fw fa-trash"></i>
           </button>
@@ -46,7 +46,7 @@ import { randomId } from '../../util/random-id'
   `,
 })
 export class WorkflowGroupComponent {
-  @Input() node?: WorkflowItem
+  @Input() node!: WorkflowItem
   showChildren = true
   type = WorkflowType
 
@@ -60,8 +60,8 @@ export class WorkflowGroupComponent {
     item.children = [...existing, { id: randomId(), parentId: item.id, type: WorkflowType.condition }]
   }
 
-  deleteNode(parent: WorkflowItem, node: WorkflowItem): void {
-    if (node.type === WorkflowType.condition) {
+  deleteNode(parent?: WorkflowItem, node?: WorkflowItem): void {
+    if (node?.type === WorkflowType.condition && parent) {
       parent.children = parent.children?.filter((item) => item.id !== node.id)
     } else {
       console.warn('TBD Implement Group Delete')
