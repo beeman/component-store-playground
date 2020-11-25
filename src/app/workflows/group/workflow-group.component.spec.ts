@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ContactsComponent } from './contacts.component'
+import { WorkflowGroupComponent } from './workflow-group.component'
 
 describe('FormsComponent', () => {
-  let component: ContactsComponent
-  let fixture: ComponentFixture<ContactsComponent>
+  let component: WorkflowGroupComponent
+  let fixture: ComponentFixture<WorkflowGroupComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ContactsComponent],
+      declarations: [WorkflowGroupComponent],
     }).compileComponents()
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContactsComponent)
+    fixture = TestBed.createComponent(WorkflowGroupComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
