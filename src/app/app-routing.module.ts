@@ -13,6 +13,10 @@ export const routes: Routes = [
         loadChildren: () => import('./todos/todos.module').then((m) => m.TodosModule),
       },
       {
+        path: 'workflows',
+        loadChildren: () => import('./workflows/workflows.module').then((m) => m.WorkflowsModule),
+      },
+      {
         path: 'home',
         loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
       },
