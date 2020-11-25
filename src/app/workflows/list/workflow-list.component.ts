@@ -3,6 +3,7 @@ import { tap } from 'rxjs/operators'
 import { Workflow } from '../../data-access/workflows/workflow'
 import { WorkflowType } from '../../data-access/workflows/workflow-item'
 import { WorkflowsDataAccessService } from '../../data-access/workflows/workflows-data-access.service'
+import { randomId } from '../../util/random-id'
 
 @Component({
   template: `
@@ -77,30 +78,28 @@ export class WorkflowListComponent {
     this.saving = true
     this.service
       .addWorkflow({
-        name: 'Untitled Workflow',
-        items: [
-          {
-            id: '1',
-            type: WorkflowType.group,
-            children: [
-              {
-                id: '2',
-                type: WorkflowType.group,
-                children: [{ id: 'g', type: WorkflowType.condition }],
-              },
-              {
-                id: '3',
-                type: WorkflowType.group,
-                children: [{ id: 'g', type: WorkflowType.condition }],
-              },
-              {
-                id: '4',
-                type: WorkflowType.group,
-                children: [{ id: 'g', type: WorkflowType.condition }],
-              },
-            ],
-          },
-        ],
+        name: `Untitled Workflow ${randomId()}`,
+        group: {
+          id: randomId(),
+          type: WorkflowType.group,
+          children: [
+            {
+              id: randomId(),
+              type: WorkflowType.group,
+              children: [{ id: randomId(), type: WorkflowType.condition }],
+            },
+            {
+              id: randomId(),
+              type: WorkflowType.group,
+              children: [{ id: randomId(), type: WorkflowType.condition }],
+            },
+            {
+              id: randomId(),
+              type: WorkflowType.group,
+              children: [{ id: randomId(), type: WorkflowType.condition }],
+            },
+          ],
+        },
       })
       .subscribe(() => {
         this.saving = false

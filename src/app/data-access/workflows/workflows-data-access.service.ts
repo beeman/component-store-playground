@@ -25,7 +25,7 @@ export class WorkflowsDataAccessService {
     return of(true).pipe(
       // Add some delay for saving state
       delay(400),
-      switchMap(() => from(this.collection.add({ name: input.name, items: input.items }))),
+      switchMap(() => from(this.collection.add({ name: input.name, group: input.group }))),
     )
   }
 
