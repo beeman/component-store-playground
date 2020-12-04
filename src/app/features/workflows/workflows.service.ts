@@ -3,10 +3,10 @@ import { AngularFirestore } from '@angular/fire/firestore'
 import { collectionData } from 'rxfire/firestore'
 import { from, Observable, of } from 'rxjs'
 import { delay, map, switchMap, take } from 'rxjs/operators'
-import { Workflow } from './workflow'
+import { Workflow } from './models/workflow'
 
 @Injectable()
-export class WorkflowsDataAccessService {
+export class WorkflowsService {
   private collectionName = 'workflows'
   private collection = this.afs.collection<Workflow>(this.collectionName)
 
