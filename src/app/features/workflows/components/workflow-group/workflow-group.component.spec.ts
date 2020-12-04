@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { WorkflowGroupComponent } from './workflow-group.component'
 
-describe('FormsComponent', () => {
+describe('WorkflowGroupComponent', () => {
   let component: WorkflowGroupComponent
   let fixture: ComponentFixture<WorkflowGroupComponent>
 
