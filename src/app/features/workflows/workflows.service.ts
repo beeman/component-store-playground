@@ -13,6 +13,7 @@ export class WorkflowsService {
   workflows$: Observable<Workflow[]> = collectionData<Workflow>(this.collection.ref, 'id').pipe(
     // Add some delay for loading state
     delay(400),
+    take(1),
   )
 
   workflow$(id: string): Observable<Workflow | undefined> {
