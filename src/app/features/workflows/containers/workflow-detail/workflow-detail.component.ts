@@ -1,8 +1,8 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { filter, map, switchMap, tap } from 'rxjs/operators'
-import { Workflow } from '../../data-access/workflows/workflow'
-import { WorkflowsDataAccessService } from '../../data-access/workflows/workflows-data-access.service'
+import { map, switchMap, tap } from 'rxjs/operators'
+import { Workflow } from '../../models/workflow'
+import { WorkflowsService } from '../../workflows.service'
 
 @Component({
   template: `
@@ -47,7 +47,7 @@ export class WorkflowDetailComponent {
 
   saving = false
   loading = true
-  constructor(private readonly service: WorkflowsDataAccessService, private readonly route: ActivatedRoute) {}
+  constructor(private readonly service: WorkflowsService, private readonly route: ActivatedRoute) {}
   saveWorkflow(workflow: Workflow): void {
     this.service.updateWorkflow(workflow).subscribe()
   }

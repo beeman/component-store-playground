@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
-import { WorkflowItem, WorkflowType } from '../../data-access/workflows/workflow-item'
-import { randomId } from '../../util/random-id'
+import { WorkflowItem, WorkflowType } from '../../models/workflow-item'
+import { randomId } from '../../../../util/random-id'
 
 @Component({
   selector: 'app-workflow-group',

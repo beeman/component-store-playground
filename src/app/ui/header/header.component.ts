@@ -8,9 +8,9 @@ import { Component } from '@angular/core'
         <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" routerLink="/">
           <span class="text-xl">Component Store Playground</span>
         </a>
-        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center space-x-2">
           <ng-container *ngFor="let link of links">
-            <a class="ml-5 hover:text-gray-900" [routerLink]="link.path">
+            <a class="hover:text-gray-900 px-2 py-1" routerLinkActive=" bg-gray-200 rounded " [routerLink]="link.path">
               {{ link.label }}
             </a>
           </ng-container>

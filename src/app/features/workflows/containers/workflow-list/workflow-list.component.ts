@@ -1,9 +1,9 @@
 import { Component } from '@angular/core'
 import { tap } from 'rxjs/operators'
-import { Workflow } from '../../data-access/workflows/workflow'
-import { WorkflowType } from '../../data-access/workflows/workflow-item'
-import { WorkflowsDataAccessService } from '../../data-access/workflows/workflows-data-access.service'
-import { randomId } from '../../util/random-id'
+import { Workflow } from '../../models/workflow'
+import { WorkflowType } from '../../models/workflow-item'
+import { randomId } from '../../../../util/random-id'
+import { WorkflowsService } from '../../workflows.service'
 
 @Component({
   template: `
@@ -70,9 +70,7 @@ export class WorkflowListComponent {
   workflows$ = this.service.workflows$.pipe(tap(() => (this.loading = false)))
   saving = false
   loading = true
-  constructor(private readonly service: WorkflowsDataAccessService) {
-    // this.service.addWorkflow({ email: 'beeman@beeman.nl', name: 'beeman' })
-  }
+  constructor(private readonly service: WorkflowsService) {}
 
   public addWorkflow(): void {
     this.saving = true

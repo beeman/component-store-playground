@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
-import { WorkflowItem } from '../../data-access/workflows/workflow-item'
+import { WorkflowItem } from '../../models/workflow-item'
 
 @Component({
   selector: 'app-workflow-condition',

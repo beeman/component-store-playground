@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { tap } from 'rxjs/operators'
-import { Todo } from '../data-access/todos/todo'
-import { TodosDataAccessService } from '../data-access/todos/todos-data-access.service'
+import { Todo } from './models/todo'
+import { TodosService } from './todos.service'
 
 @Component({
   template: `
@@ -105,9 +105,7 @@ export class TodosComponent {
   todos$ = this.service.todos$.pipe(tap(() => (this.loading = false)))
   saving = false
   loading = true
-  constructor(private readonly service: TodosDataAccessService) {
-    // this.service.addTodo({ email: 'beeman@beeman.nl', name: 'beeman' })
-  }
+  constructor(private readonly service: TodosService) {}
 
   public addTodo(task: HTMLInputElement): void {
     this.saving = true

@@ -3,10 +3,10 @@ import { AngularFirestore } from '@angular/fire/firestore'
 import { collectionData } from 'rxfire/firestore'
 import { from, Observable, of } from 'rxjs'
 import { delay, switchMap } from 'rxjs/operators'
-import { Todo } from './todo'
+import { Todo } from './models/todo'
 
 @Injectable()
-export class TodosDataAccessService {
+export class TodosService {
   private collectionName = 'todos'
   private collection = this.afs.collection<Todo>(this.collectionName)
 
