@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { AngularFirestore } from '@angular/fire/firestore'
 import { collectionData } from 'rxfire/firestore'
 import { from, Observable, of } from 'rxjs'
-import { delay, switchMap } from 'rxjs/operators'
+import { delay, switchMap, take } from 'rxjs/operators'
 import { Todo } from './models/todo'
 
 @Injectable()
@@ -12,7 +12,8 @@ export class TodosService {
 
   todos$: Observable<Todo[]> = collectionData<Todo>(this.collection.ref, 'id').pipe(
     // Add some delay for loading state
-    delay(400),
+    delay(50),
+    take(1),
   )
 
   constructor(private readonly afs: AngularFirestore) {}
@@ -20,7 +21,7 @@ export class TodosService {
   addTodo(input: Todo): Observable<any> {
     return of(true).pipe(
       // Add some delay for saving state
-      delay(400),
+      delay(50),
       switchMap(() => from(this.collection.add({ task: input.task, done: false }))),
     )
   }

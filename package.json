@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~11.0.2",
     "@angular/router": "~11.0.2",
     "@ngneat/tailwind": "^1.1.0",
+    "@ngrx/component-store": "^10.1.0",
     "firebase": "^8.1.1",
     "rxfire": "^4.0.0",
     "rxjs": "~6.6.3",
