@@ -19,7 +19,12 @@ export class TodosStore extends ComponentStore<TodosState> {
     })
   }
 
-  readonly vm$ = this.select(({ loading, todos, saving }) => ({ loading, todos, saving }))
+  readonly vm$ = this.select(({ loading, todos, saving }) => ({
+    isEmpty: !loading && !todos?.length,
+    isLoading: loading && !todos?.length,
+    todos,
+    saving,
+  }))
 
   // loadTodos
   loadTodos = this.effect((trigger$) =>

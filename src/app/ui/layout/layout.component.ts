@@ -4,10 +4,10 @@ import { Component } from '@angular/core'
   template: `
     <div class="h-full flex flex-col justify-between bg-gray-100">
       <app-header></app-header>
-      <div class="container flex-grow mx-auto ">
+      <div class="flex-grow">
         <router-outlet></router-outlet>
+        <app-footer></app-footer>
       </div>
-      <app-footer></app-footer>
     </div>
   `,
 })
