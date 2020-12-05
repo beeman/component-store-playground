@@ -7,24 +7,18 @@ import { WorkflowsService } from '../../workflows.service'
 @Component({
   template: `
     <app-page>
-      <ng-container *ngIf="workflow$ | async as workflow">
-        <div class="flex-grow">
-          <div class="p-2 flex justify-between">
-            <div>
-              <h3 class="font-normal px-2 py-1 leading-tight">
-                {{ workflow.name }}
-              </h3>
-            </div>
-            <div>
-              <button
-                class="bg-green-400 hover:bg-green-500 text-white py-1 px-2 rounded"
-                (click)="saveWorkflow(workflow)"
-              >
-                Save
-              </button>
-            </div>
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden py-4 px-6">
+        <ng-container *ngIf="workflow$ | async as workflow">
+          <div class="flex-grow flex justify-between">
+            <h3 class="font-normal px-2 py-3 leading-tight">{{ workflow.name }}</h3>
+            <button
+              class="bg-green-400 hover:bg-green-500 text-white py-1 px-2 rounded"
+              (click)="saveWorkflow(workflow)"
+            >
+              Save
+            </button>
           </div>
-          <div class="w-full">
+          <div class="w-full mt-6">
             <app-loading [loading]="loading"></app-loading>
 
             <ng-container *ngIf="!workflow.group"> No workflow group! </ng-container>
@@ -32,8 +26,8 @@ import { WorkflowsService } from '../../workflows.service'
               <app-workflow-group [node]="workflow.group"></app-workflow-group>
             </ng-container>
           </div>
-        </div>
-      </ng-container>
+        </ng-container>
+      </div>
     </app-page>
   `,
 })
