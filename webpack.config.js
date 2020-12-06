@@ -1,8 +1,9 @@
-const merge = require('webpack-merge')
+const webpackMerge = require('webpack-merge')
 
 module.exports = (config) => {
   const isProd = config.mode === 'production'
   const tailwindConfig = require('./tailwind.config.js')(isProd)
+  const merge = webpackMerge && webpackMerge.merge ? webpackMerge.merge : webpackMerge
 
   return merge(config, {
     module: {
