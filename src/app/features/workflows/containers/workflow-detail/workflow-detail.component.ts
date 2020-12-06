@@ -35,7 +35,7 @@ export class WorkflowDetailComponent {
   id$ = this.route.paramMap.pipe(map((param) => param.get('workflowId')))
   workflow$ = this.id$.pipe(
     // @ts-ignore
-    switchMap((id: string) => this.service.workflow$(id)),
+    switchMap((id: string) => this.service.item(id)),
     tap(() => (this.loading = false)),
   )
 
@@ -43,6 +43,6 @@ export class WorkflowDetailComponent {
   loading = true
   constructor(private readonly service: WorkflowsService, private readonly route: ActivatedRoute) {}
   saveWorkflow(workflow: Workflow): void {
-    this.service.updateWorkflow(workflow).subscribe()
+    this.service.update(workflow.id!, workflow).subscribe()
   }
 }

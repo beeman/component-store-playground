@@ -31,7 +31,7 @@ export class TodosStore extends ComponentStore<TodosState> {
     trigger$.pipe(
       tap(() => this.setState((state) => ({ ...state, loading: true }))),
       switchMap(() =>
-        this.service.todos$.pipe(
+        this.service.items().pipe(
           tap((todos) => {
             this.setState({
               todos,
@@ -48,7 +48,7 @@ export class TodosStore extends ComponentStore<TodosState> {
     task$.pipe(
       tap(() => this.setState((state) => ({ ...state, saving: true }))),
       mergeMap((task) =>
-        this.service.addTodo({ task, done: false }).pipe(
+        this.service.create({ task, done: false }).pipe(
           tap((result) => {
             this.loadTodos()
           }),
@@ -60,9 +60,9 @@ export class TodosStore extends ComponentStore<TodosState> {
   // deleteTodo
   deleteTodo = this.effect<Todo>((todo$) =>
     todo$.pipe(
-      mergeMap((todo) =>
-        this.service.deleteTodo(todo).pipe(
-          tap((result) => {
+      mergeMap((todo: Todo) =>
+        this.service.delete(todo.id!).pipe(
+          tap(() => {
             this.loadTodos()
           }),
         ),
@@ -75,7 +75,7 @@ export class TodosStore extends ComponentStore<TodosState> {
     todo$.pipe(
       mergeMap((todo) =>
         this.service.toggleTodo(todo).pipe(
-          tap((result) => {
+          tap(() => {
             this.loadTodos()
           }),
         ),
