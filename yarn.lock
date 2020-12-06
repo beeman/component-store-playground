@@ -7898,6 +7898,13 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
+ng-indexed-db@^0.0.0-beta.1:
+  version "0.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/ng-indexed-db/-/ng-indexed-db-0.0.0-beta.1.tgz#6fc525bdde88120c44e2925e4dfe13a8c9945f63"
+  integrity sha512-eLFQWdqU8ZbL0/SvfK2cuPP6GOYyaNwBAVuzvuGts0iMg+8xp/va3V+qhCVEEYt5WDfhseAyd0m8mMAv+PCZTw==
+  dependencies:
+    tslib "^1.9.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

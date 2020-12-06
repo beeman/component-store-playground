@@ -37,7 +37,7 @@ export class WorkflowListStore extends ComponentStore<WorkflowListState> {
     $.pipe(
       tap(() => this.setState((state) => ({ ...state, loading: true }))),
       switchMapTo(
-        this.service.workflows$.pipe(
+        this.service.items().pipe(
           tap((workflows) => {
             this.setState({ workflows, loading: false, saving: false })
           }),
@@ -49,12 +49,12 @@ export class WorkflowListStore extends ComponentStore<WorkflowListState> {
   readonly addWorkflowEffect = this.effect<{ name: string; group: WorkflowItem }>((input$) =>
     input$.pipe(
       tap(() => this.setState((state) => ({ ...state, saving: true }))),
-      mergeMap((input) => this.service.addWorkflow(input).pipe(this.reload)),
+      mergeMap((input) => this.service.create(input).pipe(this.reload)),
     ),
   )
 
   readonly deleteWorkflowEffect = this.effect<Workflow>((workflow$) =>
-    workflow$.pipe(mergeMap((workflow) => this.service.deleteWorkflow(workflow).pipe(this.reload))),
+    workflow$.pipe(mergeMap((workflow) => this.service.delete(workflow.id!).pipe(this.reload))),
   )
 
   private reload = tap(() => this.loadWorkflowsEffect())

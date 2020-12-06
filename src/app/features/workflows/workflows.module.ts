@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
+import { AngularIdbModule } from '../../angular-idb'
 import { WorkflowsService } from './workflows.service'
 
 @NgModule({
   providers: [WorkflowsService],
   imports: [
+    AngularIdbModule,
     RouterModule.forChild([
       {
         path: '',
