@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { ComponentStore } from '@ngrx/component-store'
 import { Draft } from 'immer'
-import { pluck, switchMap, tap } from 'rxjs/operators'
+import { map, pluck, switchMap, tap, withLatestFrom } from 'rxjs/operators'
 import { mutableReducer } from '../../../../util/mutable-reducer'
 import { randomId } from '../../../../util/random-id'
 import { Workflow } from '../../models/workflow'
@@ -47,8 +47,7 @@ export class WorkflowDetailStore extends ComponentStore<WorkflowDetailState> {
     this.workflowInfo$,
     this.groupNodes$,
     this.conditionNodes$,
-    ({ maxDepth, workflow, loading, saving }, groupNodes, conditionNodes) => ({
-      nodes: new Map([...((groupNodes ?? []) as any), ...((conditionNodes ?? []) as any)]),
+    ({ maxDepth, workflow, loading, saving }, groupNodes) => ({
       maxDepth,
       workflow,
       loading,
@@ -74,6 +73,23 @@ export class WorkflowDetailStore extends ComponentStore<WorkflowDetailState> {
           }),
         ),
       ),
+    ),
+  )
+
+  readonly saveWorkflowEffect = this.effect(($) =>
+    $.pipe(
+      withLatestFrom(this.groupNodes$, this.conditionNodes$, this.workflow$),
+      map(([_, groupNodes, conditionNodes, workflow]) => {
+        const denormalizedTree = this.denormalize(
+          groupNodes as Map<string, NormalizedWorkflowGroup>,
+          conditionNodes as Map<string, WorkflowCondition>,
+        )
+        return {
+          ...workflow,
+          group: denormalizedTree,
+        }
+      }),
+      switchMap((workflow: Workflow) => this.service.updateWorkflow(workflow)),
     ),
   )
 
@@ -257,6 +273,30 @@ export class WorkflowDetailStore extends ComponentStore<WorkflowDetailState> {
     }
 
     return { groupNodes, conditionNodes }
+  }
+
+  private denormalize(
+    groupNodes: Map<string, NormalizedWorkflowGroup>,
+    conditionNodes: Map<string, WorkflowCondition>,
+    group: WorkflowGroup = { ...groupNodes.values().next().value, children: [] },
+  ): WorkflowGroup {
+    const normalizedGroup = groupNodes.get(group.id as string) as NormalizedWorkflowGroup
+
+    if (normalizedGroup.children) {
+      for (const child of normalizedGroup.children) {
+        if (child.type === WorkflowType.group) {
+          const childGroup = this.denormalize(groupNodes, conditionNodes, {
+            ...(groupNodes.get(child.id) ?? {}),
+            children: [],
+          } as WorkflowGroup)
+          group.children = [...(group?.children ?? []), childGroup]
+        } else {
+          group.children = [...(group?.children ?? []), conditionNodes.get(child.id) as WorkflowCondition]
+        }
+      }
+    }
+
+    return group
   }
 
   private deleteGroupRecursive(state: Draft<WorkflowDetailState>, group: NormalizedWorkflowGroup): void {
