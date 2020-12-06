@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
 import { FormlyModule } from '@ngx-formly/core'
-import { UiFormInputModule } from './types/ui-form-input.module'
+import { UiFormInputModule } from './types/input/ui-form-input.module'
+import { UiFormSelectModule } from './types/select/ui-form-select.module'
 import { UiFormComponent } from './ui-form.component'
 import {
   maxlengthValidationMessage,
@@ -17,6 +18,7 @@ import { UiFormFieldModule } from './wrappers/form-field/ui-form-field.module'
     ReactiveFormsModule,
     UiFormFieldModule,
     UiFormInputModule,
+    UiFormSelectModule,
     FormlyModule.forRoot({
       validationMessages: [
         { name: 'required', message: 'This field is required' },
