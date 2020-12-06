@@ -2,7 +2,6 @@ import { Component } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { FieldType } from '@ngx-formly/core'
 
-// class=""
 @Component({
   template: `
     <input
@@ -21,6 +20,7 @@ export class UiFormInputComponent extends FieldType {
   get type(): string {
     return this.to.type || 'text'
   }
+
   get classNames(): string {
     return this.showError
       ? 'border-red-300 text-red-900 placeholder-red-400 focus:outline-none focus:ring-red-500 focus:border-red-500'
