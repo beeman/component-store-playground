@@ -11,7 +11,7 @@ import { WorkflowListStore } from './workflow-list.store'
         <div class="bg-white shadow-lg rounded-lg overflow-hidden py-4 px-6">
           <div class="sm:flex sm:items-center">
             <div class="flex-grow">
-              <h3 class="font-normal px-2 py-3 leading-tight">Workflows</h3>
+              <h3 class="font-semibold px-2 py-3 leading-tight">Workflows</h3>
               <div class="w-full">
                 <app-loading [loading]="vm.isLoading"></app-loading>
 
