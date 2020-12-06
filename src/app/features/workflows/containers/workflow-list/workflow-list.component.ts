@@ -11,35 +11,32 @@ import { WorkflowListStore } from './workflow-list.store'
         <div class="bg-white shadow-lg rounded-lg overflow-hidden py-4 px-6">
           <div class="sm:flex sm:items-center">
             <div class="flex-grow">
-              <h3 class="font-normal px-2 py-3 leading-tight">Workflows</h3>
+              <h3 class="font-semibold px-2 py-3 leading-tight">Workflows</h3>
               <div class="w-full">
                 <app-loading [loading]="vm.isLoading"></app-loading>
 
                 <ng-container *ngIf="vm.isEmpty">
-                  <div
-                    class="flex items-center justify-center bg-gray-100  text-sm font-bold  p-16  rounded"
-                    role="alert"
-                  >
+                  <div class="flex items-center justify-center bg-gray-100 px-4 py-2 mb-3 rounded" role="alert">
                     <p>There are no workflows.</p>
                   </div>
                 </ng-container>
                 <ng-container *ngFor="let workflow of vm.workflows">
-                  <div class="flex cursor-pointer my-1 hover:bg-blue-lightest rounded">
-                    <div class="py-3">
-                      <button class="text-red-600" (click)="deleteWorkflow(workflow)">
-                        <i class="fa fa-trash"></i>
-                      </button>
-                    </div>
-                    <div class="h-10 py-3 px-1">
-                      <a class="hover:text-blue-dark" [routerLink]="workflow.id">
+                  <div
+                    class="flex cursor-pointer mb-3 hover:bg-blue-lightest rounded flex align-center justify-between bg-gray-100 px-4 py-2"
+                  >
+                    <div>
+                      <p class="hover:text-blue-dark" [routerLink]="workflow.id">
                         {{ workflow.name }}
-                      </a>
+                      </p>
                     </div>
+                    <button class="text-gray-200 hover:text-red-600" (click)="deleteWorkflow(workflow)">
+                      <i class="fa fa-trash"></i>
+                    </button>
                   </div>
                 </ng-container>
 
                 <div
-                  class="flex cursor-pointer p-1 bg-gray-100 hover:bg-blue-lightest animate-pulse rounded"
+                  class="flex cursor-pointer px-4 py-2 mb-3 bg-gray-100 hover:bg-blue-lightest animate-pulse rounded"
                   *ngIf="vm.saving"
                 >
                   Saving...
@@ -51,7 +48,7 @@ import { WorkflowListStore } from './workflow-list.store'
                 required="required"
                 placeholder="Add workflow name and hit ⏎"
                 (keydown.enter)="addWorkflow(task)"
-                class="my-2 w-full text-lg bg-gray-100 text-grey-darkest rounded h-10 p-3 focus:outline-none"
+                class="w-full text-lg bg-gray-100 text-gray-700 rounded  px-4 py-2 focus:outline-none"
               />
             </div>
           </div>

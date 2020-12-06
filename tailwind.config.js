@@ -5,4 +5,8 @@ module.exports = (isProd) => ({
     content: ['./src/**/*.html', './src/**/*.ts'],
   },
   theme: {},
+  plugins: [
+    //
+    require('@tailwindcss/forms'),
+  ],
 })
