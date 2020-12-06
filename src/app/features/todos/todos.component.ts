@@ -14,10 +14,7 @@ import { TodosStore } from './todos.store'
               <div class="w-full">
                 <app-loading [loading]="vm.isLoading"></app-loading>
                 <ng-container *ngIf="vm.isEmpty">
-                  <div
-                    class="flex items-center justify-center bg-gray-100  text-sm font-bold p-16 rounded"
-                    role="alert"
-                  >
+                  <div class="flex items-center justify-center bg-gray-100 px-4 py-2 mb-3 rounded" role="alert">
                     <p>There are no todos.</p>
                   </div>
                 </ng-container>
@@ -54,7 +51,7 @@ import { TodosStore } from './todos.store'
                 required="required"
                 placeholder="Add task and hit ⏎"
                 (keydown.enter)="addTodo(task)"
-                class="w-full text-lg bg-gray-100 text-grey-darkest rounded  px-4 py-2 focus:outline-none"
+                class="w-full text-lg bg-gray-100 text-gray-700 rounded  px-4 py-2 focus:outline-none"
               />
             </div>
           </div>
