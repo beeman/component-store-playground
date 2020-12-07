@@ -12,6 +12,10 @@ export const routes: Routes = [
         loadChildren: () => import('./features/auth/auth.module').then((m) => m.AuthModule),
       },
       {
+        path: 'forms',
+        loadChildren: () => import('./features/forms-demo/forms-demo.module').then((m) => m.FormsDemoModule),
+      },
+      {
         path: 'home',
         loadChildren: () => import('./features/home/home.module').then((m) => m.HomeModule),
       },
