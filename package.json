@@ -26,6 +26,7 @@
     "@ngx-formly/core": "^5.10.6",
     "@tailwindcss/forms": "^0.2.1",
     "firebase": "^8.1.1",
+    "immer": "^8.0.0",
     "lodash-es": "^4.17.15",
     "rxfire": "^4.0.0",
     "rxjs": "~6.6.3",

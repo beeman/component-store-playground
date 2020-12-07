@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { ComponentStore } from '@ngrx/component-store'
 import { mergeMap, switchMapTo, tap } from 'rxjs/operators'
 import { Workflow } from '../../models/workflow'
-import { WorkflowItem } from '../../models/workflow-item'
+import { WorkflowGroup } from '../../models/workflow-item'
 import { WorkflowsService } from '../../workflows.service'
 
 interface WorkflowListState {
@@ -46,7 +46,7 @@ export class WorkflowListStore extends ComponentStore<WorkflowListState> {
     ),
   )
 
-  readonly addWorkflowEffect = this.effect<{ name: string; group: WorkflowItem }>((input$) =>
+  readonly addWorkflowEffect = this.effect<{ name: string; group: WorkflowGroup }>((input$) =>
     input$.pipe(
       tap(() => this.setState((state) => ({ ...state, saving: true }))),
       mergeMap((input) => this.service.create(input).pipe(this.reload)),

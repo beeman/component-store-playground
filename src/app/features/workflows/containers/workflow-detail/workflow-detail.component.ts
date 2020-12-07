@@ -1,48 +1,49 @@
-import { Component } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
-import { map, switchMap, tap } from 'rxjs/operators'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { Workflow } from '../../models/workflow'
-import { WorkflowsService } from '../../workflows.service'
+import { WorkflowDetailStore } from './workflow-detail.store'
 
 @Component({
   template: `
-    <app-page>
-      <div class="bg-white shadow-lg rounded-lg overflow-hidden py-4 px-6">
-        <ng-container *ngIf="workflow$ | async as workflow">
+    <ng-container *ngIf="vm$ | async as vm">
+      <app-page>
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden py-4 px-6">
           <div class="flex-grow flex justify-between">
-            <h3 class="font-normal px-2 py-3 leading-tight">{{ workflow.name }}</h3>
+            <h3 class="font-normal px-2 py-3 leading-tight">{{ vm.workflow?.name }}</h3>
             <button
               class="bg-green-400 hover:bg-green-500 text-white py-1 px-2 rounded"
-              (click)="saveWorkflow(workflow)"
+              (click)="saveWorkflow(vm.workflow!)"
             >
               Save
             </button>
           </div>
           <div class="w-full mt-6">
-            <app-loading [loading]="loading"></app-loading>
+            <app-loading [loading]="vm.loading"></app-loading>
 
-            <ng-container *ngIf="!workflow.group"> No workflow group! </ng-container>
-            <ng-container *ngIf="workflow.group">
-              <app-workflow-group [node]="workflow.group"></app-workflow-group>
+            <ng-container *ngIf="!vm.workflow?.group"> No workflow group!</ng-container>
+            <ng-container *ngIf="vm.workflow?.group">
+              <app-workflow-group [groupId]="vm.root!" [level]="0"></app-workflow-group>
             </ng-container>
           </div>
-        </ng-container>
-      </div>
-    </app-page>
+        </div>
+      </app-page>
+    </ng-container>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [WorkflowDetailStore],
 })
 export class WorkflowDetailComponent {
-  id$ = this.route.paramMap.pipe(map((param) => param.get('workflowId')))
-  workflow$ = this.id$.pipe(
-    // @ts-ignore
-    switchMap((id: string) => this.service.item(id)),
-    tap(() => (this.loading = false)),
-  )
+  // id$ = this.route.paramMap.pipe(map((param) => param.get('workflowId')))
+  // workflow$ = this.id$.pipe(
+  //   // @ts-ignore
+  //   switchMap((id: string) => this.service.item(id)),
+  //   tap(() => (this.loading = false)),
+  // )
 
-  saving = false
-  loading = true
-  constructor(private readonly service: WorkflowsService, private readonly route: ActivatedRoute) {}
+  readonly vm$ = this.workflowDetailStore.vm$
+
+  constructor(private readonly workflowDetailStore: WorkflowDetailStore) {}
+
   saveWorkflow(workflow: Workflow): void {
-    this.service.update(workflow.id!, workflow).subscribe()
+    // this.service.update(workflow.id!, workflow).subscribe()
   }
 }
