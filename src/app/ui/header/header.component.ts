@@ -25,6 +25,7 @@ import { Component } from '@angular/core'
 })
 export class HeaderComponent {
   links: { label: string; path: string }[] = [
+    { label: 'Forms', path: 'forms' },
     { label: 'Todos', path: 'todos' },
     { label: 'Workflows', path: 'workflows' },
   ]
