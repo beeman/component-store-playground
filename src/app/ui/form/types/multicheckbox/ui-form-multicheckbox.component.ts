@@ -16,7 +16,7 @@ import { FieldType } from '@ngx-formly/core'
                 [value]="option.value"
                 [checked]="isChecked(option)"
                 [formlyAttributes]="field"
-                (change)="onChange(option.value, $event.target?.checked)"
+                (change)="onChange(option.value, $event.target)"
               />
             </div>
             <div class="ml-3 text-sm">
@@ -39,15 +39,15 @@ export class UiFormMulticheckboxComponent extends FieldType {
     },
   }
 
-  onChange(value: any, checked: boolean): void {
+  onChange(value: any, target: any): void {
     if (this.to.type === 'array') {
       this.formControl.patchValue(
-        checked
+        target.checked
           ? [...(this.formControl.value || []), value]
           : [...(this.formControl.value || [])].filter((o) => o !== value),
       )
     } else {
-      this.formControl.patchValue({ ...this.formControl.value, [value]: checked })
+      this.formControl.patchValue({ ...this.formControl.value, [value]: target.checked })
     }
     this.formControl.markAsTouched()
   }
