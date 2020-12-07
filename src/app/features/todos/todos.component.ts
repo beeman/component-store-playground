@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Todo } from './models/todo'
 import { TodosStore } from './todos.store'
+import { UiFormField } from '../../ui/form/ui-form-field'
 
 @Component({
   providers: [TodosStore],
@@ -12,27 +13,37 @@ import { TodosStore } from './todos.store'
             <div class="flex-grow">
               <h3 class="font-semibold px-2 py-3 leading-tight">Todos</h3>
               <div class="w-full">
+                <ui-form [form]="vm.form" [fields]="vm.fields"></ui-form>
                 <app-loading [loading]="vm.isLoading"></app-loading>
                 <ng-container *ngIf="vm.isEmpty">
                   <div class="flex items-center justify-center bg-gray-100 px-4 py-2 mb-3 rounded" role="alert">
                     <p>There are no todos.</p>
                   </div>
+                  <div class="flex items-center justify-center my-3">
+                    <button
+                      *ngIf="vm.filter"
+                      (click)="removeFilter()"
+                      class="bg-purple-100 rounded border-purple-200 px-4 py-2"
+                    >
+                      Remove filter
+                    </button>
+                  </div>
                 </ng-container>
                 <ng-container *ngIf="vm.todos as todos">
                   <ng-container *ngFor="let todo of todos">
                     <div
+                      (click)="toggleTodo(todo)"
                       class="flex cursor-pointer mb-3 hover:bg-blue-lightest rounded flex align-center justify-between bg-gray-100 px-4 py-2"
                     >
                       <div>
-                        <p
-                          class="hover:text-blue-dark"
-                          [class]="{ 'line-through': todo.done }"
-                          (click)="toggleTodo(todo)"
-                        >
+                        <div class="hover:text-blue-dark" [class]="{ 'line-through': todo.done }">
                           {{ todo.task }}
-                        </p>
+                        </div>
                       </div>
-                      <button class="text-gray-200 hover:text-red-600" (click)="deleteTodo(todo)">
+                      <button
+                        class="text-gray-200 hover:text-red-600"
+                        (click)="$event.stopPropagation(); deleteTodo(todo)"
+                      >
                         <i class="fa fa-trash"></i>
                       </button>
                     </div>
@@ -80,5 +91,9 @@ export class TodosComponent implements OnInit {
 
   toggleTodo(todo: Todo): void {
     this.todosStore.toggleTodo(todo)
+  }
+
+  removeFilter(): void {
+    this.todosStore.removeFilter()
   }
 }
