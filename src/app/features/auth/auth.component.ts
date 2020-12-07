@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormGroup } from '@angular/forms'
 import { FormlyFieldConfig } from '@ngx-formly/core'
 
@@ -6,7 +6,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core'
   template: `
     <app-page>
       <div class="bg-white p-6 rounded shadow m-6">
-        <app-form [form]="form" [field]="fields" [model]="model"></app-form>
+        <ui-form [form]="form" [fields]="fields" [model]="model"></ui-form>
         <div class="flex justify-between">
           <a
             routerLink="/register"

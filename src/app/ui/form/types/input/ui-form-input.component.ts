@@ -5,7 +5,7 @@ import { FieldType } from '@ngx-formly/core'
 @Component({
   template: `
     <input
-      class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md block w-full pr-10 sm:text-sm"
+      class="shadow-sm focus:ring-purple-500 focus:border-purple-500 border-gray-300 rounded-md block w-full sm:text-sm"
       [ngClass]="classNames"
       [type]="type"
       [formControl]="formControl"

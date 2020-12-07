@@ -8,7 +8,7 @@ import { FieldType } from '@ngx-formly/core'
       [formControl]="formControl"
       [cols]="to.cols"
       [rows]="to.rows"
-      class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+      class="shadow-sm block w-full focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md"
       [class.is-invalid]="showError"
       [formlyAttributes]="field"
     >
