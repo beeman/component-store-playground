@@ -4,6 +4,7 @@ module.exports = (isProd) => ({
     enabled: isProd,
     content: ['./src/**/*.html', './src/**/*.ts'],
   },
+  darkMode: 'class',
   theme: {},
   plugins: [
     //

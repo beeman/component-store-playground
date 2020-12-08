@@ -6,7 +6,9 @@ import { WorkflowDetailStore } from './workflow-detail.store'
   template: `
     <ng-container *ngIf="vm$ | async as vm">
       <app-page>
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden py-4 px-6">
+        <div
+          class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 shadow-lg rounded-lg overflow-hidden py-4 px-6"
+        >
           <div class="flex-grow flex justify-between">
             <h3 class="font-normal px-2 py-3 leading-tight">{{ vm.workflow?.name }}</h3>
             <button

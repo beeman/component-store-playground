@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { UiService } from '../ui.service'
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core'
         <a class="flex title-font font-medium items-center text-purple-300 mb-4 md:mb-0" routerLink="/">
           <span class="text-xl">Component Store Playground</span>
         </a>
+
         <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center space-x-2">
           <ng-container *ngFor="let link of links">
             <a
@@ -17,6 +19,11 @@ import { Component } from '@angular/core'
             >
               {{ link.label }}
             </a>
+          </ng-container>
+          <ng-container *ngIf="theme$ | async as theme">
+            <button class="px-2 py-1" (click)="toggleDarkMode()">
+              <i class="fa fa-fw" [ngClass]="{ 'fa-moon-o': theme === 'light', 'fa-sun-o': theme === 'dark' }"></i>
+            </button>
           </ng-container>
         </nav>
       </div>
@@ -29,4 +36,11 @@ export class HeaderComponent {
     { label: 'Todos', path: 'todos' },
     { label: 'Workflows', path: 'workflows' },
   ]
+  constructor(private readonly service: UiService) {}
+
+  theme$ = this.service.theme$
+
+  toggleDarkMode(): void {
+    this.service.toggleDarkMode()
+  }
 }
