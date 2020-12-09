@@ -6,7 +6,7 @@ import { Todo } from './models/todo'
 @Injectable()
 export class TodosService extends AngularIdbService<Todo> {
   constructor(db: AngularIdb) {
-    super(db, 'todos', { delay: 150 })
+    super(db, 'todos', { delay: 500 })
   }
 
   toggleTodo(todo: Todo): Observable<any> {
