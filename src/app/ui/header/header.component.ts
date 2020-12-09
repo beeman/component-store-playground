@@ -1,33 +1,37 @@
 import { Component } from '@angular/core'
-import { UiService } from '../ui.service'
+import { UiStateService } from '../ui-state.service'
 
 @Component({
   selector: 'app-header',
   template: `
-    <header class="bg-purple-900 text-purple-300">
-      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a class="flex title-font font-medium items-center text-purple-300 mb-4 md:mb-0" routerLink="/">
-          <span class="text-xl">Component Store Playground</span>
-        </a>
+    <ng-container *ngIf="vm$ | async as vm">
+      <header class="bg-purple-900 text-purple-300">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-purple-300 mb-4 md:mb-0" routerLink="/">
+            <span class="text-xl">Component Store Playground</span>
+          </a>
 
-        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center space-x-2">
-          <ng-container *ngFor="let link of links">
-            <a
-              class="hover:bg-purple-400 hover:text-purple-900 rounded bg-purple-800 px-2 py-1"
-              routerLinkActive="bg-blue-400"
-              [routerLink]="link.path"
-            >
-              {{ link.label }}
-            </a>
-          </ng-container>
-          <ng-container *ngIf="theme$ | async as theme">
+          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center space-x-2">
+            <ng-container *ngFor="let link of links">
+              <a
+                class="hover:bg-purple-400 hover:text-purple-900 rounded bg-purple-800 px-2 py-1"
+                routerLinkActive="bg-blue-400"
+                [routerLink]="link.path"
+              >
+                {{ link.label }}
+              </a>
+            </ng-container>
+
             <button class="px-2 py-1" (click)="toggleDarkMode()">
-              <i class="fa fa-fw" [ngClass]="{ 'fa-moon-o': theme === 'light', 'fa-sun-o': theme === 'dark' }"></i>
+              <i
+                class="fa fa-fw"
+                [ngClass]="{ 'fa-moon-o': vm.theme === 'light', 'fa-sun-o': vm.theme === 'dark' }"
+              ></i>
             </button>
-          </ng-container>
-        </nav>
-      </div>
-    </header>
+          </nav>
+        </div>
+      </header>
+    </ng-container>
   `,
 })
 export class HeaderComponent {
@@ -36,11 +40,11 @@ export class HeaderComponent {
     { label: 'Todos', path: 'todos' },
     { label: 'Workflows', path: 'workflows' },
   ]
-  constructor(private readonly service: UiService) {}
+  vm$ = this.service.vm$
 
-  theme$ = this.service.theme$
+  constructor(private readonly service: UiStateService) {}
 
   toggleDarkMode(): void {
-    this.service.toggleDarkMode()
+    this.service.toggleTheme()
   }
 }
