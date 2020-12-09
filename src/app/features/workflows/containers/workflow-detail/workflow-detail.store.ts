@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { ComponentStore } from '@ngrx/component-store'
-import { pluck, switchMap, tap } from 'rxjs/operators'
+import { map, pluck, switchMap, tap, withLatestFrom } from 'rxjs/operators'
 import { mutableReducer } from '../../../../util/mutable-reducer'
 import { randomId } from '../../../../util/random-id'
 import { WorkflowDetailHelper } from '../../../../util/workflow-detail-helper'
@@ -114,17 +114,6 @@ export class WorkflowDetailStore extends ComponentStore<WorkflowDetailState> {
     ),
   )
 
-  // readonly addGroupWithoutImmer = this.updater<string>((state, parentId) => {
-  //   const newGroupId = randomId()
-  //   const parent = state.groupNodes?.get(parentId) as WorkflowGroup
-  //   return {
-  //     ...state,
-  //     groupNodes: new Map<string, NormalizedWorkflowGroup>(state.groupNodes!)
-  //       .set(newGroupId, {...})
-  //       .set(parentId, {...parent, children: [...parent.children, {...}]})
-  //   }
-  // })
-  //
   readonly addGroup = this.updater<string>(
     mutableReducer((state, parentId) => {
       const newGroupId = randomId()
@@ -159,6 +148,38 @@ export class WorkflowDetailStore extends ComponentStore<WorkflowDetailState> {
       const parent = state.groupNodes!.get(group.parentId!) as NormalizedWorkflowGroup
       parent.children = parent.children?.filter((child) => child.id !== groupId) ?? []
     }),
+  )
+
+  readonly removeCondition = this.updater<string>(
+    mutableReducer((state, conditionId) => {
+      const condition = state.conditionNodes!.get(conditionId!) as WorkflowCondition
+      state.conditionNodes!.delete(conditionId!)
+
+      const parent = state.groupNodes!.get(condition.parentId!) as NormalizedWorkflowGroup
+      parent.children = parent.children?.filter((child) => child.id !== conditionId) ?? []
+    }),
+  )
+
+  readonly updateCondition = this.updater<WorkflowCondition>(
+    mutableReducer((state, condition) => {
+      if (state.conditionNodes?.has(condition?.id!)) {
+        state.conditionNodes?.set(condition?.id!, condition!)
+      }
+    }),
+  )
+
+  readonly saveWorkflowEffect = this.effect(($) =>
+    $.pipe(
+      withLatestFrom(this.groupNodes$, this.conditionNodes$, this.workflow$),
+      map(([, groupNodes, conditionNodes, workflow]) => {
+        const denormalizedTree = WorkflowDetailHelper.denormalize(groupNodes!, conditionNodes!)
+        return {
+          ...workflow,
+          group: denormalizedTree,
+        }
+      }),
+      switchMap((updatedWorkflow: Workflow) => this.service.update(updatedWorkflow.id!, updatedWorkflow)),
+    ),
   )
 
   readonly getGroupById = (id: string) => this.select(this.groupNodes$, (groupNodes) => groupNodes!.get(id))

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { Workflow } from '../../models/workflow'
 import { WorkflowDetailStore } from './workflow-detail.store'
 
 @Component({
@@ -11,10 +10,7 @@ import { WorkflowDetailStore } from './workflow-detail.store'
         >
           <div class="flex-grow flex justify-between">
             <h3 class="font-normal px-2 py-3 leading-tight">{{ vm.workflow?.name }}</h3>
-            <button
-              class="bg-green-400 hover:bg-green-500 text-white py-1 px-2 rounded"
-              (click)="saveWorkflow(vm.workflow!)"
-            >
+            <button class="bg-green-400 hover:bg-green-500 text-white py-1 px-2 rounded" (click)="saveWorkflow()">
               Save
             </button>
           </div>
@@ -34,18 +30,11 @@ import { WorkflowDetailStore } from './workflow-detail.store'
   providers: [WorkflowDetailStore],
 })
 export class WorkflowDetailComponent {
-  // id$ = this.route.paramMap.pipe(map((param) => param.get('workflowId')))
-  // workflow$ = this.id$.pipe(
-  //   // @ts-ignore
-  //   switchMap((id: string) => this.service.item(id)),
-  //   tap(() => (this.loading = false)),
-  // )
-
   readonly vm$ = this.workflowDetailStore.vm$
 
   constructor(private readonly workflowDetailStore: WorkflowDetailStore) {}
 
-  saveWorkflow(workflow: Workflow): void {
-    // this.service.update(workflow.id!, workflow).subscribe()
+  saveWorkflow(): void {
+    this.workflowDetailStore.saveWorkflowEffect()
   }
 }

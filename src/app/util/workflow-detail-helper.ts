@@ -50,6 +50,28 @@ export class WorkflowDetailHelper {
     return { groupNodes, conditionNodes }
   }
 
+  static denormalize(
+    groupNodes: Map<string, NormalizedWorkflowGroup>,
+    conditionNodes: Map<string, WorkflowCondition>,
+    group: WorkflowGroup = { ...groupNodes.values().next().value, children: [] },
+  ): WorkflowGroup {
+    const normalizedGroup = groupNodes.get(group.id!) as NormalizedWorkflowGroup
+
+    if (normalizedGroup.children) {
+      for (const child of normalizedGroup.children) {
+        if (child.type === WorkflowType.group) {
+          const normalizedChildGroup: WorkflowGroup = { ...groupNodes.get(child.id!)!, children: [] }
+          const childGroup = this.denormalize(groupNodes, conditionNodes, normalizedChildGroup)
+          group.children = [...(group.children ?? []), childGroup]
+        } else {
+          group.children = [...(group.children ?? []), conditionNodes.get(child.id!) as WorkflowCondition]
+        }
+      }
+    }
+
+    return group
+  }
+
   static deleteGroupRecursive(state: Draft<WorkflowDetailState>, group: NormalizedWorkflowGroup): void {
     state.groupNodes!.delete(group.id!)
     if (group.children) {
