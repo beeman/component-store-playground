@@ -54,8 +54,16 @@ export class WorkflowGroupStore extends ComponentStore<WorkflowGroupState> {
 
   readonly removeEffect = this.effect(($) =>
     $.pipe(
-      withLatestFrom(this.groupId$),
-      tap(([, groupId]) => this.workflowDetailStore.removeGroup(groupId)),
+      withLatestFrom(this.group$),
+      tap(([, group]) => {
+        const groupId = group?.id!
+        const shouldRemove =
+          !group?.children?.length ||
+          (group?.children?.length && confirm('Removing a group will remove all of its children?'))
+        if (shouldRemove) {
+          this.workflowDetailStore.removeGroup(groupId)
+        }
+      }),
     ),
   )
 
