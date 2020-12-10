@@ -6,7 +6,7 @@ import { Component } from '@angular/core'
     <footer class="text-center text-sm text-gray-500 py-6">
       with ♡ by
       <a href="https://twitter.com/beeman_nl">beeman</a>
-      and <a href="https://twitter.com/Nartc1410">Chau</a>
+      and <a href="https://twitter.com/Nartc1410">nartc</a>
     </footer>
   `,
 })
