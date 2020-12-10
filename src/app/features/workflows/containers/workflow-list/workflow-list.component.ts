@@ -27,13 +27,12 @@ import { WorkflowListStore } from './workflow-list.store'
                 </ng-container>
                 <ng-container *ngFor="let workflow of vm.workflows">
                   <div
+                    [routerLink]="workflow.id"
                     class="flex cursor-pointer mb-3 hover:bg-blue-lightest rounded flex align-center justify-between bg-gray-100 dark:bg-gray-700 px-4 py-2"
                   >
-                    <div>
-                      <p class="hover:text-blue-dark" [routerLink]="workflow.id">
-                        {{ workflow.name }}
-                      </p>
-                    </div>
+                    <p class="hover:text-blue-dark">
+                      {{ workflow.name }}
+                    </p>
                     <button class="text-gray-200 hover:text-red-600" (click)="deleteWorkflow(workflow)">
                       <i class="fa fa-trash"></i>
                     </button>

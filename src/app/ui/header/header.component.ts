@@ -28,6 +28,10 @@ import { UiStateService } from '../ui-state.service'
                 [ngClass]="{ 'fa-moon-o': vm.theme === 'light', 'fa-sun-o': vm.theme === 'dark' }"
               ></i>
             </button>
+
+            <a class="px-2 py-1" href="https://github.com/beeman/component-store-playground" target="_blank">
+              <i class="fa fa-github"></i>
+            </a>
           </nav>
         </div>
       </header>
