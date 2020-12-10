@@ -2078,6 +2078,21 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
+angular-svg-icon-preloader@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/angular-svg-icon-preloader/-/angular-svg-icon-preloader-1.0.0.tgz#bf2bcf1274cce0b960125ce41a4af8473a30e27e"
+  integrity sha512-5Id3DTB0KD6h0rS/OuhSey1qILiQ9AY3pntB/X7p3zNcs/WXVR/YtSpGAfu5sj2T6sfgITiScjIkOvSTR9MRCA==
+  dependencies:
+    rxjs "~6.5.5"
+    tslib "^2.0.0"
+
+angular-svg-icon@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/angular-svg-icon/-/angular-svg-icon-11.0.0.tgz#c91046ad69138d0461e2aa467a6d080285b794bd"
+  integrity sha512-hcdfAKqS5C4bSebyuNqQae095XYa0ZF+lU4WbdN2N6hsE0GqASdXCs2E2fdpU541/xZ559Cdj4FA89ShNKqwcQ==
+  dependencies:
+    tslib "^2.0.0"
+
 ansi-align@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-3.0.0.tgz#b536b371cf687caaef236c18d3e21fe3797467cb"
@@ -9981,6 +9996,13 @@ rxjs@6.6.3, rxjs@^6.4.0, rxjs@^6.5.3, rxjs@^6.6.0, rxjs@^6.6.2, rxjs@^6.6.3, rxj
   version "6.6.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.3.tgz#8ca84635c4daa900c0d3967a6ee7ac60271ee552"
   integrity sha512-trsQc+xYYXZ3urjOiJOuCOa5N3jAZ3eiSpQB5hIT8zGlL2QfnHLJ2r7GMkBGuIausdJN1OneaI6gQlsqNHHmZQ==
+  dependencies:
+    tslib "^1.9.0"
+
+rxjs@~6.5.5:
+  version "6.5.5"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.5.tgz#c5c884e3094c8cfee31bf27eb87e54ccfc87f9ec"
+  integrity sha512-WfQI+1gohdf0Dai/Bbmk5L5ItH5tYqm3ki2c5GdWhKjalzjg93N3avFjVStyZZz+A2Em+ZxKH5bNghw9UeylGQ==
   dependencies:
     tslib "^1.9.0"
 

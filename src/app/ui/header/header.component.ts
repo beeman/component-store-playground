@@ -22,11 +22,8 @@ import { UiStateService } from '../ui-state.service'
               </a>
             </ng-container>
 
-            <button class="px-2 py-1" (click)="toggleDarkMode()">
-              <i
-                class="fa fa-fw"
-                [ngClass]="{ 'fa-moon-o': vm.theme === 'light', 'fa-sun-o': vm.theme === 'dark' }"
-              ></i>
+            <button (click)="toggleDarkMode()">
+              <ui-icon [icon]="vm.icon"></ui-icon>
             </button>
 
             <a class="px-2 py-1" href="https://github.com/beeman/component-store-playground" target="_blank">

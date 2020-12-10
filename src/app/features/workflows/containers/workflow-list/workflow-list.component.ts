@@ -34,7 +34,7 @@ import { WorkflowListStore } from './workflow-list.store'
                       {{ workflow.name }}
                     </p>
                     <button class="text-gray-200 hover:text-red-600" (click)="deleteWorkflow(workflow)">
-                      <i class="fa fa-trash"></i>
+                      <ui-icon icon="trash" size="sm"></ui-icon>
                     </button>
                   </div>
                 </ng-container>

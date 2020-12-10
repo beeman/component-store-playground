@@ -49,7 +49,7 @@ import { UiFormField } from '../../ui/form/ui-form-field'
                         class="text-gray-200 hover:text-red-600"
                         (click)="$event.stopPropagation(); deleteTodo(todo)"
                       >
-                        <i class="fa fa-trash"></i>
+                        <ui-icon icon="trash" size="sm"></ui-icon>
                       </button>
                     </div>
                   </ng-container>

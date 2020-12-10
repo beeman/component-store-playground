@@ -79,7 +79,6 @@ export class WorkflowDetailStore extends ComponentStore<WorkflowDetailState> {
     this.groupNodes$,
     this.conditionNodes$,
     ({ maxDepth, workflow, loading }, groupNodes, conditionNodes) => {
-      console.log({ groupNodes, conditionNodes })
       return {
         workflow,
         loading,
