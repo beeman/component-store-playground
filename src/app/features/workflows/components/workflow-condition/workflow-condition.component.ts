@@ -11,8 +11,8 @@ import { WorkflowConditionStore } from './workflow-condition.store'
         <h2
           class="py-2 px-3 dark:bg-gray-600 dark:text-gray-300 bg-gray-200 text-gray-900 dark:text-gray-100 flex justify-between"
         >
-          <div>Condition: {{ vm.condition.id }}</div>
-          <button *ngIf="vm.condition.value" (click)="deleteCondition()" class="text-gray-700 dark:text-gray-300">
+          <div>Condition: {{ vm.condition?.id }}</div>
+          <button *ngIf="vm.condition?.value" (click)="deleteCondition()" class="text-gray-700 dark:text-gray-300">
             <i class="fa fa-fw fa-trash"></i>
           </button>
         </h2>
