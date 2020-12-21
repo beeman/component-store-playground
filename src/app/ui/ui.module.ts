@@ -12,6 +12,6 @@ import { UiIconModule } from './icon/ui-icon.module'
 @NgModule({
   declarations: [LayoutComponent, HeaderComponent, FooterComponent, PageComponent, LoadingComponent],
   imports: [CommonModule, RouterModule, UiFormModule, UiIconModule],
-  exports: [PageComponent, LoadingComponent],
+  exports: [PageComponent, LoadingComponent, UiFormModule, UiIconModule],
 })
 export class UiModule {}
