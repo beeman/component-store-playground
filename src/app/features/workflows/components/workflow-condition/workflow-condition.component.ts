@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { tap } from 'rxjs/operators'
-import { UiIcon } from '../../../../ui/icon/ui-icon-sets'
 import { WorkflowConditionStore } from './workflow-condition.store'
 
 @Component({
@@ -13,11 +12,7 @@ import { WorkflowConditionStore } from './workflow-condition.store'
           class="py-2 px-3 dark:bg-gray-600 dark:text-gray-300 bg-gray-200 text-gray-900 dark:text-gray-100 flex justify-between items-center"
         >
           <div>Condition: {{ vm.condition?.id }}</div>
-          <button
-            *ngIf="vm.condition?.value"
-            (click)="deleteCondition()"
-            class="text-gray-700 dark:text-gray-300 flex items-center"
-          >
+          <button *ngIf="vm.condition?.value" (click)="deleteCondition()" class="text-gray-700 dark:text-gray-300">
             <ui-icon icon="trash" size="sm"></ui-icon>
           </button>
         </h2>

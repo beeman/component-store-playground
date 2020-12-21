@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { FormlyModule } from '@ngx-formly/core'
+import { NgModule } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
+import { FormlyModule } from '@ngx-formly/core'
+import { UiIconModule } from '../../../icon/ui-icon.module'
 
 import { UiFormAddonsComponent } from './ui-form-addons.component'
 import { addonsExtension } from './ui-form-addons.extension'
@@ -15,6 +16,7 @@ import { addonsExtension } from './ui-form-addons.extension'
       wrappers: [{ name: 'addons', component: UiFormAddonsComponent }],
       extensions: [{ name: 'addons', extension: { postPopulate: addonsExtension } }],
     }),
+    UiIconModule,
   ],
 })
 export class UiFormAddonsModule {}

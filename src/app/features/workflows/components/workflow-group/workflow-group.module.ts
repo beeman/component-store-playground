@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { UiIconModule } from '../../../../ui/icon/ui-icon.module'
-import { WorkflowGroupComponent } from './workflow-group.component'
+import { NgModule } from '@angular/core'
+import { UiModule } from '../../../../ui/ui.module'
 import { WorkflowConditionModule } from '../workflow-condition/workflow-condition.module'
+import { WorkflowGroupComponent } from './workflow-group.component'
 
 @NgModule({
   declarations: [WorkflowGroupComponent],
   exports: [WorkflowGroupComponent],
-  imports: [CommonModule, WorkflowConditionModule, UiIconModule],
+  imports: [CommonModule, WorkflowConditionModule, UiModule],
 })
 export class WorkflowGroupModule {}

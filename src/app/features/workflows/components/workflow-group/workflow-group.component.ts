@@ -11,13 +11,13 @@ import { WorkflowGroupStore } from './workflow-group.store'
           class="py-2 px-2 dark:bg-gray-700 dark:text-gray-300 bg-gray-400 text-gray-900 dark:text-gray-100 flex justify-between"
         >
           <div class="flex items-center">
-            <button class="flex items-center text-gray-700 dark:text-gray-300 mr-2" (click)="toggleCollapse()">
-              <ui-icon size="sm" [icon]="vm.isCollapsed ? 'plusCircle' : 'minusCircle'"></ui-icon>
+            <button class="text-gray-700 dark:text-gray-300 mr-2" (click)="toggleCollapse()">
+              <ui-icon [icon]="vm.collapsedIcon"></ui-icon>
             </button>
             Group: {{ vm.group?.id }}
           </div>
-          <div *ngIf="vm.isSubGroup" class="flex items-center">
-            <button (click)="deleteGroup()" class="flex items-center text-gray-700 dark:text-gray-300">
+          <div *ngIf="vm.isSubGroup">
+            <button (click)="deleteGroup()" class="text-gray-700 dark:text-gray-300">
               <ui-icon icon="trash" size="sm"></ui-icon>
             </button>
           </div>
@@ -40,17 +40,17 @@ import { WorkflowGroupStore } from './workflow-group.store'
             <button
               *ngIf="!vm.isAtMaxDepth"
               (click)="addGroup()"
-              class="text-gray-600 bg-gray-200 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 flex items-center"
+              class="text-gray-600 bg-gray-200 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 flex items-center space-x-2"
             >
-              <ui-icon class="mr-2" size="sm" icon="plusCircle"></ui-icon>
-              Group
+              <ui-icon icon="plusCircle"></ui-icon>
+              <span>Group</span>
             </button>
             <button
               (click)="addCondition()"
-              class="text-gray-600 bg-gray-200 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 flex items-center"
+              class="text-gray-600 bg-gray-200 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 flex items-center space-x-2"
             >
-              <ui-icon class="mr-2" size="sm" icon="plusCircle"></ui-icon>
-              Condition
+              <ui-icon icon="plusCircle"></ui-icon>
+              <span>Condition</span>
             </button>
           </div>
         </div>

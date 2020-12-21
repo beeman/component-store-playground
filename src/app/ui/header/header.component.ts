@@ -22,12 +22,12 @@ import { UiStateService } from '../ui-state.service'
               </a>
             </ng-container>
 
-            <button (click)="toggleDarkMode()">
-              <ui-icon [icon]="vm.icon"></ui-icon>
+            <button (click)="toggleDarkMode()" class="flex items-center">
+              <ui-icon size="lg" [icon]="vm.icon"></ui-icon>
             </button>
 
-            <a class="px-2 py-1" href="https://github.com/beeman/component-store-playground" target="_blank">
-              <i class="fa fa-github"></i>
+            <a class="" href="https://github.com/beeman/component-store-playground" target="_blank">
+              <ui-icon size="lg" icon="github"></ui-icon>
             </a>
           </nav>
         </div>

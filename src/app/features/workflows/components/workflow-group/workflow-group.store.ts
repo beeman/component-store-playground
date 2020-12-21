@@ -29,6 +29,7 @@ export class WorkflowGroupStore extends ComponentStore<WorkflowGroupState> {
       isSubGroup: level > 0,
       hasNoChildren: !group?.children?.length,
       nextLevel: level + 1,
+      collapsedIcon: isCollapsed ? 'plusCircle' : 'minusCircle',
     }),
   )
 
