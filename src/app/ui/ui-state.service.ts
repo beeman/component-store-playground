@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common'
 import { Inject, Injectable } from '@angular/core'
 import { ComponentStore } from '@ngrx/component-store'
 import { tap } from 'rxjs/operators'
+import { UiIcon } from './icon/ui-icon-sets'
 
 type UiTheme = 'dark' | 'light'
 
@@ -22,7 +23,10 @@ export class UiStateService extends ComponentStore<UiState> {
     this.toggleThemeEffect(this.select((state) => state.theme))
   }
 
-  readonly vm$ = this.select(({ theme }) => ({ theme }))
+  readonly vm$ = this.select(({ theme }) => ({
+    theme,
+    icon: theme === 'dark' ? UiIcon.sun : UiIcon.moon,
+  }))
 
   readonly initializeEffect = this.effect(($) =>
     $.pipe(

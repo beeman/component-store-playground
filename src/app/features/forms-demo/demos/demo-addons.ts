@@ -10,12 +10,23 @@ export const demoAddons = {
   fields: [
     UiFormField.email('email', {
       label: 'Basic addon',
-      description: 'The fields can have addons to the left and right side of the input.',
+      description: 'The fields can have addons to the left and right side of the input by adding a `text` or `class`.',
       addonLeft: {
-        class: 'fa fa-fw fa-at',
+        class: 'h-4 w-4 bg-pink-400 rounded ',
       },
       addonRight: {
         text: 'Work Email',
+      },
+    }),
+    UiFormField.input('github', {
+      label: 'Addon with SVG Icon',
+      description: 'The fields can use SVG icons to the left and right side of the input.',
+      addonLeft: {
+        icon: 'github',
+      },
+      addonRight: {
+        icon: 'sun',
+        iconClass: 'animate-spin',
       },
     }),
     UiFormField.input(
@@ -24,14 +35,16 @@ export const demoAddons = {
         label: 'Dynamic Addons',
         description: 'You can dynamically control the classes',
         addonLeft: {
-          class: 'fa fa-fw fa-spinner animate-spin',
+          icon: 'spinner',
+          iconClass: 'animate-spin',
           onClick: (to: FormlyTemplateOptions) => alert('Clicked ' + to.label + ' addon'),
         },
       },
       {
         expressionProperties: {
-          'templateOptions.addonLeft.class':
-            'model.showLoading ? "fa fa-fw fa-spinner animate-spin text-yellow-500" : "fa fa-fw fa-check text-green-600" ',
+          'templateOptions.addonLeft.icon': 'model.showLoading ? "spinner" : "check" ',
+          'templateOptions.addonLeft.iconClass':
+            'model.showLoading ? "animate-spin text-yellow-500" : "text-green-600" ',
         },
       },
     ),
@@ -51,7 +64,7 @@ export const demoAddons = {
         description: 'The addons can have a click handler that gives access to the formControl',
         addonLeft: {
           // We want to start out with an empty class so the addon gets rendered
-          class: ' ',
+          icon: ' ',
         },
         addonRight: {
           text: 'Toggle Currency',
@@ -61,7 +74,7 @@ export const demoAddons = {
       },
       {
         expressionProperties: {
-          'templateOptions.addonLeft.class': 'model.currency === "eur" ? "fa fa-fw fa-euro" : "fa fa-fw fa-dollar" ',
+          'templateOptions.addonLeft.icon': 'model.currency === "eur" ? "euro" : "dollar" ',
         },
       },
     ),

@@ -10,15 +10,15 @@ import { WorkflowGroupStore } from './workflow-group.store'
         <h2
           class="py-2 px-2 dark:bg-gray-700 dark:text-gray-300 bg-gray-400 text-gray-900 dark:text-gray-100 flex justify-between"
         >
-          <div>
+          <div class="flex items-center">
             <button class="text-gray-700 dark:text-gray-300 mr-2" (click)="toggleCollapse()">
-              <i class="fa fa-fw {{ !vm.isCollapsed ? 'fa-minus-circle' : 'fa-plus-circle' }}"></i>
+              <ui-icon [icon]="vm.collapsedIcon"></ui-icon>
             </button>
             Group: {{ vm.group?.id }}
           </div>
           <div *ngIf="vm.isSubGroup">
             <button (click)="deleteGroup()" class="text-gray-700 dark:text-gray-300">
-              <i class="fa fa-fw fa-trash"></i>
+              <ui-icon icon="trash" size="sm"></ui-icon>
             </button>
           </div>
         </h2>
@@ -36,19 +36,21 @@ import { WorkflowGroupStore } from './workflow-group.store'
             </ng-container>
           </ng-container>
 
-          <div class="ml-6 mt-2">
+          <div class="ml-6 mt-2 flex items-center space-x-2">
             <button
               *ngIf="!vm.isAtMaxDepth"
               (click)="addGroup()"
-              class="text-gray-600 bg-gray-200 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 mr-3"
+              class="text-gray-600 bg-gray-200 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 flex items-center space-x-2"
             >
-              <i class="fa fa-fw fa-plus-circle"></i> Group
+              <ui-icon icon="plusCircle"></ui-icon>
+              <span>Group</span>
             </button>
             <button
               (click)="addCondition()"
-              class="text-gray-600 bg-gray-200 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 mr-3"
+              class="text-gray-600 bg-gray-200 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 flex items-center space-x-2"
             >
-              <i class="fa fa-fw fa-plus-circle"></i> Condition
+              <ui-icon icon="plusCircle"></ui-icon>
+              <span>Condition</span>
             </button>
           </div>
         </div>

@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core'
-import { WorkflowListComponent } from './workflow-list.component'
-import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
+import { NgModule } from '@angular/core'
+import { RouterModule } from '@angular/router'
 import { UiModule } from '../../../../ui/ui.module'
+import { WorkflowListComponent } from './workflow-list.component'
 
 @NgModule({
   declarations: [WorkflowListComponent],

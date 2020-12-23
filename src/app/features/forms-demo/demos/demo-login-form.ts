@@ -4,7 +4,7 @@ export const demoLoginForm = {
   path: 'login',
   label: 'Login Form',
   fields: [
-    UiFormField.email('email', { addonLeft: { class: 'fa fa-fw fa-at' }, required: true }),
-    UiFormField.password('password', { addonLeft: { class: 'fa fa-fw fa-key' }, required: true }),
+    UiFormField.email('email', { addonLeft: { icon: 'at' }, required: true }),
+    UiFormField.password('password', { addonLeft: { icon: 'key' }, required: true }),
   ],
 }
