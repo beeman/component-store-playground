@@ -8,7 +8,7 @@
       "prefix": "pg",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/apps/playground",
             "index": "apps/playground/src/index.html",
@@ -18,7 +18,10 @@
             "aot": true,
             "assets": ["apps/playground/src/favicon.ico", "apps/playground/src/assets"],
             "styles": ["apps/playground/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "webpack.config.js"
+            }
           },
           "configurations": {
             "production": {
@@ -51,7 +54,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "browserTarget": "playground:build"
           },
@@ -111,7 +114,8 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
   },
   "schematics": {
     "@nrwl/angular:application": {
