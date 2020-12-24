@@ -1,7 +1,7 @@
 {
   "npmScope": "component-store-playground",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "implicitDependencies": {
     "angular.json": "*",
@@ -22,5 +22,13 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "playground": {
+      "tags": ["scope:playground", "type:application"]
+    },
+    "playground-e2e": {
+      "tags": [],
+      "implicitDependencies": ["playground"]
+    }
+  }
 }
