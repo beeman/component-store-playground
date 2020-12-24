@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="16efb59f-b07f-43fb-97fd-6cba1ce11508" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/e2e/protractor.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/e2e/src/app.e2e-spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/e2e/src/app.po.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/e2e/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/karma.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/angular-idb/angular-idb.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/angular-idb/angular-idb.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/angular-idb/angular-idb.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/angular-idb/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/auth/auth.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/auth/auth.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/auth/auth.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/demos/demo-addons.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/demos/demo-advanced-layout.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/demos/demo-field-types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/demos/demo-login-form.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/demos/demo-sample-data.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/forms-demo-detail/forms-demo-detail.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/forms-demo-detail/forms-demo-detail.store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/forms-demo-list/forms-demo-list.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/forms-demo-list/forms-demo-list.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/forms-demo-list/forms-demo-list.store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/forms-demo.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/forms-demo.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/forms-demo/forms-demo.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/home/home.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/home/home.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/home/home.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/todos/models/todo.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/todos/todos.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/todos/todos.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/todos/todos.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/todos/todos.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/todos/todos.store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/components/workflow-condition/workflow-condition.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/components/workflow-condition/workflow-condition.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/components/workflow-condition/workflow-condition.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/components/workflow-condition/workflow-condition.store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/components/workflow-group/workflow-group.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/components/workflow-group/workflow-group.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/components/workflow-group/workflow-group.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/components/workflow-group/workflow-group.store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/containers/workflow-detail/workflow-detail.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/containers/workflow-detail/workflow-detail.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/containers/workflow-detail/workflow-detail.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/containers/workflow-detail/workflow-detail.store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/containers/workflow-list/workflow-list.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/containers/workflow-list/workflow-list.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/containers/workflow-list/workflow-list.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/containers/workflow-list/workflow-list.store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/models/workflow-item.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/models/workflow.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/workflows.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/workflows/workflows.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/footer/footer.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/footer/footer.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/checkbox/ui-form-checkbox.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/checkbox/ui-form-checkbox.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/input/ui-form-input.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/input/ui-form-input.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/multicheckbox/ui-form-multicheckbox.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/multicheckbox/ui-form-multicheckbox.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/radio/src/ui-form-radio.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/radio/src/ui-form-radio.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/select/ui-form-select.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/select/ui-form-select.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/textarea/ui-form-textarea.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/types/textarea/ui-form-textarea.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/ui-form-field.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/ui-form.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/ui-form.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/validators/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/validators/ui-form-validators.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/wrappers/addons/ui-form-addons.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/wrappers/addons/ui-form-addons.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/wrappers/addons/ui-form-addons.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/wrappers/addons/ui-form-addons.extension.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/wrappers/addons/ui-form-addons.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/wrappers/form-field/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/wrappers/form-field/ui-form-field.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/form/wrappers/form-field/ui-form-field.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/header/header.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/header/header.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/icon/ui-icon-sets.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/icon/ui-icon.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/icon/ui-icon.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/icon/ui-icon.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/layout/layout.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/layout/layout.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/loading/loading.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/loading/loading.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/page/page.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/page/page.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/ui-state.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/ui.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/util/mutable-reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/util/random-id.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/util/workflow-detail-helper.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.prod.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/polyfills.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.spec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tslint.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1lCnqn6NyhiLGYLGZLg2Dq4d42q" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.protractor.protractor_package" value="$PROJECT_DIR$/node_modules/protractor" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="$USER_HOME$/.asdf/installs/nodejs/12.19.0/lib/node_modules/npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/features/workflows/containers/workflow-list" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.Angular Application">
+    <configuration name="Tests (component-store-playground)" type="JavaScriptTestRunnerKarma">
+      <config-file value="$PROJECT_DIR$/karma.conf.js" />
+      <karma-package-dir value="$PROJECT_DIR$/node_modules/@angular/cli" />
+      <working-directory value="$PROJECT_DIR$" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="E2E Tests (component-store-playground)" type="JavaScriptTestRunnerProtractor">
+      <config-file value="$PROJECT_DIR$/e2e/protractor.conf.js" />
+      <node-interpreter value="project" />
+      <protractor-package value="$PROJECT_DIR$/node_modules/protractor" />
+      <protractor-options value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="16efb59f-b07f-43fb-97fd-6cba1ce11508" name="Default Changelist" comment="" />
+      <created>1607110133676</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607110133676</updated>
+      <workItem from="1607110135441" duration="5896000" />
+      <workItem from="1607200973483" duration="2711000" />
+      <workItem from="1607207248929" duration="15530000" />
+      <workItem from="1607368557424" duration="9503000" />
+      <workItem from="1607387342637" duration="523000" />
+      <workItem from="1607541764852" duration="4998000" />
+      <workItem from="1607574598815" duration="1709000" />
+      <workItem from="1608140036706" duration="1007000" />
+      <workItem from="1608766003477" duration="2637000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="JavascriptDebugType">
+        <watch expression="JSON.parse(JSON.stringify(group))" language="TypeScript" />
+        <watch expression="JSON.parse(JSON.stringify(child))" language="TypeScript" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
