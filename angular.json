@@ -16,10 +16,7 @@
             "polyfills": "apps/playground/src/polyfills.ts",
             "tsConfig": "apps/playground/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/playground/src/favicon.ico",
-              "apps/playground/src/assets"
-            ],
+            "assets": ["apps/playground/src/favicon.ico", "apps/playground/src/assets"],
             "styles": ["apps/playground/src/styles.scss"],
             "scripts": []
           },
@@ -73,10 +70,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/playground/src/**/*.ts",
-              "apps/playground/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/playground/src/**/*.ts", "apps/playground/src/**/*.html"]
           }
         },
         "test": {
