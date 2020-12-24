@@ -8,10 +8,6 @@ export const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       {
-        path: 'auth',
-        loadChildren: () => import('./features/auth/auth.module').then((m) => m.AuthModule),
-      },
-      {
         path: 'forms',
         loadChildren: () => import('./features/forms-demo/forms-demo.module').then((m) => m.FormsDemoModule),
       },
@@ -22,6 +18,10 @@ export const routes: Routes = [
       {
         path: 'todos',
         loadChildren: () => import('./features/todos/todos.module').then((m) => m.TodosModule),
+      },
+      {
+        path: 'wizard',
+        loadChildren: () => import('./features/wizard/wizard.module').then((m) => m.WizardModule),
       },
       {
         path: 'workflows',
