@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
-import { TodosStore } from '@component-store-playground/playground/todos/data-access'
-import { Todo } from '../../../../../../legacy/src/app/features/todos/models/todo'
+import { Todo, TodosStore } from '@component-store-playground/playground/todos/data-access'
 
 @Component({
   selector: 'playground-todos',
