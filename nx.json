@@ -29,6 +29,51 @@
     "playground-e2e": {
       "tags": [],
       "implicitDependencies": ["playground"]
+    },
+    "playground-shared-idb-util": {
+      "tags": ["scope:playground", "type:util"]
+    },
+    "playground-shared-ui-data-access": {
+      "tags": ["scope:playground", "type:data-access"]
+    },
+    "playground-shared-ui-util": {
+      "tags": ["scope:playground", "type:util"]
+    },
+    "playground-shared-idb-data-access": {
+      "tags": ["scope:playground", "type:data-access"]
+    },
+    "playground-shared-ui-components-footer": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-shared-ui-components-header": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-shared-ui-components-icon": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-shared-ui-components-loading": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-shared-ui-components-page": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-shell": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-todos-feature": {
+      "tags": ["scope:todos", "type:ui"]
+    },
+    "playground-todos-data-access": {
+      "tags": ["scope:todos", "type:data-access"]
+    },
+    "playground-shared-utils-rx": {
+      "tags": ["scope:playground", "type:util"]
+    },
+    "playground-shared-utils-types": {
+      "tags": ["scope:playground", "type:util"]
+    },
+    "playground-shared-ui-components-forms": {
+      "tags": ["scope:playground", "type:ui"]
     }
   }
 }

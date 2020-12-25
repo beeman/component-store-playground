@@ -14,7 +14,40 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@csp-playground/shared/data-access/idb": ["libs/playground/shared/data-access/idb/src/index.ts"],
+      "@component-store-playground/playground/shared/idb/util": ["libs/playground/shared/idb/util/src/index.ts"],
+      "@component-store-playground/playground/shared/ui/data-access": [
+        "libs/playground/shared/ui/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/util": ["libs/playground/shared/ui/util/src/index.ts"],
+      "@component-store-playground/playground/shared/idb/data-access": [
+        "libs/playground/shared/idb/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/components/footer": [
+        "libs/playground/shared/ui/components/footer/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/components/header": [
+        "libs/playground/shared/ui/components/header/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/components/icon": [
+        "libs/playground/shared/ui/components/icon/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/components/loading": [
+        "libs/playground/shared/ui/components/loading/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/components/page": [
+        "libs/playground/shared/ui/components/page/src/index.ts"
+      ],
+      "@component-store-playground/playground/shell": ["libs/playground/shell/src/index.ts"],
+      "@component-store-playground/playground/todos/feature": ["libs/playground/todos/feature/src/index.ts"],
+      "@component-store-playground/playground/todos/data-access": ["libs/playground/todos/data-access/src/index.ts"],
+      "@component-store-playground/playground/shared/utils/rx": ["libs/playground/shared/utils/rx/src/index.ts"],
+      "@component-store-playground/playground/shared/utils/types": ["libs/playground/shared/utils/types/src/index.ts"],
+      "@component-store-playground/playground/shared/ui/components/forms": [
+        "libs/playground/shared/ui/components/forms/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
