@@ -1,0 +1,37 @@
+import { Injectable } from '@angular/core'
+import { FormGroup } from '@angular/forms'
+import { ActivatedRoute } from '@angular/router'
+import { FormsDemo, FormsDemoService } from '@component-store-playground/playground/forms-demo/data-access'
+import { ComponentStore } from '@ngrx/component-store'
+import cloneDeep from 'lodash-es/cloneDeep'
+import { pluck, switchMap, tap } from 'rxjs/operators'
+
+interface FormsDemoDetailState {
+  demo?: FormsDemo
+  form?: FormGroup
+  model?: any
+}
+
+@Injectable()
+export class FormsDemoDetailStore extends ComponentStore<FormsDemoDetailState> {
+  constructor(private readonly service: FormsDemoService, route: ActivatedRoute) {
+    super({})
+    this.loadDemoEffect(route.params.pipe(pluck('id')))
+  }
+
+  readonly vm$ = this.select(({ demo, form, model }) => ({ demo, form, model }))
+
+  readonly loadDemoEffect = this.effect<string>((id$) =>
+    id$.pipe(
+      switchMap((id) =>
+        this.service.find(id).pipe(
+          tap((demo) => {
+            if (demo) {
+              this.setState({ demo: cloneDeep(demo), form: new FormGroup({}), model: { ...(demo.model || {}) } })
+            }
+          }),
+        ),
+      ),
+    ),
+  )
+}

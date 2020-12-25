@@ -29,6 +29,13 @@ export const playgroundShellRoutes: Routes = [
             (m) => m.PlaygroundWorkflowsFeatureModule,
           ),
       },
+      {
+        path: 'forms',
+        loadChildren: () =>
+          import('@component-store-playground/playground/forms-demo/feature').then(
+            (m) => m.PlaygroundFormsDemoFeatureModule,
+          ),
+      },
     ],
   },
 ]

@@ -107,6 +107,18 @@
     },
     "playground-workflows-workflow-details-ui-components-workflow-condition": {
       "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-forms-demo-feature": {
+      "tags": ["scope:forms-demo", "type:ui"]
+    },
+    "playground-forms-demo-data-access": {
+      "tags": ["scope:forms-demo", "type:data-access"]
+    },
+    "playground-forms-demo-forms-demo-list-feature": {
+      "tags": ["scope:forms-demo", "type:ui"]
+    },
+    "playground-forms-demo-forms-demo-detail-feature": {
+      "tags": ["scope:forms-demo", "type:ui"]
     }
   }
 }

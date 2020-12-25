@@ -718,6 +718,102 @@
           }
         }
       }
+    },
+    "playground-forms-demo-feature": {
+      "projectType": "library",
+      "root": "libs/playground/forms-demo/feature",
+      "sourceRoot": "libs/playground/forms-demo/feature/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/forms-demo/feature/src/**/*.ts",
+              "libs/playground/forms-demo/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/forms-demo/feature"],
+          "options": {
+            "jestConfig": "libs/playground/forms-demo/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-forms-demo-data-access": {
+      "root": "libs/playground/forms-demo/data-access",
+      "sourceRoot": "libs/playground/forms-demo/data-access/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/playground/forms-demo/data-access/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/forms-demo/data-access"],
+          "options": {
+            "jestConfig": "libs/playground/forms-demo/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-forms-demo-forms-demo-list-feature": {
+      "projectType": "library",
+      "root": "libs/playground/forms-demo/forms-demo-list/feature",
+      "sourceRoot": "libs/playground/forms-demo/forms-demo-list/feature/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/forms-demo/forms-demo-list/feature/src/**/*.ts",
+              "libs/playground/forms-demo/forms-demo-list/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/forms-demo/forms-demo-list/feature"],
+          "options": {
+            "jestConfig": "libs/playground/forms-demo/forms-demo-list/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-forms-demo-forms-demo-detail-feature": {
+      "projectType": "library",
+      "root": "libs/playground/forms-demo/forms-demo-detail/feature",
+      "sourceRoot": "libs/playground/forms-demo/forms-demo-detail/feature/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/forms-demo/forms-demo-detail/feature/src/**/*.ts",
+              "libs/playground/forms-demo/forms-demo-detail/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/forms-demo/forms-demo-detail/feature"],
+          "options": {
+            "jestConfig": "libs/playground/forms-demo/forms-demo-detail/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

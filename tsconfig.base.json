@@ -71,6 +71,16 @@
       ],
       "@component-store-playground/playground/workflows/workflow-details/ui/components/workflow-condition": [
         "libs/playground/workflows/workflow-details/ui/components/workflow-condition/src/index.ts"
+      ],
+      "@component-store-playground/playground/forms-demo/feature": ["libs/playground/forms-demo/feature/src/index.ts"],
+      "@component-store-playground/playground/forms-demo/data-access": [
+        "libs/playground/forms-demo/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/forms-demo/forms-demo-list/feature": [
+        "libs/playground/forms-demo/forms-demo-list/feature/src/index.ts"
+      ],
+      "@component-store-playground/playground/forms-demo/forms-demo-detail/feature": [
+        "libs/playground/forms-demo/forms-demo-detail/feature/src/index.ts"
       ]
     }
   },

@@ -29,5 +29,9 @@ module.exports = {
     '<rootDir>/libs/playground/workflows/workflow-details/data-access',
     '<rootDir>/libs/playground/workflows/workflow-details/ui/components/workflow-group',
     '<rootDir>/libs/playground/workflows/workflow-details/ui/components/workflow-condition',
+    '<rootDir>/libs/playground/forms-demo/feature',
+    '<rootDir>/libs/playground/forms-demo/ui/components/forms-demo-detail',
+    '<rootDir>/libs/playground/forms-demo/ui/components/forms-demo-list',
+    '<rootDir>/libs/playground/forms-demo/data-access',
   ],
 }
