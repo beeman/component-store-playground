@@ -484,6 +484,31 @@
           }
         }
       }
+    },
+    "playground-auth-feature": {
+      "projectType": "library",
+      "root": "libs/playground/auth/feature",
+      "sourceRoot": "libs/playground/auth/feature/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/auth/feature/src/**/*.ts",
+              "libs/playground/auth/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/auth/feature"],
+          "options": {
+            "jestConfig": "libs/playground/auth/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

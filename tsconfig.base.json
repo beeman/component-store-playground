@@ -47,7 +47,8 @@
       "@component-store-playground/playground/shared/ui/components/forms": [
         "libs/playground/shared/ui/components/forms/src/index.ts"
       ],
-      "@component-store-playground/playground/home/feature": ["libs/playground/home/feature/src/index.ts"]
+      "@component-store-playground/playground/home/feature": ["libs/playground/home/feature/src/index.ts"],
+      "@component-store-playground/playground/auth/feature": ["libs/playground/auth/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
