@@ -4,9 +4,9 @@ import {
   WorkflowGroup,
   WorkflowItem,
   WorkflowType,
-} from '../features/workflows/models/workflow-item'
+} from '@component-store-playground/playground/workflows/data-access'
 
-export class WorkflowDetailHelper {
+export class WorkflowHelper {
   static isGroup(item: WorkflowItem): item is WorkflowGroup {
     return item.type === WorkflowType.group
   }

@@ -48,7 +48,30 @@
         "libs/playground/shared/ui/components/forms/src/index.ts"
       ],
       "@component-store-playground/playground/home/feature": ["libs/playground/home/feature/src/index.ts"],
-      "@component-store-playground/playground/auth/feature": ["libs/playground/auth/feature/src/index.ts"]
+      "@component-store-playground/playground/auth/feature": ["libs/playground/auth/feature/src/index.ts"],
+      "@component-store-playground/playground/workflows/data-access": [
+        "libs/playground/workflows/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/util": ["libs/playground/workflows/util/src/index.ts"],
+      "@component-store-playground/playground/workflows/workflow-list/feature": [
+        "libs/playground/workflows/workflow-list/feature/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/workflow-details/feature": [
+        "libs/playground/workflows/workflow-details/feature/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/workflow-list/data-access": [
+        "libs/playground/workflows/workflow-list/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/feature": ["libs/playground/workflows/feature/src/index.ts"],
+      "@component-store-playground/playground/workflows/workflow-details/data-access": [
+        "libs/playground/workflows/workflow-details/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/workflow-details/ui/components/workflow-group": [
+        "libs/playground/workflows/workflow-details/ui/components/workflow-group/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/workflow-details/ui/components/workflow-condition": [
+        "libs/playground/workflows/workflow-details/ui/components/workflow-condition/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

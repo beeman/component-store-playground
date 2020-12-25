@@ -509,6 +509,215 @@
           }
         }
       }
+    },
+    "playground-workflows-data-access": {
+      "root": "libs/playground/workflows/data-access",
+      "sourceRoot": "libs/playground/workflows/data-access/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/playground/workflows/data-access/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/data-access"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-workflows-util": {
+      "root": "libs/playground/workflows/util",
+      "sourceRoot": "libs/playground/workflows/util/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/playground/workflows/util/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/util"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/util/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-workflows-workflow-list-feature": {
+      "projectType": "library",
+      "root": "libs/playground/workflows/workflow-list/feature",
+      "sourceRoot": "libs/playground/workflows/workflow-list/feature/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/workflows/workflow-list/feature/src/**/*.ts",
+              "libs/playground/workflows/workflow-list/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/workflow-list/feature"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/workflow-list/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-workflows-workflow-details-feature": {
+      "projectType": "library",
+      "root": "libs/playground/workflows/workflow-details/feature",
+      "sourceRoot": "libs/playground/workflows/workflow-details/feature/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/workflows/workflow-details/feature/src/**/*.ts",
+              "libs/playground/workflows/workflow-details/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/workflow-details/feature"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/workflow-details/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-workflows-workflow-list-data-access": {
+      "root": "libs/playground/workflows/workflow-list/data-access",
+      "sourceRoot": "libs/playground/workflows/workflow-list/data-access/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/playground/workflows/workflow-list/data-access/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/workflow-list/data-access"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/workflow-list/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-workflows-feature": {
+      "projectType": "library",
+      "root": "libs/playground/workflows/feature",
+      "sourceRoot": "libs/playground/workflows/feature/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/workflows/feature/src/**/*.ts",
+              "libs/playground/workflows/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/feature"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-workflows-workflow-details-data-access": {
+      "root": "libs/playground/workflows/workflow-details/data-access",
+      "sourceRoot": "libs/playground/workflows/workflow-details/data-access/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/playground/workflows/workflow-details/data-access/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/workflow-details/data-access"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/workflow-details/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-workflows-workflow-details-ui-components-workflow-group": {
+      "projectType": "library",
+      "root": "libs/playground/workflows/workflow-details/ui/components/workflow-group",
+      "sourceRoot": "libs/playground/workflows/workflow-details/ui/components/workflow-group/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/workflows/workflow-details/ui/components/workflow-group/src/**/*.ts",
+              "libs/playground/workflows/workflow-details/ui/components/workflow-group/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/workflow-details/ui/components/workflow-group"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/workflow-details/ui/components/workflow-group/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-workflows-workflow-details-ui-components-workflow-condition": {
+      "projectType": "library",
+      "root": "libs/playground/workflows/workflow-details/ui/components/workflow-condition",
+      "sourceRoot": "libs/playground/workflows/workflow-details/ui/components/workflow-condition/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/workflows/workflow-details/ui/components/workflow-condition/src/**/*.ts",
+              "libs/playground/workflows/workflow-details/ui/components/workflow-condition/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/workflow-details/ui/components/workflow-condition"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/workflow-details/ui/components/workflow-condition/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

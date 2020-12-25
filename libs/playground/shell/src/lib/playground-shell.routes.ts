@@ -22,6 +22,13 @@ export const playgroundShellRoutes: Routes = [
         loadChildren: () =>
           import('@component-store-playground/playground/todos/feature').then((m) => m.PlaygroundTodosFeatureModule),
       },
+      {
+        path: 'workflows',
+        loadChildren: () =>
+          import('@component-store-playground/playground/workflows/feature').then(
+            (m) => m.PlaygroundWorkflowsFeatureModule,
+          ),
+      },
     ],
   },
 ]

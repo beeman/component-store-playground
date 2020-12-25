@@ -80,6 +80,33 @@
     },
     "playground-auth-feature": {
       "tags": ["scope:auth", "type:ui"]
+    },
+    "playground-workflows-data-access": {
+      "tags": ["scope:workflows", "type:data-access"]
+    },
+    "playground-workflows-util": {
+      "tags": ["scope:workflows", "type:util"]
+    },
+    "playground-workflows-workflow-list-feature": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-workflow-details-feature": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-workflow-list-data-access": {
+      "tags": ["scope:workflows", "type:data-access"]
+    },
+    "playground-workflows-feature": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-workflow-details-data-access": {
+      "tags": ["scope:workflows", "type:data-access"]
+    },
+    "playground-workflows-workflow-details-ui-components-workflow-group": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-workflow-details-ui-components-workflow-condition": {
+      "tags": ["scope:workflows", "type:ui"]
     }
   }
 }
