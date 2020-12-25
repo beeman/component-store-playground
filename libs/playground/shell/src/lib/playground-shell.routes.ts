@@ -8,6 +8,11 @@ export const playgroundShellRoutes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       {
+        path: 'home',
+        loadChildren: () =>
+          import('@component-store-playground/playground/home/feature').then((m) => m.PlaygroundHomeFeatureModule),
+      },
+      {
         path: 'todos',
         loadChildren: () =>
           import('@component-store-playground/playground/todos/feature').then((m) => m.PlaygroundTodosFeatureModule),

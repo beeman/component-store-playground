@@ -74,6 +74,9 @@
     },
     "playground-shared-ui-components-forms": {
       "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-home-feature": {
+      "tags": ["scope:home", "type:ui"]
     }
   }
 }

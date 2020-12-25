@@ -18,5 +18,6 @@ module.exports = {
     '<rootDir>/libs/playground/shared/utils/rx',
     '<rootDir>/libs/playground/shared/utils/types',
     '<rootDir>/libs/playground/shared/ui/components/forms',
+    '<rootDir>/libs/playground/home/feature',
   ],
 }

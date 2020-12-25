@@ -1,0 +1,11 @@
+<playground-page>
+  <div class="max-w-lg mx-auto grid gap-5 md:grid-cols-3 md:max-w-none mt-6 md:mt-0">
+    <div *ngFor="let link of links" class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+      <div class="flex-1 bg-white dark:bg-gray-800 p-6 flex flex-col text-center">
+        <a [routerLink]="link.path" class="block h-32 flex items-center justify-center">
+          <p class="text-xl font-semibold text-gray-900 dark:text-gray-100">{{ link.label }}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</playground-page>

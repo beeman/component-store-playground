@@ -459,6 +459,31 @@
           }
         }
       }
+    },
+    "playground-home-feature": {
+      "projectType": "library",
+      "root": "libs/playground/home/feature",
+      "sourceRoot": "libs/playground/home/feature/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/home/feature/src/**/*.ts",
+              "libs/playground/home/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/home/feature"],
+          "options": {
+            "jestConfig": "libs/playground/home/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
