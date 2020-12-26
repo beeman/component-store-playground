@@ -1,5 +1,5 @@
 import { RouterTestingModule } from '@angular/router/testing'
-import { PlaygroundSharedUiComponentsPageModule } from '@component-store-playground/playground/shared/ui/components/page'
+import { SharedUiPageModule } from '@component-store-playground/shared/ui/page'
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 
 import { HomeComponent } from './home.component'
@@ -8,7 +8,7 @@ describe('HomeComponent', () => {
   let spectator: Spectator<HomeComponent>
   const createComponent = createComponentFactory({
     component: HomeComponent,
-    imports: [RouterTestingModule, PlaygroundSharedUiComponentsPageModule],
+    imports: [RouterTestingModule, SharedUiPageModule],
   })
 
   beforeEach(() => {
