@@ -63,6 +63,7 @@
     "@angular/compiler-cli": "11.0.5",
     "@angular/fire": "6.1.0-rc.4",
     "@angular/language-service": "11.0.5",
+    "@hirez_io/observer-spy": "2.1.0",
     "@ngneat/spectator": "6.1.2",
     "@nrwl/cli": "11.0.18",
     "@nrwl/cypress": "11.0.18",
