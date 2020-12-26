@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "component-store-playground",
-      "public": "dist/component-store-playground",
+      "public": "dist/apps/playground",
       "ignore": ["**/.*"],
       "headers": [
         {

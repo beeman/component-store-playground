@@ -1,0 +1,18 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="ml-6 border border-gray-400 dark:border-gray-600 mb-2">
+    <h2
+      class="py-2 px-3 dark:bg-gray-600 dark:text-gray-300 bg-gray-200 text-gray-900 dark:text-gray-100 flex justify-between items-center"
+    >
+      <span class="block">Condition: {{ vm.condition?.id }}</span>
+      <button *ngIf="vm.condition?.value" (click)="deleteCondition()" class="text-gray-700 dark:text-gray-300">
+        <playground-icon icon="trash" size="sm"></playground-icon>
+      </button>
+    </h2>
+    <div class="p-3">
+      <label [for]="'allowDeleteControl' + conditionId">
+        <input type="checkbox" [id]="'allowDeleteControl' + conditionId" [formControl]="allowDeleteControl" />
+        Allow delete this condition
+      </label>
+    </div>
+  </div>
+</ng-container>

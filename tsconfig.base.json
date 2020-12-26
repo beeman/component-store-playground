@@ -1,0 +1,88 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@csp-playground/shared/data-access/idb": ["libs/playground/shared/data-access/idb/src/index.ts"],
+      "@component-store-playground/playground/shared/idb/util": ["libs/playground/shared/idb/util/src/index.ts"],
+      "@component-store-playground/playground/shared/ui/data-access": [
+        "libs/playground/shared/ui/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/util": ["libs/playground/shared/ui/util/src/index.ts"],
+      "@component-store-playground/playground/shared/idb/data-access": [
+        "libs/playground/shared/idb/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/components/footer": [
+        "libs/playground/shared/ui/components/footer/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/components/header": [
+        "libs/playground/shared/ui/components/header/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/components/icon": [
+        "libs/playground/shared/ui/components/icon/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/components/loading": [
+        "libs/playground/shared/ui/components/loading/src/index.ts"
+      ],
+      "@component-store-playground/playground/shared/ui/components/page": [
+        "libs/playground/shared/ui/components/page/src/index.ts"
+      ],
+      "@component-store-playground/playground/shell": ["libs/playground/shell/src/index.ts"],
+      "@component-store-playground/playground/todos/feature": ["libs/playground/todos/feature/src/index.ts"],
+      "@component-store-playground/playground/todos/data-access": ["libs/playground/todos/data-access/src/index.ts"],
+      "@component-store-playground/playground/shared/utils/rx": ["libs/playground/shared/utils/rx/src/index.ts"],
+      "@component-store-playground/playground/shared/utils/types": ["libs/playground/shared/utils/types/src/index.ts"],
+      "@component-store-playground/playground/shared/ui/components/forms": [
+        "libs/playground/shared/ui/components/forms/src/index.ts"
+      ],
+      "@component-store-playground/playground/home/feature": ["libs/playground/home/feature/src/index.ts"],
+      "@component-store-playground/playground/auth/feature": ["libs/playground/auth/feature/src/index.ts"],
+      "@component-store-playground/playground/workflows/data-access": [
+        "libs/playground/workflows/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/util": ["libs/playground/workflows/util/src/index.ts"],
+      "@component-store-playground/playground/workflows/workflow-list/feature": [
+        "libs/playground/workflows/workflow-list/feature/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/workflow-details/feature": [
+        "libs/playground/workflows/workflow-details/feature/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/workflow-list/data-access": [
+        "libs/playground/workflows/workflow-list/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/feature": ["libs/playground/workflows/feature/src/index.ts"],
+      "@component-store-playground/playground/workflows/workflow-details/data-access": [
+        "libs/playground/workflows/workflow-details/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/workflow-details/ui/components/workflow-group": [
+        "libs/playground/workflows/workflow-details/ui/components/workflow-group/src/index.ts"
+      ],
+      "@component-store-playground/playground/workflows/workflow-details/ui/components/workflow-condition": [
+        "libs/playground/workflows/workflow-details/ui/components/workflow-condition/src/index.ts"
+      ],
+      "@component-store-playground/playground/forms-demo/feature": ["libs/playground/forms-demo/feature/src/index.ts"],
+      "@component-store-playground/playground/forms-demo/data-access": [
+        "libs/playground/forms-demo/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/forms-demo/forms-demo-list/feature": [
+        "libs/playground/forms-demo/forms-demo-list/feature/src/index.ts"
+      ],
+      "@component-store-playground/playground/forms-demo/forms-demo-detail/feature": [
+        "libs/playground/forms-demo/forms-demo-detail/feature/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

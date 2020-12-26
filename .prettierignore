@@ -1,4 +1,4 @@
 package.json
-dist
-coverage
-tmp
+/dist
+/coverage
+/tmp

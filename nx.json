@@ -1,0 +1,124 @@
+{
+  "npmScope": "component-store-playground",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "playground": {
+      "tags": ["scope:playground", "type:application"]
+    },
+    "playground-e2e": {
+      "tags": [],
+      "implicitDependencies": ["playground"]
+    },
+    "playground-shared-idb-util": {
+      "tags": ["scope:playground", "type:util"]
+    },
+    "playground-shared-ui-data-access": {
+      "tags": ["scope:playground", "type:data-access"]
+    },
+    "playground-shared-ui-util": {
+      "tags": ["scope:playground", "type:util"]
+    },
+    "playground-shared-idb-data-access": {
+      "tags": ["scope:playground", "type:data-access"]
+    },
+    "playground-shared-ui-components-footer": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-shared-ui-components-header": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-shared-ui-components-icon": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-shared-ui-components-loading": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-shared-ui-components-page": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-shell": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-todos-feature": {
+      "tags": ["scope:todos", "type:ui"]
+    },
+    "playground-todos-data-access": {
+      "tags": ["scope:todos", "type:data-access"]
+    },
+    "playground-shared-utils-rx": {
+      "tags": ["scope:playground", "type:util"]
+    },
+    "playground-shared-utils-types": {
+      "tags": ["scope:playground", "type:util"]
+    },
+    "playground-shared-ui-components-forms": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-home-feature": {
+      "tags": ["scope:home", "type:ui"]
+    },
+    "playground-auth-feature": {
+      "tags": ["scope:auth", "type:ui"]
+    },
+    "playground-workflows-data-access": {
+      "tags": ["scope:workflows", "type:data-access"]
+    },
+    "playground-workflows-util": {
+      "tags": ["scope:workflows", "type:util"]
+    },
+    "playground-workflows-workflow-list-feature": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-workflow-details-feature": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-workflow-list-data-access": {
+      "tags": ["scope:workflows", "type:data-access"]
+    },
+    "playground-workflows-feature": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-workflow-details-data-access": {
+      "tags": ["scope:workflows", "type:data-access"]
+    },
+    "playground-workflows-workflow-details-ui-components-workflow-group": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-workflow-details-ui-components-workflow-condition": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-forms-demo-feature": {
+      "tags": ["scope:forms-demo", "type:ui"]
+    },
+    "playground-forms-demo-data-access": {
+      "tags": ["scope:forms-demo", "type:data-access"]
+    },
+    "playground-forms-demo-forms-demo-list-feature": {
+      "tags": ["scope:forms-demo", "type:ui"]
+    },
+    "playground-forms-demo-forms-demo-detail-feature": {
+      "tags": ["scope:forms-demo", "type:ui"]
+    }
+  }
+}

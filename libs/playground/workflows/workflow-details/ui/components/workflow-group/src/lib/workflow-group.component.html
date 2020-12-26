@@ -1,0 +1,50 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="border border-gray-400 dark:border-gray-600 mb-3" [class.ml-6]="vm.isSubGroup">
+    <h2
+      class="py-2 px-2 dark:bg-gray-700 dark:text-gray-300 bg-gray-400 text-gray-900 dark:text-gray-100 flex justify-between"
+    >
+      <span class="flex items-center">
+        <button class="text-gray-700 dark:text-gray-300 mr-2" (click)="toggleCollapse()">
+          <playground-icon [icon]="vm.collapsedIcon"></playground-icon>
+        </button>
+        Group: {{ vm.group?.id }}
+      </span>
+      <button *ngIf="vm.isSubGroup" (click)="deleteGroup()" class="text-gray-700 dark:text-gray-300">
+        <playground-icon icon="trash" size="sm"></playground-icon>
+      </button>
+    </h2>
+
+    <div class="p-3" [class.block]="!vm.isCollapsed" [class.hidden]="vm.isCollapsed">
+      <div *ngIf="vm.hasNoChildren" class="text-gray-700 dark:text-gray-300 ml-8 text-sm">No conditions or groups</div>
+      <ng-container *ngFor="let item of vm.group?.children">
+        <playground-workflow-condition
+          *ngIf="item.type === type.condition"
+          [conditionId]="item.id!"
+        ></playground-workflow-condition>
+        <playground-workflow-group
+          *ngIf="item.type === type.group"
+          [groupId]="item.id!"
+          [level]="vm.nextLevel"
+        ></playground-workflow-group>
+      </ng-container>
+
+      <div class="ml-6 mt-2 flex items-center space-x-2">
+        <button
+          *ngIf="!vm.isAtMaxDepth"
+          (click)="addGroup()"
+          class="text-gray-600 bg-gray-200 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 flex items-center space-x-2"
+        >
+          <playground-icon icon="plusCircle"></playground-icon>
+          <span>Group</span>
+        </button>
+        <button
+          (click)="addCondition()"
+          class="text-gray-600 bg-gray-200 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 flex items-center space-x-2"
+        >
+          <playground-icon icon="plusCircle"></playground-icon>
+          <span>Condition</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
