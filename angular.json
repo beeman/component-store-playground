@@ -90,6 +90,31 @@
         }
       }
     },
+    "playground-auth-feature": {
+      "projectType": "library",
+      "root": "libs/playground/auth/feature",
+      "sourceRoot": "libs/playground/auth/feature/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/auth/feature/src/**/*.ts",
+              "libs/playground/auth/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/auth/feature"],
+          "options": {
+            "jestConfig": "libs/playground/auth/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "playground-e2e": {
       "root": "apps/playground-e2e",
       "sourceRoot": "apps/playground-e2e/src",
@@ -116,69 +141,97 @@
         }
       }
     },
-    "playground-shell": {
+    "playground-forms-demo-data-access": {
+      "root": "libs/playground/forms-demo/data-access",
+      "sourceRoot": "libs/playground/forms-demo/data-access/src",
       "projectType": "library",
-      "root": "libs/playground/shell",
-      "sourceRoot": "libs/playground/shell/src",
-      "prefix": "playground",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/playground/shell/src/**/*.ts", "libs/playground/shell/src/**/*.html"]
+            "lintFilePatterns": ["libs/playground/forms-demo/data-access/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/playground/shell"],
+          "outputs": ["coverage/libs/playground/forms-demo/data-access"],
           "options": {
-            "jestConfig": "libs/playground/shell/jest.config.js",
+            "jestConfig": "libs/playground/forms-demo/data-access/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "playground-todos-feature": {
+    "playground-forms-demo-feature-details": {
       "projectType": "library",
-      "root": "libs/playground/todos/feature",
-      "sourceRoot": "libs/playground/todos/feature/src",
+      "root": "libs/playground/forms-demo/feature/details",
+      "sourceRoot": "libs/playground/forms-demo/feature/details/src",
       "prefix": "playground",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/playground/todos/feature/src/**/*.ts",
-              "libs/playground/todos/feature/src/**/*.html"
+              "libs/playground/forms-demo/feature/details/src/**/*.ts",
+              "libs/playground/forms-demo/feature/details/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/playground/todos/feature"],
+          "outputs": ["coverage/libs/playground/forms-demo/feature/details"],
           "options": {
-            "jestConfig": "libs/playground/todos/feature/jest.config.js",
+            "jestConfig": "libs/playground/forms-demo/feature/details/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "playground-todos-data-access": {
-      "root": "libs/playground/todos/data-access",
-      "sourceRoot": "libs/playground/todos/data-access/src",
+    "playground-forms-demo-feature-list": {
       "projectType": "library",
+      "root": "libs/playground/forms-demo/feature/list",
+      "sourceRoot": "libs/playground/forms-demo/feature/list/src",
+      "prefix": "playground",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/playground/todos/data-access/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/playground/forms-demo/feature/list/src/**/*.ts",
+              "libs/playground/forms-demo/feature/list/src/**/*.html"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/playground/todos/data-access"],
+          "outputs": ["coverage/libs/playground/forms-demo/feature/list"],
           "options": {
-            "jestConfig": "libs/playground/todos/data-access/jest.config.js",
+            "jestConfig": "libs/playground/forms-demo/feature/list/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-forms-demo-feature-shell": {
+      "projectType": "library",
+      "root": "libs/playground/forms-demo/feature/shell",
+      "sourceRoot": "libs/playground/forms-demo/feature/shell/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/forms-demo/feature/shell/src/**/*.ts",
+              "libs/playground/forms-demo/feature/shell/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/forms-demo/feature/shell"],
+          "options": {
+            "jestConfig": "libs/playground/forms-demo/feature/shell/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -209,26 +262,69 @@
         }
       }
     },
-    "playground-auth-feature": {
+    "playground-shell": {
       "projectType": "library",
-      "root": "libs/playground/auth/feature",
-      "sourceRoot": "libs/playground/auth/feature/src",
+      "root": "libs/playground/shell",
+      "sourceRoot": "libs/playground/shell/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/playground/shell/src/**/*.ts", "libs/playground/shell/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/shell"],
+          "options": {
+            "jestConfig": "libs/playground/shell/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-todos-data-access": {
+      "root": "libs/playground/todos/data-access",
+      "sourceRoot": "libs/playground/todos/data-access/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/playground/todos/data-access/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/todos/data-access"],
+          "options": {
+            "jestConfig": "libs/playground/todos/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-todos-feature": {
+      "projectType": "library",
+      "root": "libs/playground/todos/feature",
+      "sourceRoot": "libs/playground/todos/feature/src",
       "prefix": "playground",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/playground/auth/feature/src/**/*.ts",
-              "libs/playground/auth/feature/src/**/*.html"
+              "libs/playground/todos/feature/src/**/*.ts",
+              "libs/playground/todos/feature/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/playground/auth/feature"],
+          "outputs": ["coverage/libs/playground/todos/feature"],
           "options": {
-            "jestConfig": "libs/playground/auth/feature/jest.config.js",
+            "jestConfig": "libs/playground/todos/feature/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -255,6 +351,81 @@
         }
       }
     },
+    "playground-workflows-feature-details": {
+      "projectType": "library",
+      "root": "libs/playground/workflows/feature/details",
+      "sourceRoot": "libs/playground/workflows/feature/details/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/workflows/feature/details/src/**/*.ts",
+              "libs/playground/workflows/feature/details/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/feature/details"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/feature/details/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-workflows-feature-list": {
+      "projectType": "library",
+      "root": "libs/playground/workflows/feature/list",
+      "sourceRoot": "libs/playground/workflows/feature/list/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/workflows/feature/list/src/**/*.ts",
+              "libs/playground/workflows/feature/list/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/feature/list"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/feature/list/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-workflows-feature-shell": {
+      "projectType": "library",
+      "root": "libs/playground/workflows/feature/shell",
+      "sourceRoot": "libs/playground/workflows/feature/shell/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/workflows/feature/shell/src/**/*.ts",
+              "libs/playground/workflows/feature/shell/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/workflows/feature/shell"],
+          "options": {
+            "jestConfig": "libs/playground/workflows/feature/shell/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "playground-workflows-util": {
       "root": "libs/playground/workflows/util",
       "sourceRoot": "libs/playground/workflows/util/src",
@@ -271,27 +442,6 @@
           "outputs": ["coverage/libs/playground/workflows/util"],
           "options": {
             "jestConfig": "libs/playground/workflows/util/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "playground-forms-demo-data-access": {
-      "root": "libs/playground/forms-demo/data-access",
-      "sourceRoot": "libs/playground/forms-demo/data-access/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/playground/forms-demo/data-access/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/playground/forms-demo/data-access"],
-          "options": {
-            "jestConfig": "libs/playground/forms-demo/data-access/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -406,6 +556,28 @@
         }
       }
     },
+    "shared-ui-icon": {
+      "projectType": "library",
+      "root": "libs/shared/ui/icon",
+      "sourceRoot": "libs/shared/ui/icon/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/ui/icon/src/**/*.ts", "libs/shared/ui/icon/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui/icon"],
+          "options": {
+            "jestConfig": "libs/shared/ui/icon/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "shared-ui-loading": {
       "projectType": "library",
       "root": "libs/shared/ui/loading",
@@ -450,28 +622,6 @@
         }
       }
     },
-    "shared-ui-icon": {
-      "projectType": "library",
-      "root": "libs/shared/ui/icon",
-      "sourceRoot": "libs/shared/ui/icon/src",
-      "prefix": "playground",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/shared/ui/icon/src/**/*.ts", "libs/shared/ui/icon/src/**/*.html"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/ui/icon"],
-          "options": {
-            "jestConfig": "libs/shared/ui/icon/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "shared-util-rx": {
       "root": "libs/shared/util/rx",
       "sourceRoot": "libs/shared/util/rx/src",
@@ -488,156 +638,6 @@
           "outputs": ["coverage/libs/shared/util/rx"],
           "options": {
             "jestConfig": "libs/shared/util/rx/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "playground-workflows-feature-shell": {
-      "projectType": "library",
-      "root": "libs/playground/workflows/feature/shell",
-      "sourceRoot": "libs/playground/workflows/feature/shell/src",
-      "prefix": "playground",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/playground/workflows/feature/shell/src/**/*.ts",
-              "libs/playground/workflows/feature/shell/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/playground/workflows/feature/shell"],
-          "options": {
-            "jestConfig": "libs/playground/workflows/feature/shell/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "playground-workflows-feature-details": {
-      "projectType": "library",
-      "root": "libs/playground/workflows/feature/details",
-      "sourceRoot": "libs/playground/workflows/feature/details/src",
-      "prefix": "playground",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/playground/workflows/feature/details/src/**/*.ts",
-              "libs/playground/workflows/feature/details/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/playground/workflows/feature/details"],
-          "options": {
-            "jestConfig": "libs/playground/workflows/feature/details/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "playground-workflows-feature-list": {
-      "projectType": "library",
-      "root": "libs/playground/workflows/feature/list",
-      "sourceRoot": "libs/playground/workflows/feature/list/src",
-      "prefix": "playground",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/playground/workflows/feature/list/src/**/*.ts",
-              "libs/playground/workflows/feature/list/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/playground/workflows/feature/list"],
-          "options": {
-            "jestConfig": "libs/playground/workflows/feature/list/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "playground-forms-demo-feature-shell": {
-      "projectType": "library",
-      "root": "libs/playground/forms-demo/feature/shell",
-      "sourceRoot": "libs/playground/forms-demo/feature/shell/src",
-      "prefix": "playground",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/playground/forms-demo/feature/shell/src/**/*.ts",
-              "libs/playground/forms-demo/feature/shell/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/playground/forms-demo/feature/shell"],
-          "options": {
-            "jestConfig": "libs/playground/forms-demo/feature/shell/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "playground-forms-demo-feature-details": {
-      "projectType": "library",
-      "root": "libs/playground/forms-demo/feature/details",
-      "sourceRoot": "libs/playground/forms-demo/feature/details/src",
-      "prefix": "playground",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/playground/forms-demo/feature/details/src/**/*.ts",
-              "libs/playground/forms-demo/feature/details/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/playground/forms-demo/feature/details"],
-          "options": {
-            "jestConfig": "libs/playground/forms-demo/feature/details/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "playground-forms-demo-feature-list": {
-      "projectType": "library",
-      "root": "libs/playground/forms-demo/feature/list",
-      "sourceRoot": "libs/playground/forms-demo/feature/list/src",
-      "prefix": "playground",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/playground/forms-demo/feature/list/src/**/*.ts",
-              "libs/playground/forms-demo/feature/list/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/playground/forms-demo/feature/list"],
-          "options": {
-            "jestConfig": "libs/playground/forms-demo/feature/list/jest.config.js",
             "passWithNoTests": true
           }
         }

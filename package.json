@@ -71,6 +71,7 @@
     "@nrwl/jest": "11.0.18",
     "@nrwl/tao": "11.0.18",
     "@nrwl/workspace": "11.0.18",
+    "@nxpm/cli": "4.2.5",
     "@tailwindcss/forms": "0.2.1",
     "@types/jest": "26.0.19",
     "@types/lodash-es": "4.17.4",
@@ -104,8 +105,12 @@
     }
   },
   "lint-staged": {
+    "nx.json": [
+      "yarn nxpm-stack lint",
+      "yarn format:write"
+    ],
     "*.{js,json,css,scss,md,ts,html,graphql}": [
-      "yarn run format"
+      "yarn format:write"
     ]
   }
 }

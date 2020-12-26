@@ -26,33 +26,51 @@
     "playground": {
       "tags": ["scope:playground", "type:application"]
     },
+    "playground-auth-feature": {
+      "tags": ["scope:auth", "type:ui"]
+    },
     "playground-e2e": {
       "tags": [],
       "implicitDependencies": ["playground"]
     },
-    "playground-shell": {
-      "tags": ["scope:playground", "type:ui"]
+    "playground-forms-demo-data-access": {
+      "tags": ["scope:forms-demo", "type:data-access"]
     },
-    "playground-todos-feature": {
-      "tags": ["scope:todos", "type:ui"]
+    "playground-forms-demo-feature-details": {
+      "tags": ["scope:forms-demo", "type:ui"]
     },
-    "playground-todos-data-access": {
-      "tags": ["scope:todos", "type:data-access"]
+    "playground-forms-demo-feature-list": {
+      "tags": ["scope:forms-demo", "type:ui"]
+    },
+    "playground-forms-demo-feature-shell": {
+      "tags": ["scope:forms-demo", "type:ui"]
     },
     "playground-home-feature": {
       "tags": ["scope:home", "type:ui"]
     },
-    "playground-auth-feature": {
-      "tags": ["scope:auth", "type:ui"]
+    "playground-shell": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "playground-todos-data-access": {
+      "tags": ["scope:todos", "type:data-access"]
+    },
+    "playground-todos-feature": {
+      "tags": ["scope:todos", "type:ui"]
     },
     "playground-workflows-data-access": {
       "tags": ["scope:workflows", "type:data-access"]
     },
+    "playground-workflows-feature-details": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-feature-list": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-feature-shell": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
     "playground-workflows-util": {
       "tags": ["scope:workflows", "type:util"]
-    },
-    "playground-forms-demo-data-access": {
-      "tags": ["scope:forms-demo", "type:data-access"]
     },
     "shared-data-access-idb": {
       "tags": ["scope:playground", "type:data-access"]
@@ -69,35 +87,17 @@
     "shared-ui-header": {
       "tags": ["scope:playground", "type:ui"]
     },
+    "shared-ui-icon": {
+      "tags": ["scope:playground", "type:ui"]
+    },
     "shared-ui-loading": {
       "tags": ["scope:playground", "type:ui"]
     },
     "shared-ui-page": {
       "tags": ["scope:playground", "type:ui"]
     },
-    "shared-ui-icon": {
-      "tags": ["scope:playground", "type:ui"]
-    },
     "shared-util-rx": {
       "tags": ["scope:playground", "type:util"]
-    },
-    "playground-workflows-feature-shell": {
-      "tags": ["scope:workflows", "type:ui"]
-    },
-    "playground-workflows-feature-details": {
-      "tags": ["scope:workflows", "type:ui"]
-    },
-    "playground-workflows-feature-list": {
-      "tags": ["scope:workflows", "type:ui"]
-    },
-    "playground-forms-demo-feature-shell": {
-      "tags": ["scope:forms-demo", "type:ui"]
-    },
-    "playground-forms-demo-feature-details": {
-      "tags": ["scope:forms-demo", "type:ui"]
-    },
-    "playground-forms-demo-feature-list": {
-      "tags": ["scope:forms-demo", "type:ui"]
     }
   }
 }
