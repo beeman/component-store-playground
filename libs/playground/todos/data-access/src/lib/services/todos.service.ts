@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { AngularIdb, AngularIdbService } from '@component-store-playground/playground/shared/idb/util'
+import { AngularIdb, AngularIdbService } from '@component-store-playground/shared/data-access/idb'
 import { Observable } from 'rxjs'
 import { Todo } from '../models'
 

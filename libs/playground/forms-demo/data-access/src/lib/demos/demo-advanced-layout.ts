@@ -1,4 +1,4 @@
-import { FormField } from '@component-store-playground/playground/shared/ui/components/forms'
+import { FormField } from '@component-store-playground/shared/ui/forms'
 import { countryOptions } from './demo-sample-data'
 
 function paymentDetailsFields(): FormField[] {

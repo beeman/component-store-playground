@@ -25,15 +25,15 @@ export const playgroundShellRoutes: Routes = [
       {
         path: 'workflows',
         loadChildren: () =>
-          import('@component-store-playground/playground/workflows/feature').then(
-            (m) => m.PlaygroundWorkflowsFeatureModule,
+          import('@component-store-playground/playground/workflows/feature/shell').then(
+            (m) => m.PlaygroundWorkflowsFeatureShellModule,
           ),
       },
       {
         path: 'forms',
         loadChildren: () =>
-          import('@component-store-playground/playground/forms-demo/feature').then(
-            (m) => m.PlaygroundFormsDemoFeatureModule,
+          import('@component-store-playground/playground/forms-demo/feature/shell').then(
+            (m) => m.PlaygroundFormsDemoFeatureShellModule,
           ),
       },
     ],

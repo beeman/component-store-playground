@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
-import { PlaygroundSharedUiComponentsFormsModule } from '@component-store-playground/playground/shared/ui/components/forms'
-import { PlaygroundSharedUiComponentsPageModule } from '@component-store-playground/playground/shared/ui/components/page'
+import { SharedUiFormsModule } from '@component-store-playground/shared/ui/forms'
+import { SharedUiPageModule } from '@component-store-playground/shared/ui/page'
 import { AuthComponent } from './auth.component'
 
 @NgModule({
@@ -11,8 +11,8 @@ import { AuthComponent } from './auth.component'
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild([{ path: '', component: AuthComponent }]),
-    PlaygroundSharedUiComponentsPageModule,
-    PlaygroundSharedUiComponentsFormsModule,
+    SharedUiPageModule,
+    SharedUiFormsModule,
   ],
   declarations: [AuthComponent],
 })

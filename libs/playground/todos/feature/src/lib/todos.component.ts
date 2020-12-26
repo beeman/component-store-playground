@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
-import { Todo, TodosStore } from '@component-store-playground/playground/todos/data-access'
+import { Todo } from '@component-store-playground/playground/todos/data-access'
+import { TodosStore } from './stores'
 
 @Component({
   selector: 'playground-todos',
@@ -12,7 +13,6 @@ import { Todo, TodosStore } from '@component-store-playground/playground/todos/d
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [TodosStore],
 })
 export class TodosComponent implements OnInit {
   readonly vm$ = this.todosStore.vm$
