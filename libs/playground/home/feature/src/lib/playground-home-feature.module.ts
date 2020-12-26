@@ -1,15 +1,11 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
-import { PlaygroundSharedUiComponentsPageModule } from '@component-store-playground/playground/shared/ui/components/page'
+import { SharedUiPageModule } from '@component-store-playground/shared/ui/page'
 import { HomeComponent } from './home.component'
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild([{ path: '', component: HomeComponent }]),
-    PlaygroundSharedUiComponentsPageModule,
-  ],
+  imports: [CommonModule, RouterModule.forChild([{ path: '', component: HomeComponent }]), SharedUiPageModule],
   declarations: [HomeComponent],
 })
 export class PlaygroundHomeFeatureModule {}

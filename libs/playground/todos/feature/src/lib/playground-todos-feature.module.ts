@@ -1,20 +1,20 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
-import { PlaygroundSharedUiComponentsFormsModule } from '@component-store-playground/playground/shared/ui/components/forms'
-import { PlaygroundSharedUiComponentsIconModule } from '@component-store-playground/playground/shared/ui/components/icon'
-import { PlaygroundSharedUiComponentsLoadingModule } from '@component-store-playground/playground/shared/ui/components/loading'
-import { PlaygroundSharedUiComponentsPageModule } from '@component-store-playground/playground/shared/ui/components/page'
+import { SharedUiFormsModule } from '@component-store-playground/shared/ui/forms'
+import { SharedUiIconModule } from '@component-store-playground/shared/ui/icon'
+import { SharedUiLoadingModule } from '@component-store-playground/shared/ui/loading'
+import { SharedUiPageModule } from '@component-store-playground/shared/ui/page'
 import { TodosComponent } from './todos.component'
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([{ path: '', component: TodosComponent }]),
-    PlaygroundSharedUiComponentsIconModule,
-    PlaygroundSharedUiComponentsLoadingModule,
-    PlaygroundSharedUiComponentsPageModule,
-    PlaygroundSharedUiComponentsFormsModule,
+    SharedUiIconModule,
+    SharedUiLoadingModule,
+    SharedUiPageModule,
+    SharedUiFormsModule,
   ],
   declarations: [TodosComponent],
 })
