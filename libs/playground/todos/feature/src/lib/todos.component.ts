@@ -13,6 +13,7 @@ import { TodosStore } from './stores'
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [TodosStore],
 })
 export class TodosComponent implements OnInit {
   readonly vm$ = this.todosStore.vm$

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core'
 import { FormGroup } from '@angular/forms'
+import { Todo, TodosService } from '@component-store-playground/playground/todos/data-access'
 import { FormField } from '@component-store-playground/shared/ui/forms'
 import { ApiResponse } from '@component-store-playground/shared/util/rx'
 import { ComponentStore, tapResponse } from '@ngrx/component-store'
 import { immerReducer } from 'ngrx-immer'
 import { debounceTime, mergeMap, pluck, switchMap, tap, withLatestFrom } from 'rxjs/operators'
-import { Todo } from '../models'
-import { TodosService } from '../services'
 
 interface TodosState {
   todos: ApiResponse<Todo[]>
