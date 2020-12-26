@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
-import { PlaygroundSharedIdbDataAccessModule } from '@component-store-playground/playground/shared/idb/data-access'
-import { PlaygroundSharedUiComponentsFooterModule } from '@component-store-playground/playground/shared/ui/components/footer'
-import { PlaygroundSharedUiComponentsHeaderModule } from '@component-store-playground/playground/shared/ui/components/header'
+import { SharedDataAccessIdbModule } from '@component-store-playground/shared/data-access/idb'
+import { SharedUiFooterModule } from '@component-store-playground/shared/ui/footer'
+import { SharedUiHeaderModule } from '@component-store-playground/shared/ui/header'
 import { LayoutComponent } from './layout/layout.component'
 import { playgroundShellRoutes } from './playground-shell.routes'
 
 @NgModule({
   imports: [
     CommonModule,
-    PlaygroundSharedIdbDataAccessModule,
+    SharedDataAccessIdbModule,
     RouterModule.forRoot(playgroundShellRoutes),
-    PlaygroundSharedUiComponentsHeaderModule,
-    PlaygroundSharedUiComponentsFooterModule,
+    SharedUiHeaderModule,
+    SharedUiFooterModule,
   ],
   declarations: [LayoutComponent],
   exports: [RouterModule],

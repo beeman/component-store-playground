@@ -30,33 +30,6 @@
       "tags": [],
       "implicitDependencies": ["playground"]
     },
-    "playground-shared-idb-util": {
-      "tags": ["scope:playground", "type:util"]
-    },
-    "playground-shared-ui-data-access": {
-      "tags": ["scope:playground", "type:data-access"]
-    },
-    "playground-shared-ui-util": {
-      "tags": ["scope:playground", "type:util"]
-    },
-    "playground-shared-idb-data-access": {
-      "tags": ["scope:playground", "type:data-access"]
-    },
-    "playground-shared-ui-components-footer": {
-      "tags": ["scope:playground", "type:ui"]
-    },
-    "playground-shared-ui-components-header": {
-      "tags": ["scope:playground", "type:ui"]
-    },
-    "playground-shared-ui-components-icon": {
-      "tags": ["scope:playground", "type:ui"]
-    },
-    "playground-shared-ui-components-loading": {
-      "tags": ["scope:playground", "type:ui"]
-    },
-    "playground-shared-ui-components-page": {
-      "tags": ["scope:playground", "type:ui"]
-    },
     "playground-shell": {
       "tags": ["scope:playground", "type:ui"]
     },
@@ -65,15 +38,6 @@
     },
     "playground-todos-data-access": {
       "tags": ["scope:todos", "type:data-access"]
-    },
-    "playground-shared-utils-rx": {
-      "tags": ["scope:playground", "type:util"]
-    },
-    "playground-shared-utils-types": {
-      "tags": ["scope:playground", "type:util"]
-    },
-    "playground-shared-ui-components-forms": {
-      "tags": ["scope:playground", "type:ui"]
     },
     "playground-home-feature": {
       "tags": ["scope:home", "type:ui"]
@@ -87,37 +51,52 @@
     "playground-workflows-util": {
       "tags": ["scope:workflows", "type:util"]
     },
-    "playground-workflows-workflow-list-feature": {
-      "tags": ["scope:workflows", "type:ui"]
-    },
-    "playground-workflows-workflow-details-feature": {
-      "tags": ["scope:workflows", "type:ui"]
-    },
-    "playground-workflows-workflow-list-data-access": {
-      "tags": ["scope:workflows", "type:data-access"]
-    },
-    "playground-workflows-feature": {
-      "tags": ["scope:workflows", "type:ui"]
-    },
-    "playground-workflows-workflow-details-data-access": {
-      "tags": ["scope:workflows", "type:data-access"]
-    },
-    "playground-workflows-workflow-details-ui-components-workflow-group": {
-      "tags": ["scope:workflows", "type:ui"]
-    },
-    "playground-workflows-workflow-details-ui-components-workflow-condition": {
-      "tags": ["scope:workflows", "type:ui"]
-    },
-    "playground-forms-demo-feature": {
-      "tags": ["scope:forms-demo", "type:ui"]
-    },
     "playground-forms-demo-data-access": {
       "tags": ["scope:forms-demo", "type:data-access"]
     },
-    "playground-forms-demo-forms-demo-list-feature": {
+    "shared-data-access-idb": {
+      "tags": ["scope:playground", "type:data-access"]
+    },
+    "shared-data-access-ui-store": {
+      "tags": ["scope:playground", "type:data-access"]
+    },
+    "shared-ui-footer": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "shared-ui-forms": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "shared-ui-header": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "shared-ui-loading": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "shared-ui-page": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "shared-ui-icon": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "shared-util-rx": {
+      "tags": ["scope:playground", "type:util"]
+    },
+    "playground-workflows-feature-shell": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-feature-details": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-workflows-feature-list": {
+      "tags": ["scope:workflows", "type:ui"]
+    },
+    "playground-forms-demo-feature-shell": {
       "tags": ["scope:forms-demo", "type:ui"]
     },
-    "playground-forms-demo-forms-demo-detail-feature": {
+    "playground-forms-demo-feature-details": {
+      "tags": ["scope:forms-demo", "type:ui"]
+    },
+    "playground-forms-demo-feature-list": {
       "tags": ["scope:forms-demo", "type:ui"]
     }
   }

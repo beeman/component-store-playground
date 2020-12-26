@@ -1,4 +1,4 @@
-import { FormField } from '@component-store-playground/playground/shared/ui/components/forms'
+import { FormField } from '@component-store-playground/shared/ui/forms'
 import { FormlyField, FormlyTemplateOptions } from '@ngx-formly/core'
 
 export const demoAddons = {
