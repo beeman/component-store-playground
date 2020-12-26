@@ -1,10 +1,8 @@
 module.exports = {
   projects: [
     '<rootDir>/apps/playground',
-    '<rootDir>/libs/playground/shared/data-access/idb',
     '<rootDir>/libs/playground/shared/idb/data-access',
     '<rootDir>/libs/playground/shared/idb/util',
-    '<rootDir>/libs/playgrond/shared/ui/data-access',
     '<rootDir>/libs/playground/shared/ui/data-access',
     '<rootDir>/libs/playground/shared/ui/util',
     '<rootDir>/libs/playground/shared/ui/components/footer',
@@ -20,7 +18,6 @@ module.exports = {
     '<rootDir>/libs/playground/shared/ui/components/forms',
     '<rootDir>/libs/playground/home/feature',
     '<rootDir>/libs/playground/auth/feature',
-    '<rootDir>/libs/playground/shared/workflows/data-access',
     '<rootDir>/libs/playground/workflows/util',
     '<rootDir>/libs/playground/workflows/workflow-list/feature',
     '<rootDir>/libs/playground/workflows/workflow-details/feature',
@@ -30,8 +27,8 @@ module.exports = {
     '<rootDir>/libs/playground/workflows/workflow-details/ui/components/workflow-group',
     '<rootDir>/libs/playground/workflows/workflow-details/ui/components/workflow-condition',
     '<rootDir>/libs/playground/forms-demo/feature',
-    '<rootDir>/libs/playground/forms-demo/ui/components/forms-demo-detail',
-    '<rootDir>/libs/playground/forms-demo/ui/components/forms-demo-list',
+    '<rootDir>/libs/playground/forms-demo/forms-demo-detail/feature',
+    '<rootDir>/libs/playground/forms-demo/forms-demo-list/feature',
     '<rootDir>/libs/playground/forms-demo/data-access',
   ],
 }
