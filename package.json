@@ -47,7 +47,7 @@
     "immer": "8.0.0",
     "lodash-es": "4.17.20",
     "ng-indexed-db": "0.0.0-beta.1",
-    "ngrx-immer": "0.0.2",
+    "ngrx-immer": "0.0.4",
     "rxjs": "6.6.3",
     "tslib": "2.0.3",
     "zone.js": "0.10.3"
@@ -61,7 +61,7 @@
     "@angular-eslint/template-parser": "0.8.0-beta.7",
     "@angular/cli": "11.0.5",
     "@angular/compiler-cli": "11.0.5",
-    "@angular/fire": "6.1.0-rc.4",
+    "@angular/fire": "6.1.4",
     "@angular/language-service": "11.0.5",
     "@hirez_io/observer-spy": "2.1.0",
     "@ngneat/spectator": "6.1.2",

@@ -1,24 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { RouterTestingModule } from '@angular/router/testing'
+import { SharedUiFooterModule } from '@component-store-playground/shared/ui/footer'
+import { SharedUiHeaderModule } from '@component-store-playground/shared/ui/header'
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 
 import { LayoutComponent } from './layout.component'
 
 describe('LayoutComponent', () => {
-  let component: LayoutComponent
-  let fixture: ComponentFixture<LayoutComponent>
+  let spectator: Spectator<LayoutComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [LayoutComponent],
-    }).compileComponents()
+  const createComponent = createComponentFactory({
+    component: LayoutComponent,
+    imports: [RouterTestingModule, SharedUiHeaderModule, SharedUiFooterModule],
   })
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LayoutComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
+  beforeEach(() => (spectator = createComponent()))
 
   it('should create', () => {
-    expect(component).toBeTruthy()
+    expect(spectator.component).toBeTruthy()
+  })
+
+  it('should contain header, footer, and router-outlet', () => {
+    expect(spectator.query('playground-header')).toBeTruthy()
+    expect(spectator.query('playground-footer')).toBeTruthy()
+    expect(spectator.query('router-outlet')).toBeTruthy()
   })
 })

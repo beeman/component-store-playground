@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
+import { FormGroup } from '@angular/forms'
 import { Todo } from '@component-store-playground/playground/todos/data-access'
+import { FormField } from '@component-store-playground/shared/ui/forms'
+import { debounceTime, pluck } from 'rxjs/operators'
 import { TodosStore } from './stores'
 
 @Component({
@@ -16,11 +19,16 @@ import { TodosStore } from './stores'
   providers: [TodosStore],
 })
 export class TodosComponent implements OnInit {
-  readonly vm$ = this.todosStore.vm$
+  readonly form = new FormGroup({})
+  readonly fields: FormField[] = [FormField.input('query', { placeholder: 'Search Todo' })]
+  readonly query = this.form.valueChanges.pipe(debounceTime(250), pluck('query'))
+
+  vm$ = this.todosStore.vm$
 
   constructor(private readonly todosStore: TodosStore) {}
 
   ngOnInit(): void {
+    this.todosStore.updateFilter(this.query)
     this.todosStore.loadTodosEffect()
   }
 
@@ -38,6 +46,6 @@ export class TodosComponent implements OnInit {
   }
 
   removeFilter(): void {
-    this.todosStore.removeFilterEffect()
+    this.form.setValue({ query: '' })
   }
 }

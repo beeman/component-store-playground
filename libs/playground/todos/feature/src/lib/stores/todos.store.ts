@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core'
-import { FormGroup } from '@angular/forms'
 import { Todo, TodosService } from '@component-store-playground/playground/todos/data-access'
-import { FormField } from '@component-store-playground/shared/ui/forms'
 import { ApiResponse } from '@component-store-playground/shared/util/rx'
-import { ComponentStore, tapResponse } from '@ngrx/component-store'
-import { immerReducer } from 'ngrx-immer'
-import { debounceTime, mergeMap, pluck, switchMap, tap, withLatestFrom } from 'rxjs/operators'
+import { tapResponse } from '@ngrx/component-store'
+import { ImmerComponentStore } from 'ngrx-immer/component-store'
+import { mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators'
 
 interface TodosState {
   todos: ApiResponse<Todo[]>
@@ -14,11 +12,7 @@ interface TodosState {
 }
 
 @Injectable()
-export class TodosStore extends ComponentStore<TodosState> {
-  readonly form = new FormGroup({})
-  readonly fields: FormField[] = [FormField.input('query', { placeholder: 'Search Todo' })]
-  readonly query = this.form.valueChanges.pipe(debounceTime(250), pluck('query'))
-
+export class TodosStore extends ImmerComponentStore<TodosState> {
   readonly todos$ = this.select((s) => s.todos)
   readonly saving$ = this.select((s) => s.saving)
   readonly filter$ = this.select((s) => s.filter)
@@ -34,32 +28,23 @@ export class TodosStore extends ComponentStore<TodosState> {
       filter,
       isEmpty: status === 'success' && !filteredTodos.length,
       isLoading: status === 'loading' && !data?.length,
-      form: this.form,
-      fields: this.fields,
     }
   })
 
   constructor(private readonly service: TodosService) {
     super({ todos: { status: 'idle', data: [], error: '' }, saving: false })
-    this.updateFilter(this.query)
   }
 
-  readonly updateTodos = this.updater<ApiResponse<Todo[]>>(
-    immerReducer((state, value) => {
-      state.saving = false
-      state.todos = value
-    }),
-  )
-  readonly updateFilter = this.updater<string>(
-    immerReducer((state, filter) => {
-      state.filter = filter
-    }),
-  )
-  readonly updateSaving = this.updater<boolean>(
-    immerReducer((state, value) => {
-      state.saving = value
-    }),
-  )
+  readonly updateTodos = this.updater<ApiResponse<Todo[]>>((state, value) => {
+    state.saving = false
+    state.todos = value
+  })
+  readonly updateFilter = this.updater<string>((state, filter) => {
+    state.filter = filter
+  })
+  readonly updateSaving = this.updater<boolean>((state, value) => {
+    state.saving = value
+  })
 
   readonly loadTodosEffect = this.effect(($) =>
     $.pipe(
@@ -88,8 +73,6 @@ export class TodosStore extends ComponentStore<TodosState> {
       mergeMap((todo) => this.service.delete(todo.id!).pipe(tapResponse(() => this.loadTodosEffect(), console.error))),
     ),
   )
-
-  readonly removeFilterEffect = this.effect(($) => $.pipe(tap(() => this.form.setValue({ query: '' }))))
 
   readonly toggleTodoEffect = this.effect<Todo>((todo$) => {
     return todo$.pipe(

@@ -253,10 +253,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@angular/fire@6.1.0-rc.4":
-  version "6.1.0-rc.4"
-  resolved "https://registry.yarnpkg.com/@angular/fire/-/fire-6.1.0-rc.4.tgz#473c83233e0d133a7401fd3b0bf6739e51453adf"
-  integrity sha512-Ff0+jFJIiykEDfhoLvtWmVYG5SxhW38+bI49wVpHbX3h7TqP8qiu+Ah93deUNd+DO23GmDHOfY/B5XQiWd+fQA==
+"@angular/fire@6.1.4":
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@angular/fire/-/fire-6.1.4.tgz#d3923a68336d7177abbb2676731d0aef566b9739"
+  integrity sha512-5u305XnBC041JMrAtczLa0bdprxw7RkXy4kgcRCisPI8maGuiN4XzlwNYX+plCHZCo4R0motxQom//tPTA2edQ==
   dependencies:
     tslib "^2.0.0"
 
@@ -9780,10 +9780,12 @@ ng-indexed-db@0.0.0-beta.1:
   dependencies:
     tslib "^1.9.0"
 
-ngrx-immer@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/ngrx-immer/-/ngrx-immer-0.0.2.tgz#bcf3191a12b42d7bdde601b3487bb615c34c52f0"
-  integrity sha512-c5PzusHiyvlEKlUH3vw/2e36oYLjIGKLPShttbm7N3j9iqd3GfctQFNV3SufrZifh1k6jF2CtpEBpHicmIKV0w==
+ngrx-immer@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/ngrx-immer/-/ngrx-immer-0.0.4.tgz#d62d26944afdfc3e6a561c3f048cc9ec90c3162f"
+  integrity sha512-wP/brfg9ZbypR6eBgvsOQtFEUrK2T3aUThTM+I16hHXCZfWgnTxMhcJXQ32nxIuM2CS4AWEIRmb82DPHpp+6Xw==
+  dependencies:
+    tslib "^2.0.0"
 
 nice-try@^1.0.4:
   version "1.0.5"

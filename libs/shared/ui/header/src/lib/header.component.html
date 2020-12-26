@@ -6,15 +6,14 @@
       </a>
 
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center space-x-2">
-        <ng-container *ngFor="let link of links">
-          <a
-            class="hover:bg-purple-400 hover:text-purple-900 rounded bg-purple-800 px-2 py-1"
-            routerLinkActive="bg-blue-400"
-            [routerLink]="link.path"
-          >
-            {{ link.label }}
-          </a>
-        </ng-container>
+        <a
+          *ngFor="let link of links"
+          class="hover:bg-purple-400 hover:text-purple-900 rounded bg-purple-800 px-2 py-1"
+          routerLinkActive="bg-blue-400"
+          [routerLink]="link.path"
+        >
+          {{ link.label }}
+        </a>
 
         <button (click)="toggleDarkMode()" class="flex items-center">
           <playground-icon size="lg" [icon]="vm.icon"></playground-icon>
