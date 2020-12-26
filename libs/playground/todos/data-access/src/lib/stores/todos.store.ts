@@ -92,12 +92,9 @@ export class TodosStore extends ComponentStore<TodosState> {
 
   readonly removeFilterEffect = this.effect(($) => $.pipe(tap(() => this.form.setValue({ query: '' }))))
 
-  readonly toggleTodoEffect = this.effect<Todo>((todo$) =>
-    todo$.pipe(
-      mergeMap((todo) => {
-        console.log('toggle', todo)
-        return this.service.toggleTodo(todo).pipe(tapResponse(() => this.loadTodosEffect(), console.error))
-      }),
-    ),
-  )
+  readonly toggleTodoEffect = this.effect<Todo>((todo$) => {
+    return todo$.pipe(
+      mergeMap((todo) => this.service.toggleTodo(todo).pipe(tapResponse(() => this.loadTodosEffect(), console.error))),
+    )
+  })
 }
