@@ -2,12 +2,11 @@ import {
   NormalizedWorkflowGroup,
   WorkflowCondition,
   WorkflowGroup,
-  WorkflowItem,
   WorkflowType,
 } from '@component-store-playground/playground/workflows/data-access'
 
 export class WorkflowHelper {
-  static isGroup(item: WorkflowItem): item is WorkflowGroup {
+  static isGroup(item: { type: WorkflowType }): item is WorkflowGroup {
     return item.type === WorkflowType.group
   }
 

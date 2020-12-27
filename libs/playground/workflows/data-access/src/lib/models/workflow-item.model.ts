@@ -16,7 +16,7 @@ export interface WorkflowCondition extends WorkflowItem {
 
 export interface WorkflowGroup extends WorkflowItem {
   readonly type: WorkflowType.group
-  children: WorkflowItem[]
+  children: (WorkflowGroup | WorkflowCondition)[]
 }
 
 export interface NormalizedWorkflowGroup extends Omit<WorkflowGroup, 'children'> {
