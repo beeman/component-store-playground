@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common'
 import { Inject, Injectable } from '@angular/core'
 import { UiIcon } from '@component-store-playground/shared/ui/icon'
-import { ComponentStore } from '@ngrx/component-store'
+import { ImmerComponentStore } from 'ngrx-immer/component-store'
 import { tap } from 'rxjs/operators'
 
 type UiTheme = 'dark' | 'light'
@@ -13,7 +13,7 @@ interface UiState {
 const LS_THEME_KEY = '@@component_store_playground/theme'
 
 @Injectable({ providedIn: 'root' })
-export class UiStore extends ComponentStore<UiState> {
+export class UiStore extends ImmerComponentStore<UiState> {
   private readonly body: HTMLElement
 
   constructor(@Inject(DOCUMENT) private document: Document) {
@@ -39,10 +39,9 @@ export class UiStore extends ComponentStore<UiState> {
     ),
   )
 
-  readonly toggleTheme = this.updater((state) => ({
-    ...state,
-    theme: state.theme === 'dark' ? 'light' : 'dark',
-  }))
+  readonly toggleTheme = this.updater((state) => {
+    state.theme = state.theme === 'dark' ? 'light' : 'dark'
+  })
 
   private readonly toggleThemeEffect = this.effect<UiTheme>((theme$) =>
     theme$.pipe(

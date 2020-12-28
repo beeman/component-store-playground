@@ -1,8 +1,5 @@
 import { RouterTestingModule } from '@angular/router/testing'
 import { Workflow, WorkflowsService, WorkflowType } from '@component-store-playground/playground/workflows/data-access'
-import { SharedUiIconModule } from '@component-store-playground/shared/ui/icon'
-import { SharedUiLoadingModule } from '@component-store-playground/shared/ui/loading'
-import { SharedUiPageModule } from '@component-store-playground/shared/ui/page'
 import { createMouseEvent } from '@ngneat/spectator'
 import { createComponentFactory, mockProvider, Spectator, SpyObject } from '@ngneat/spectator/jest'
 import { of } from 'rxjs'
@@ -15,7 +12,7 @@ describe('WorkflowListComponent', () => {
   let store: SpyObject<WorkflowListStore>
   const createComponent = createComponentFactory({
     component: WorkflowListComponent,
-    imports: [RouterTestingModule, SharedUiPageModule, SharedUiLoadingModule, SharedUiIconModule],
+    imports: [RouterTestingModule],
     mocks: [WorkflowsService],
     componentProviders: [
       mockProvider(WorkflowListStore, {
@@ -25,6 +22,7 @@ describe('WorkflowListComponent', () => {
         deleteWorkflowEffect: jest.fn(),
       }),
     ],
+    shallow: true,
   })
 
   beforeEach(() => {

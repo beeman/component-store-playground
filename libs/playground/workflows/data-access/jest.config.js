@@ -3,7 +3,7 @@ module.exports = {
   preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
-      tsConfig: '<rootDir>/tsconfig.spec.json',
+      tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
   testEnvironment: 'node',
@@ -12,4 +12,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../../../coverage/libs/playground/workflows/data-access',
+  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
 }

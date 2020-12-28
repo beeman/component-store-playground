@@ -1,4 +1,9 @@
-import { Workflow, WorkflowsService } from '@component-store-playground/playground/workflows/data-access'
+import {
+  Workflow,
+  WorkflowGroup,
+  WorkflowsService,
+  WorkflowType,
+} from '@component-store-playground/playground/workflows/data-access'
 import { ApiResponse } from '@component-store-playground/shared/util/rx'
 import { subscribeSpyTo } from '@hirez_io/observer-spy'
 import { createServiceFactory, SpectatorService, SpyObject } from '@ngneat/spectator/jest'
@@ -72,6 +77,49 @@ describe('WorkflowListStore', () => {
         expect(service.items).toHaveBeenCalledWith([])
         expect(observerSpy.getLastValue()).toEqual(getVm({ workflows: [], isEmpty: true }))
       })
+
+      it('should call service.items with previous workflow$', () => {
+        const prevData: Workflow[] = [
+          { id: '1', name: 'foo', group: { id: '2', type: WorkflowType.group, children: [] } },
+        ]
+        spectator.service.patchState({ workflows: { data: prevData, status: 'success', error: '' } })
+
+        service.items.mockReturnValueOnce(getMockedItems(prevData, prevData))
+
+        const observerSpy = subscribeSpyTo(vm$)
+
+        spectator.service.loadWorkflowsEffect()
+
+        expect(service.items).toHaveBeenCalledWith(prevData)
+        expect(observerSpy.getLastValue()).toEqual(getVm({ workflows: prevData }))
+      })
+    })
+
+    it('should call service methods properly on addWorkflowEffect', () => {
+      const observerSpy = subscribeSpyTo(vm$)
+      service.create.mockReturnValueOnce(
+        of({ id: '1', name: 'foo', group: { id: '2', type: WorkflowType.group, children: [] } }),
+      )
+
+      const addWorkflowInput: { name: string; group: WorkflowGroup } = {
+        name: 'new workflow',
+        group: { id: '2', type: WorkflowType.group, children: [] },
+      }
+      spectator.service.addWorkflowEffect(addWorkflowInput)
+
+      expect(observerSpy.getLastValue()).toEqual(getVm({ saving: true }))
+      expect(service.create).toHaveBeenCalledWith(addWorkflowInput)
+      expect(service.items).toHaveBeenCalled()
+    })
+
+    it('should call service.delete on deleteWorkflowEffect', () => {
+      service.delete.mockReturnValueOnce(of(true))
+
+      const workflow: Workflow = { id: '1', name: 'foo', group: { id: '2', type: WorkflowType.group, children: [] } }
+      spectator.service.deleteWorkflowEffect(workflow)
+
+      expect(service.delete).toHaveBeenCalledWith(workflow.id)
+      expect(service.items).toHaveBeenCalled()
     })
   })
 })

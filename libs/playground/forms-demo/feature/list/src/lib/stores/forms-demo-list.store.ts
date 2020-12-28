@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { FormsDemo, FormsDemoService } from '@component-store-playground/playground/forms-demo/data-access'
-import { ComponentStore, tapResponse } from '@ngrx/component-store'
+import { tapResponse } from '@ngrx/component-store'
+import { ImmerComponentStore } from 'ngrx-immer/component-store'
 import { switchMapTo } from 'rxjs/operators'
 
 interface FormsDemoState {
@@ -8,7 +9,7 @@ interface FormsDemoState {
 }
 
 @Injectable()
-export class FormsDemoListStore extends ComponentStore<FormsDemoState> {
+export class FormsDemoListStore extends ImmerComponentStore<FormsDemoState> {
   constructor(private readonly service: FormsDemoService) {
     super({ demos: [] })
   }

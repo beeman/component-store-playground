@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
-import { ComponentStore } from '@ngrx/component-store'
+import { ImmerComponentStore } from 'ngrx-immer/component-store'
 import { tap, withLatestFrom } from 'rxjs/operators'
-import { WorkflowDetailStore } from './workflow-detail.store'
+import { WorkflowDetailsStore } from './workflow-details.store'
 
 interface WorkflowGroupState {
   isCollapsed: boolean
@@ -10,7 +10,7 @@ interface WorkflowGroupState {
 }
 
 @Injectable()
-export class WorkflowGroupStore extends ComponentStore<WorkflowGroupState> {
+export class WorkflowGroupStore extends ImmerComponentStore<WorkflowGroupState> {
   readonly isCollapsed$ = this.select((s) => s.isCollapsed)
   readonly level$ = this.select((s) => s.level!)
   readonly groupId$ = this.select((s) => s.groupId!)
@@ -35,11 +35,13 @@ export class WorkflowGroupStore extends ComponentStore<WorkflowGroupState> {
     }),
   )
 
-  constructor(private readonly workflowDetailStore: WorkflowDetailStore) {
-    super({ isCollapsed: false })
+  constructor(private readonly workflowDetailStore: WorkflowDetailsStore) {
+    super()
   }
 
-  readonly toggleCollapse = this.updater((state) => ({ ...state, isCollapsed: !state.isCollapsed }))
+  readonly toggleCollapse = this.updater((state) => {
+    state.isCollapsed = !state.isCollapsed
+  })
 
   readonly addGroupEffect = this.effect(($) =>
     $.pipe(
@@ -71,6 +73,6 @@ export class WorkflowGroupStore extends ComponentStore<WorkflowGroupState> {
   )
 
   setGroup(groupId: string, level: number): void {
-    this.patchState({ groupId, level })
+    this.setState({ groupId, level, isCollapsed: false })
   }
 }

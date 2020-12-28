@@ -1,6 +1,6 @@
 import { RouterTestingModule } from '@angular/router/testing'
 import { UiStore } from '@component-store-playground/shared/data-access/ui-store'
-import { SharedUiIconModule, UiIcon } from '@component-store-playground/shared/ui/icon'
+import { UiIcon } from '@component-store-playground/shared/ui/icon'
 import { createComponentFactory, mockProvider, Spectator, SpyObject } from '@ngneat/spectator/jest'
 import { of } from 'rxjs'
 
@@ -18,7 +18,8 @@ describe('HeaderComponent', () => {
         toggleTheme: jest.fn(),
       }),
     ],
-    imports: [RouterTestingModule, SharedUiIconModule],
+    imports: [RouterTestingModule],
+    shallow: true,
   })
 
   beforeEach(() => {

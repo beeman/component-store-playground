@@ -1,6 +1,4 @@
 import { RouterTestingModule } from '@angular/router/testing'
-import { SharedUiFooterModule } from '@component-store-playground/shared/ui/footer'
-import { SharedUiHeaderModule } from '@component-store-playground/shared/ui/header'
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 
 import { LayoutComponent } from './layout.component'
@@ -10,7 +8,8 @@ describe('LayoutComponent', () => {
 
   const createComponent = createComponentFactory({
     component: LayoutComponent,
-    imports: [RouterTestingModule, SharedUiHeaderModule, SharedUiFooterModule],
+    imports: [RouterTestingModule],
+    shallow: true,
   })
 
   beforeEach(() => (spectator = createComponent()))

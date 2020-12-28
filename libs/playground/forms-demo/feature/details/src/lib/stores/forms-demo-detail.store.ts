@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core'
 import { FormGroup } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
 import { FormsDemo, FormsDemoService } from '@component-store-playground/playground/forms-demo/data-access'
-import { ComponentStore } from '@ngrx/component-store'
-import cloneDeep from 'lodash-es/cloneDeep'
+// @ts-ignore
+import * as cloneDeep from 'lodash.clonedeep'
+import { ImmerComponentStore } from 'ngrx-immer/component-store'
 import { pluck, switchMap, tap } from 'rxjs/operators'
 
 interface FormsDemoDetailState {
@@ -13,7 +14,7 @@ interface FormsDemoDetailState {
 }
 
 @Injectable()
-export class FormsDemoDetailStore extends ComponentStore<FormsDemoDetailState> {
+export class FormsDemoDetailStore extends ImmerComponentStore<FormsDemoDetailState> {
   constructor(private readonly service: FormsDemoService, route: ActivatedRoute) {
     super({})
     this.loadDemoEffect(route.params.pipe(pluck('id')))

@@ -1,9 +1,5 @@
 import { RouterTestingModule } from '@angular/router/testing'
 import { TodosService } from '@component-store-playground/playground/todos/data-access'
-import { SharedUiFormsModule } from '@component-store-playground/shared/ui/forms'
-import { SharedUiIconModule } from '@component-store-playground/shared/ui/icon'
-import { SharedUiLoadingModule } from '@component-store-playground/shared/ui/loading'
-import { SharedUiPageModule } from '@component-store-playground/shared/ui/page'
 import { createComponentFactory, mockProvider, Spectator, SpyObject } from '@ngneat/spectator/jest'
 import { of } from 'rxjs'
 import { TodosStore } from './stores'
@@ -15,7 +11,7 @@ describe('TodosComponent', () => {
   let store: SpyObject<TodosStore>
   const createComponent = createComponentFactory({
     component: TodosComponent,
-    imports: [SharedUiFormsModule, SharedUiPageModule, SharedUiIconModule, SharedUiLoadingModule, RouterTestingModule],
+    imports: [RouterTestingModule],
     mocks: [TodosService],
     componentProviders: [
       mockProvider(TodosStore, {
@@ -27,6 +23,7 @@ describe('TodosComponent', () => {
         toggleTodoEffect: jest.fn(),
       }),
     ],
+    shallow: true,
   })
 
   beforeEach(() => {

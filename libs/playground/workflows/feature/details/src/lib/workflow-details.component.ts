@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { WorkflowDetailStore } from './stores'
+import { WorkflowDetailsStore } from './stores'
 
 @Component({
   selector: 'playground-workflow-details',
@@ -12,12 +12,12 @@ import { WorkflowDetailStore } from './stores'
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [WorkflowDetailStore],
+  providers: [WorkflowDetailsStore],
 })
 export class WorkflowDetailsComponent {
   readonly vm$ = this.workflowDetailStore.vm$
 
-  constructor(private readonly workflowDetailStore: WorkflowDetailStore) {}
+  constructor(private readonly workflowDetailStore: WorkflowDetailsStore) {}
 
   saveWorkflow(): void {
     this.workflowDetailStore.saveWorkflowEffect()

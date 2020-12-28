@@ -1,24 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ActivatedRoute } from '@angular/router'
+import { createComponentFactory, mockProvider, Spectator } from '@ngneat/spectator/jest'
+import { of } from 'rxjs'
 
 import { FormsDemoDetailComponent } from './forms-demo-detail.component'
+import { FormsDemoDetailStore } from './stores'
 
 describe('FormsDemoDetailComponent', () => {
-  let component: FormsDemoDetailComponent
-  let fixture: ComponentFixture<FormsDemoDetailComponent>
+  let spectator: Spectator<FormsDemoDetailComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [FormsDemoDetailComponent],
-    }).compileComponents()
+  const createComponent = createComponentFactory({
+    component: FormsDemoDetailComponent,
+    providers: [mockProvider(ActivatedRoute, { params: of() })],
+    componentProviders: [FormsDemoDetailStore],
+    shallow: true,
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormsDemoDetailComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
+    spectator = createComponent()
   })
 
   it('should create', () => {
-    expect(component).toBeTruthy()
+    expect(spectator.component).toBeTruthy()
   })
 })
