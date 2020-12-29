@@ -30,6 +30,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "11.0.5",
+    "@angular/cdk": "^11.0.3",
     "@angular/common": "11.0.5",
     "@angular/compiler": "11.0.5",
     "@angular/core": "11.0.5",
@@ -77,6 +78,7 @@
     "@typescript-eslint/eslint-plugin": "4.11.0",
     "@typescript-eslint/parser": "4.11.0",
     "autoprefixer": "10.1.0",
+    "codelyzer": "^6.0.0",
     "cypress": "5.6.0",
     "dotenv": "8.2.0",
     "eslint": "7.16.0",

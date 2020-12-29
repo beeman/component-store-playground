@@ -30,5 +30,8 @@ module.exports = {
     '<rootDir>/libs/playground/forms-demo/forms-demo-detail/feature',
     '<rootDir>/libs/playground/forms-demo/forms-demo-list/feature',
     '<rootDir>/libs/playground/forms-demo/data-access',
+    '<rootDir>/libs/playground/wizard/feature',
+    '<rootDir>/libs/playground/wizard/data-access',
+    '<rootDir>/libs/playground/wizard/ui',
   ],
 }

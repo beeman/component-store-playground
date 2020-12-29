@@ -17,6 +17,7 @@ export class HeaderComponent {
   links: { label: string; path: string }[] = [
     { label: 'Forms', path: 'forms' },
     { label: 'Todos', path: 'todos' },
+    { label: 'Wizard', path: 'wizard' },
     { label: 'Workflows', path: 'workflows' },
   ]
   vm$ = this.service.vm$

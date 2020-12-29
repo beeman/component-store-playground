@@ -330,6 +330,81 @@
         }
       }
     },
+    "playground-wizard-data-access": {
+      "projectType": "library",
+      "root": "libs/playground/wizard/data-access",
+      "sourceRoot": "libs/playground/wizard/data-access/src",
+      "prefix": "component-store-playground",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/playground/wizard/data-access/tsconfig.lib.json",
+              "libs/playground/wizard/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/playground/wizard/data-access/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/wizard/data-access"],
+          "options": {
+            "jestConfig": "libs/playground/wizard/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-wizard-feature": {
+      "projectType": "library",
+      "root": "libs/playground/wizard/feature",
+      "sourceRoot": "libs/playground/wizard/feature/src",
+      "prefix": "component-store-playground",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/playground/wizard/feature/tsconfig.lib.json",
+              "libs/playground/wizard/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/playground/wizard/feature/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/wizard/feature"],
+          "options": {
+            "jestConfig": "libs/playground/wizard/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-wizard-ui": {
+      "projectType": "library",
+      "root": "libs/playground/wizard/ui",
+      "sourceRoot": "libs/playground/wizard/ui/src",
+      "prefix": "component-store-playground",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/playground/wizard/ui/tsconfig.lib.json", "libs/playground/wizard/ui/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/playground/wizard/ui/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/wizard/ui"],
+          "options": {
+            "jestConfig": "libs/playground/wizard/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "playground-workflows-data-access": {
       "root": "libs/playground/workflows/data-access",
       "sourceRoot": "libs/playground/workflows/data-access/src",
