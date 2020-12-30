@@ -37,8 +37,7 @@ export class WorkflowListComponent implements OnInit {
     task.value = ''
   }
 
-  deleteWorkflow($event: MouseEvent, workflow: Workflow): void {
-    $event.stopPropagation()
+  deleteWorkflow(workflow: Workflow): void {
     this.workflowListStore.deleteWorkflowEffect(workflow)
   }
 }

@@ -7,7 +7,7 @@
         <div class="flex-grow">
           <h3 class="font-semibold px-2 py-3 leading-tight">Todos</h3>
           <div class="w-full">
-            <playground-form [form]="vm.form" [fields]="vm.fields"></playground-form>
+            <playground-form [form]="form" [fields]="fields"></playground-form>
             <playground-loading [loading]="vm.isLoading"></playground-loading>
             <ng-container *ngIf="vm.isEmpty">
               <div

@@ -1,24 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
+import { SvgIconComponent, SvgIconsModule } from '@ngneat/svg-icon'
 
 import { IconComponent } from './icon.component'
 
 describe('IconComponent', () => {
-  let component: IconComponent
-  let fixture: ComponentFixture<IconComponent>
+  let spectator: Spectator<IconComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [IconComponent],
-    }).compileComponents()
+  const createComponent = createComponentFactory({
+    component: IconComponent,
+    imports: [SvgIconsModule.forRoot({ icons: { data: '<svg>foo</svg>', name: 'foo' } })],
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IconComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
+    spectator = createComponent({
+      props: {
+        icon: 'foo',
+      },
+    })
   })
 
   it('should create', () => {
-    expect(component).toBeTruthy()
+    expect(spectator.component).toBeTruthy()
+    expect(spectator.query(SvgIconComponent)?.key).toEqual('foo')
   })
 })

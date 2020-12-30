@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
-import { ComponentStore } from '@ngrx/component-store'
+import { CustomComponentStore } from '@component-store-playground/shared/util/custom-component-store'
 import { tap, withLatestFrom } from 'rxjs/operators'
-import { WorkflowDetailStore } from './workflow-detail.store'
+import { WorkflowDetailsStore } from './workflow-details.store'
 
 interface WorkflowGroupState {
   isCollapsed: boolean
@@ -10,36 +10,35 @@ interface WorkflowGroupState {
 }
 
 @Injectable()
-export class WorkflowGroupStore extends ComponentStore<WorkflowGroupState> {
-  readonly isCollapsed$ = this.select((s) => s.isCollapsed)
-  readonly level$ = this.select((s) => s.level!)
+export class WorkflowGroupStore extends CustomComponentStore<WorkflowGroupState> {
   readonly groupId$ = this.select((s) => s.groupId!)
   readonly group$ = this.select(this.groupId$, this.workflowDetailStore.groupNodes$, (groupId, groupNodes) =>
     groupNodes.get(groupId),
   )
 
   readonly vm$ = this.select(
-    this.level$,
-    this.isCollapsed$,
+    this.$,
     this.group$,
     this.workflowDetailStore.maxDepth$,
-    (level, isCollapsed, group, maxDepth) => ({
+    ({ level, isCollapsed }, group, maxDepth) => ({
       level,
       group,
       isCollapsed,
       isAtMaxDepth: level === maxDepth,
-      isSubGroup: level > 0,
+      isSubGroup: level! > 0,
       hasNoChildren: !group?.children?.length,
-      nextLevel: level + 1,
+      nextLevel: level! + 1,
       collapsedIcon: isCollapsed ? 'plusCircle' : 'minusCircle',
     }),
   )
 
-  constructor(private readonly workflowDetailStore: WorkflowDetailStore) {
-    super({ isCollapsed: false })
+  constructor(private readonly workflowDetailStore: WorkflowDetailsStore) {
+    super()
   }
 
-  readonly toggleCollapse = this.updater((state) => ({ ...state, isCollapsed: !state.isCollapsed }))
+  readonly toggleCollapse = this.updater((state) => {
+    state.isCollapsed = !state.isCollapsed
+  })
 
   readonly addGroupEffect = this.effect(($) =>
     $.pipe(
@@ -71,6 +70,6 @@ export class WorkflowGroupStore extends ComponentStore<WorkflowGroupState> {
   )
 
   setGroup(groupId: string, level: number): void {
-    this.patchState({ groupId, level })
+    this.setState({ groupId, level, isCollapsed: false })
   }
 }

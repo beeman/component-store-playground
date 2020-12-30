@@ -1,24 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 
 import { FormsDemoListComponent } from './forms-demo-list.component'
+import { FormsDemoListStore } from './stores'
 
 describe('FormsDemoListComponent', () => {
-  let component: FormsDemoListComponent
-  let fixture: ComponentFixture<FormsDemoListComponent>
+  let spectator: Spectator<FormsDemoListComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [FormsDemoListComponent],
-    }).compileComponents()
+  const createComponent = createComponentFactory({
+    component: FormsDemoListComponent,
+    componentProviders: [FormsDemoListStore],
+    shallow: true,
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormsDemoListComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
+    spectator = createComponent()
   })
 
   it('should create', () => {
-    expect(component).toBeTruthy()
+    expect(spectator.component).toBeTruthy()
   })
 })

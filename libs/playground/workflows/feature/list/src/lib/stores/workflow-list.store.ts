@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core'
 import { Workflow, WorkflowGroup, WorkflowsService } from '@component-store-playground/playground/workflows/data-access'
 import { ApiResponse } from '@component-store-playground/shared/util/rx'
-import { ComponentStore, tapResponse } from '@ngrx/component-store'
-import { immerReducer } from 'ngrx-immer'
+import { tapResponse } from '@ngrx/component-store'
+import { ImmerComponentStore } from 'ngrx-immer/component-store'
 import { mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators'
 
 interface WorkflowListState {
@@ -11,7 +11,7 @@ interface WorkflowListState {
 }
 
 @Injectable()
-export class WorkflowListStore extends ComponentStore<WorkflowListState> {
+export class WorkflowListStore extends ImmerComponentStore<WorkflowListState> {
   constructor(private readonly service: WorkflowsService) {
     super({
       workflows: { data: [], error: '', status: 'idle' },
@@ -29,14 +29,11 @@ export class WorkflowListStore extends ComponentStore<WorkflowListState> {
     isEmpty: status === 'success' && !data?.length,
   }))
 
-  readonly updateWorkflows = this.updater<ApiResponse<Workflow[]>>(
-    immerReducer((state, value) => {
-      state.workflows = value
-      state.saving = false
-    }),
-  )
+  readonly updateWorkflows = this.updater<ApiResponse<Workflow[]>>((state, value) => {
+    state.workflows = value
+    state.saving = false
+  })
 
-  // loadWorkflows
   readonly loadWorkflowsEffect = this.effect(($) =>
     $.pipe(
       withLatestFrom(this.workflows$),

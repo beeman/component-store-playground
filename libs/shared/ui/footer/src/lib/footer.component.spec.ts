@@ -1,24 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 
 import { FooterComponent } from './footer.component'
 
 describe('FooterComponent', () => {
-  let component: FooterComponent
-  let fixture: ComponentFixture<FooterComponent>
+  let spectator: Spectator<FooterComponent>
+  const createComponent = createComponentFactory(FooterComponent)
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [FooterComponent],
-    }).compileComponents()
-  })
+  beforeEach(() => (spectator = createComponent()))
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(FooterComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
-
-  it('should create', () => {
-    expect(component).toBeTruthy()
+  it('should create and contain footer', () => {
+    expect(spectator.component).toBeTruthy()
+    expect(spectator.query('footer')).toBeTruthy()
   })
 })

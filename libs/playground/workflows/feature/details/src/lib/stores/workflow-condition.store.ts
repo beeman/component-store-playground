@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core'
 import { WorkflowCondition } from '@component-store-playground/playground/workflows/data-access'
-import { ComponentStore } from '@ngrx/component-store'
+import { CustomComponentStore } from '@component-store-playground/shared/util/custom-component-store'
 import { tap, withLatestFrom } from 'rxjs/operators'
-import { WorkflowDetailStore } from './workflow-detail.store'
+import { WorkflowDetailsStore } from './workflow-details.store'
 
 interface WorkflowConditionState {
   conditionId: string
 }
 
 @Injectable()
-export class WorkflowConditionStore extends ComponentStore<WorkflowConditionState> {
+export class WorkflowConditionStore extends CustomComponentStore<WorkflowConditionState> {
   readonly conditionId$ = this.select((s) => s.conditionId)
   readonly condition$ = this.select(
     this.conditionId$,
@@ -18,7 +18,7 @@ export class WorkflowConditionStore extends ComponentStore<WorkflowConditionStat
   )
   readonly vm$ = this.select(this.condition$, (condition) => ({ condition }))
 
-  constructor(private readonly workflowDetailStore: WorkflowDetailStore) {
+  constructor(private readonly workflowDetailStore: WorkflowDetailsStore) {
     super()
   }
 
