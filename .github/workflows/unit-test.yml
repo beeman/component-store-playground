@@ -9,7 +9,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  jest:
 
     runs-on: ${{matrix.os}}
 
