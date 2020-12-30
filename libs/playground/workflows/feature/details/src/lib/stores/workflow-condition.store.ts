@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { WorkflowCondition } from '@component-store-playground/playground/workflows/data-access'
-import { ImmerComponentStore } from 'ngrx-immer/component-store'
+import { CustomComponentStore } from '@component-store-playground/shared/util/custom-component-store'
 import { tap, withLatestFrom } from 'rxjs/operators'
 import { WorkflowDetailsStore } from './workflow-details.store'
 
@@ -9,7 +9,7 @@ interface WorkflowConditionState {
 }
 
 @Injectable()
-export class WorkflowConditionStore extends ImmerComponentStore<WorkflowConditionState> {
+export class WorkflowConditionStore extends CustomComponentStore<WorkflowConditionState> {
   readonly conditionId$ = this.select((s) => s.conditionId)
   readonly condition$ = this.select(
     this.conditionId$,

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core'
 import { Todo, TodosService } from '@component-store-playground/playground/todos/data-access'
+import { CustomComponentStore } from '@component-store-playground/shared/util/custom-component-store'
 import { ApiResponse } from '@component-store-playground/shared/util/rx'
 import { tapResponse } from '@ngrx/component-store'
-import { ImmerComponentStore } from 'ngrx-immer/component-store'
 import { mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators'
 
 interface TodosState {
@@ -12,12 +12,10 @@ interface TodosState {
 }
 
 @Injectable()
-export class TodosStore extends ImmerComponentStore<TodosState> {
+export class TodosStore extends CustomComponentStore<TodosState> {
   readonly todos$ = this.select((s) => s.todos)
-  readonly saving$ = this.select((s) => s.saving)
-  readonly filter$ = this.select((s) => s.filter)
 
-  readonly vm$ = this.select(this.todos$, this.saving$, this.filter$, ({ data, error, status }, saving, filter) => {
+  readonly vm$ = this.select(this.$, ({ todos: { data, error, status }, filter, saving }) => {
     const filteredTodos =
       data?.filter((todo) => (filter ? todo.task.toLocaleLowerCase().includes(filter.toLowerCase()) : true)) ?? []
 

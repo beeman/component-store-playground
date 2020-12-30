@@ -96,6 +96,9 @@
     "shared-ui-page": {
       "tags": ["scope:playground", "type:ui"]
     },
+    "shared-util-custom-component-store": {
+      "tags": ["scope:shared", "type:util"]
+    },
     "shared-util-rx": {
       "tags": ["scope:playground", "type:util"]
     }

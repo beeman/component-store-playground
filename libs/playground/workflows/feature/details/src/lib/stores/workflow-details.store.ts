@@ -9,9 +9,9 @@ import {
   WorkflowType,
 } from '@component-store-playground/playground/workflows/data-access'
 import { randomId, WorkflowHelper } from '@component-store-playground/playground/workflows/util'
+import { CustomComponentStore } from '@component-store-playground/shared/util/custom-component-store'
 import { ApiResponse } from '@component-store-playground/shared/util/rx'
 import { tapResponse } from '@ngrx/component-store'
-import { ImmerComponentStore } from 'ngrx-immer/component-store'
 import { map, pluck, switchMap, withLatestFrom } from 'rxjs/operators'
 
 /**
@@ -64,24 +64,18 @@ interface WorkflowDetailsState {
 }
 
 @Injectable()
-export class WorkflowDetailsStore extends ImmerComponentStore<WorkflowDetailsState> {
+export class WorkflowDetailsStore extends CustomComponentStore<WorkflowDetailsState> {
   readonly maxDepth$ = this.select((s) => s.maxDepth)
   readonly workflow$ = this.select((s) => s.workflow)
   readonly groupNodes$ = this.select((s) => s.groupNodes)
   readonly conditionNodes$ = this.select((s) => s.conditionNodes)
 
-  readonly vm$ = this.select(
-    this.workflow$,
-    this.maxDepth$,
-    this.groupNodes$,
-    this.conditionNodes$,
-    ({ data, status, error }, maxDepth, groupNodes) => ({
-      workflow: data,
-      loading: status === 'loading',
-      maxDepth,
-      root: (groupNodes.values().next().value as WorkflowGroup)?.id,
-    }),
-  )
+  readonly vm$ = this.select(this.$, ({ workflow: { data, status }, maxDepth, groupNodes }) => ({
+    workflow: data,
+    loading: status === 'loading',
+    maxDepth,
+    root: (groupNodes.values().next().value as WorkflowGroup)?.id,
+  }))
 
   constructor(private readonly service: WorkflowsService, route: ActivatedRoute) {
     super({

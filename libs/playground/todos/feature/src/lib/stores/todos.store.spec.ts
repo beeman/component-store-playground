@@ -132,7 +132,9 @@ describe('TodosStore', () => {
         spectator.service.loadTodosEffect()
 
         expect(service.items).toHaveBeenCalledWith([])
-        expect(observerSpy.getLastValue()).toEqual(
+        expect(observerSpy.getValues()).toEqual([
+          getVm(),
+          getVm({ isLoading: true }),
           getVm({
             filteredTodos: [
               {
@@ -142,7 +144,7 @@ describe('TodosStore', () => {
               },
             ],
           }),
-        )
+        ])
       })
 
       it('should call service.items with previous todos$', () => {
@@ -174,10 +176,24 @@ describe('TodosStore', () => {
     describe('addTodoEffect', () => {
       it('should call service.create properly', () => {
         const observerSpy = subscribeSpyTo(vm$)
+        service.items.mockReturnValueOnce(getMockedServiceItemsReturn())
         service.create.mockReturnValueOnce(of({ task: 'new todo', id: '234', done: false }))
 
         spectator.service.addTodoEffect('new todo')
-        expect(observerSpy.getLastValue()).toEqual(getVm({ saving: true }))
+        expect(observerSpy.getValues()).toEqual([
+          getVm(),
+          getVm({ saving: true }),
+          getVm({ isLoading: true }),
+          getVm({
+            filteredTodos: [
+              {
+                task: 'foo',
+                done: false,
+                id: '123',
+              },
+            ],
+          }),
+        ])
         expect(service.create).toHaveBeenCalledWith({ task: 'new todo', done: false })
         expect(service.items).toHaveBeenCalled()
       })
