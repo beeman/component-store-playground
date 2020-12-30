@@ -12,7 +12,7 @@ import { WorkflowDetailsStore } from './workflow-details.store'
 describe('WorkflowDetailsStore', () => {
   let spectator: SpectatorService<WorkflowDetailsStore>
   let vm$: typeof WorkflowDetailsStore.prototype['vm$']
-  let service: SpyObject<WorkflowsService>
+  let mockedService: SpyObject<WorkflowsService>
   let route: SpyObject<ActivatedRoute>
 
   const spiedNormalize = jest.spyOn(WorkflowHelper, 'normalize')
@@ -55,7 +55,7 @@ describe('WorkflowDetailsStore', () => {
   beforeEach(() => {
     spectator = createService()
     vm$ = spectator.service.vm$
-    service = spectator.inject(WorkflowsService)
+    mockedService = spectator.inject(WorkflowsService)
     route = spectator.inject(ActivatedRoute)
   })
 
@@ -65,13 +65,13 @@ describe('WorkflowDetailsStore', () => {
       expect(vm$).toBeTruthy()
     })
 
-    it('should call service.item with workflowId on initializeEffect', () => {
+    it('should call service.item with route.workflowId on initializeEffect', () => {
       route.params.pipe(pluck('workflowId'), take(1)).subscribe((workflowId) => {
-        expect(service.item).toHaveBeenCalledWith('1')
+        expect(mockedService.item).toHaveBeenCalledWith(workflowId)
       })
     })
 
-    it('should vm$ emit default values', () => {
+    it('should vm$ emit default values after effect ran', () => {
       const observerSpy = subscribeSpyTo(vm$)
       expect(observerSpy.getValues()).toEqual([
         getVm({ workflow: { id: '1', name: 'foo', group: rootGroup }, root: rootGroup.id }),
@@ -101,7 +101,7 @@ describe('WorkflowDetailsStore', () => {
     })
   })
 
-  it('should addCondition to conditioNodes', () => {
+  it('should addCondition to conditionNodes', () => {
     const mockedNewConditionId = mockRandomId()
     spectator.service.addCondition(normalizedRootGroup.id)
 
@@ -170,6 +170,6 @@ describe('WorkflowDetailsStore', () => {
       expect(spiedDenormalize).toHaveBeenCalledWith(groupNodes, conditionNodes)
     })
 
-    expect(service.update).toHaveBeenCalled()
+    expect(mockedService.update).toHaveBeenCalled()
   })
 })

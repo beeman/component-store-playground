@@ -1,6 +1,5 @@
 import { RouterTestingModule } from '@angular/router/testing'
 import { Workflow, WorkflowsService, WorkflowType } from '@component-store-playground/playground/workflows/data-access'
-import { createMouseEvent } from '@ngneat/spectator'
 import { createComponentFactory, mockProvider, Spectator, SpyObject } from '@ngneat/spectator/jest'
 import { of } from 'rxjs'
 import { WorkflowListStore } from './stores'
@@ -52,7 +51,7 @@ describe('WorkflowListComponent', () => {
       name: 'foo',
       group: { id: '2', children: [], type: WorkflowType.group },
     }
-    spectator.component.deleteWorkflow(createMouseEvent(''), workflow)
+    spectator.component.deleteWorkflow(workflow)
     expect(store.deleteWorkflowEffect).toHaveBeenCalledWith(workflow)
   })
 })

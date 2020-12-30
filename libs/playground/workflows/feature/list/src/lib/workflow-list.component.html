@@ -25,7 +25,10 @@
                 <p class="hover:text-blue-dark">
                   {{ workflow.name }}
                 </p>
-                <button class="text-gray-200 hover:text-red-600" (click)="deleteWorkflow($event, workflow)">
+                <button
+                  class="text-gray-200 hover:text-red-600"
+                  (click)="$event.stopPropagation(); deleteWorkflow(workflow)"
+                >
                   <playground-icon icon="trash" size="sm"></playground-icon>
                 </button>
               </div>
