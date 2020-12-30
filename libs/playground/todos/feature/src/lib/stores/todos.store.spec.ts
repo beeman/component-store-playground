@@ -101,7 +101,7 @@ describe('TodosStore', () => {
 
   describe('effects', () => {
     let service: SpyObject<TodosService>
-    const getMockedServiceItemsReturn = (prev: Todo[] = []) =>
+    const getMockedServiceItemsReturn = (data: Todo[], prev: Todo[] = []) =>
       of<ApiResponse<Todo[]>>(
         {
           data: prev,
@@ -109,13 +109,7 @@ describe('TodosStore', () => {
           error: '',
         },
         {
-          data: [
-            {
-              task: 'foo',
-              done: false,
-              id: '123',
-            },
-          ],
+          data,
           status: 'success',
           error: '',
         },
@@ -127,7 +121,15 @@ describe('TodosStore', () => {
     describe('loadTodosEffect', () => {
       it('should call service.items properly', () => {
         const observerSpy = subscribeSpyTo(vm$)
-        service.items.mockReturnValueOnce(getMockedServiceItemsReturn())
+        service.items.mockReturnValueOnce(
+          getMockedServiceItemsReturn([
+            {
+              task: 'foo',
+              done: false,
+              id: '123',
+            },
+          ]),
+        )
 
         spectator.service.loadTodosEffect()
 
@@ -152,7 +154,7 @@ describe('TodosStore', () => {
         const prevData = [{ task: 'prev', id: '234', done: false }]
         spectator.service.patchState({ todos: { data: prevData, status: 'success', error: '' } })
 
-        service.items.mockReturnValueOnce(getMockedServiceItemsReturn(prevData))
+        service.items.mockReturnValueOnce(getMockedServiceItemsReturn(prevData, prevData))
 
         const observerSpy = subscribeSpyTo(vm$)
         spectator.service.loadTodosEffect()
@@ -163,9 +165,9 @@ describe('TodosStore', () => {
           getVm({
             filteredTodos: [
               {
-                task: 'foo',
+                task: 'prev',
                 done: false,
-                id: '123',
+                id: '234',
               },
             ],
           }),
@@ -176,23 +178,16 @@ describe('TodosStore', () => {
     describe('addTodoEffect', () => {
       it('should call service.create properly', () => {
         const observerSpy = subscribeSpyTo(vm$)
-        service.items.mockReturnValueOnce(getMockedServiceItemsReturn())
-        service.create.mockReturnValueOnce(of({ task: 'new todo', id: '234', done: false }))
+        const newTodo = { task: 'new todo', id: '234', done: false }
+        service.items.mockReturnValueOnce(getMockedServiceItemsReturn([newTodo]))
+        service.create.mockReturnValueOnce(of(newTodo))
 
         spectator.service.addTodoEffect('new todo')
         expect(observerSpy.getValues()).toEqual([
           getVm(),
           getVm({ saving: true }),
           getVm({ isLoading: true }),
-          getVm({
-            filteredTodos: [
-              {
-                task: 'foo',
-                done: false,
-                id: '123',
-              },
-            ],
-          }),
+          getVm({ filteredTodos: [newTodo] }),
         ])
         expect(service.create).toHaveBeenCalledWith({ task: 'new todo', done: false })
         expect(service.items).toHaveBeenCalled()
