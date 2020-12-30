@@ -27,6 +27,7 @@ describe('TodosStore', () => {
     filter: undefined,
     ...partial,
   })
+
   const createService = createServiceFactory({
     service: TodosStore,
     mocks: [TodosService],
@@ -175,47 +176,41 @@ describe('TodosStore', () => {
       })
     })
 
-    describe('addTodoEffect', () => {
-      it('should call service.create properly', () => {
-        const observerSpy = subscribeSpyTo(vm$)
-        const newTodo = { task: 'new todo', id: '234', done: false }
-        service.items.mockReturnValueOnce(getMockedServiceItemsReturn([newTodo]))
-        service.create.mockReturnValueOnce(of(newTodo))
+    it('should call service.create properly', () => {
+      const observerSpy = subscribeSpyTo(vm$)
+      const newTodo = { task: 'new todo', id: '234', done: false }
+      service.items.mockReturnValueOnce(getMockedServiceItemsReturn([newTodo]))
+      service.create.mockReturnValueOnce(of(newTodo))
+      spectator.service.addTodoEffect(newTodo.task)
 
-        spectator.service.addTodoEffect('new todo')
-        expect(observerSpy.getValues()).toEqual([
-          getVm(),
-          getVm({ saving: true }),
-          getVm({ isLoading: true }),
-          getVm({ filteredTodos: [newTodo] }),
-        ])
-        expect(service.create).toHaveBeenCalledWith({ task: 'new todo', done: false })
-        expect(service.items).toHaveBeenCalled()
-      })
+      expect(observerSpy.getValues()).toEqual([
+        getVm(),
+        getVm({ saving: true }),
+        getVm({ isLoading: true }),
+        getVm({ filteredTodos: [newTodo] }),
+      ])
+      expect(service.create).toHaveBeenCalledWith({ task: 'new todo', done: false })
+      expect(service.items).toHaveBeenCalled()
     })
 
-    describe('deleteTodoEffect', () => {
-      it('should call service.delete properly', () => {
-        const observerSpy = subscribeSpyTo(vm$)
-        service.delete.mockReturnValueOnce(of(true))
+    it('should call service.delete properly', () => {
+      const observerSpy = subscribeSpyTo(vm$)
+      service.delete.mockReturnValueOnce(of(true))
 
-        spectator.service.deleteTodoEffect({ id: '123', task: 'foo', done: false })
-        expect(observerSpy.receivedNext()).toEqual(true)
-        expect(service.delete).toHaveBeenCalledWith('123')
-        expect(service.items).toHaveBeenCalled()
-      })
+      spectator.service.deleteTodoEffect({ id: '123', task: 'foo', done: false })
+      expect(observerSpy.receivedNext()).toEqual(true)
+      expect(service.delete).toHaveBeenCalledWith('123')
+      expect(service.items).toHaveBeenCalled()
     })
 
-    describe('toggleTodoEffect', () => {
-      it('should call service.toggleTodo properly', () => {
-        const observerSpy = subscribeSpyTo(vm$)
-        service.toggleTodo.mockReturnValueOnce(of({ id: '123', task: 'foo', done: false }))
+    it('should call service.toggleTodo properly', () => {
+      const observerSpy = subscribeSpyTo(vm$)
+      service.toggleTodo.mockReturnValueOnce(of({ id: '123', task: 'foo', done: false }))
 
-        spectator.service.toggleTodoEffect({ id: '123', task: 'foo', done: false })
-        expect(observerSpy.receivedNext()).toEqual(true)
-        expect(service.toggleTodo).toHaveBeenCalledWith({ id: '123', task: 'foo', done: false })
-        expect(service.items).toHaveBeenCalled()
-      })
+      spectator.service.toggleTodoEffect({ id: '123', task: 'foo', done: false })
+      expect(observerSpy.receivedNext()).toEqual(true)
+      expect(service.toggleTodo).toHaveBeenCalledWith({ id: '123', task: 'foo', done: false })
+      expect(service.items).toHaveBeenCalled()
     })
   })
 })
