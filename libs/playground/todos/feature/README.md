@@ -1,7 +1,21 @@
-# playground-todos-feature
+# Todos
 
-This library was generated with [Nx](https://nx.dev).
+This is an implementation of **ComponentStore** for a Todos demo
 
-## Running unit tests
+![demo](../../../../assets/todo.gif)
 
-Run `nx test playground-todos-feature` to execute the unit tests.
+## State
+
+```ts
+interface TodosState {
+  todos: ApiResponse<Todo[]>
+  saving: boolean
+  filter?: string
+}
+```
+
+## Data Flow
+
+- `loadTodosEffect` is invoked as soon as `TodosComponent` is initialized.
+- `loadTodosEffect` calls `TodosService` to get the current todos then update the store with the response
+- Interact with the `TodosStore` with: `addTodoEffect`, `toggleTodoEffect`, and `deleteTodoEffect`
