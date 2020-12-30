@@ -622,27 +622,6 @@
         }
       }
     },
-    "shared-util-custom-component-store": {
-      "root": "libs/shared/util/custom-component-store",
-      "sourceRoot": "libs/shared/util/custom-component-store/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/shared/util/custom-component-store/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/util/custom-component-store"],
-          "options": {
-            "jestConfig": "libs/shared/util/custom-component-store/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "shared-util-rx": {
       "root": "libs/shared/util/rx",
       "sourceRoot": "libs/shared/util/rx/src",

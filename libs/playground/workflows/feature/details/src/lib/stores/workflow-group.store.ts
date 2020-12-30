@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { CustomComponentStore } from '@component-store-playground/shared/util/custom-component-store'
+import { ImmerComponentStore } from 'ngrx-immer/component-store'
 import { tap, withLatestFrom } from 'rxjs/operators'
 import { WorkflowDetailsStore } from './workflow-details.store'
 
@@ -10,14 +10,14 @@ interface WorkflowGroupState {
 }
 
 @Injectable()
-export class WorkflowGroupStore extends CustomComponentStore<WorkflowGroupState> {
+export class WorkflowGroupStore extends ImmerComponentStore<WorkflowGroupState> {
   readonly groupId$ = this.select((s) => s.groupId!)
   readonly group$ = this.select(this.groupId$, this.workflowDetailStore.groupNodes$, (groupId, groupNodes) =>
     groupNodes.get(groupId),
   )
 
   readonly vm$ = this.select(
-    this.$,
+    this.state$,
     this.group$,
     this.workflowDetailStore.maxDepth$,
     ({ level, isCollapsed }, group, maxDepth) => ({
