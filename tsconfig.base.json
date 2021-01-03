@@ -32,6 +32,7 @@
       "@component-store-playground/playground/shell": ["libs/playground/shell/src/index.ts"],
       "@component-store-playground/playground/todos/data-access": ["libs/playground/todos/data-access/src/index.ts"],
       "@component-store-playground/playground/todos/feature": ["libs/playground/todos/feature/src/index.ts"],
+      "@component-store-playground/playground/worker/feature": ["libs/playground/worker/feature/src/index.ts"],
       "@component-store-playground/playground/workflows/data-access": [
         "libs/playground/workflows/data-access/src/index.ts"
       ],

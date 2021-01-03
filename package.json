@@ -38,6 +38,7 @@
     "@angular/platform-browser": "11.0.5",
     "@angular/platform-browser-dynamic": "11.0.5",
     "@angular/router": "11.0.5",
+    "@ng-web-apis/workers": "^1.0.2",
     "@ngneat/svg-icon": "2.1.0",
     "@ngrx/component-store": "10.1.2",
     "@ngx-formly/core": "5.10.10",

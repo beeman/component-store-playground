@@ -57,6 +57,9 @@
     "playground-todos-feature": {
       "tags": ["scope:todos", "type:ui"]
     },
+    "playground-worker-feature": {
+      "tags": []
+    },
     "playground-workflows-data-access": {
       "tags": ["scope:workflows", "type:data-access"]
     },

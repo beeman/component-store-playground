@@ -23,6 +23,11 @@ export const playgroundShellRoutes: Routes = [
           import('@component-store-playground/playground/todos/feature').then((m) => m.PlaygroundTodosFeatureModule),
       },
       {
+        path: 'worker',
+        loadChildren: () =>
+          import('@component-store-playground/playground/worker/feature').then((m) => m.PlaygroundWorkerFeatureModule),
+      },
+      {
         path: 'workflows',
         loadChildren: () =>
           import('@component-store-playground/playground/workflows/feature/shell').then(

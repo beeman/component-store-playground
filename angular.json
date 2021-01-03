@@ -330,6 +330,31 @@
         }
       }
     },
+    "playground-worker-feature": {
+      "projectType": "library",
+      "root": "libs/playground/worker/feature",
+      "sourceRoot": "libs/playground/worker/feature/src",
+      "prefix": "component-store-playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/worker/feature/src/**/*.ts",
+              "libs/playground/worker/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/worker/feature"],
+          "options": {
+            "jestConfig": "libs/playground/worker/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "playground-workflows-data-access": {
       "root": "libs/playground/workflows/data-access",
       "sourceRoot": "libs/playground/workflows/data-access/src",
