@@ -44,6 +44,8 @@
     "@nrwl/angular": "11.0.18",
     "@nrwl/node": "11.0.18",
     "firebase": "8.2.1",
+    "highcharts": "^8.2.2",
+    "highcharts-angular": "^2.8.2",
     "immer": "8.0.0",
     "lodash.clonedeep": "4.5.0",
     "ng-indexed-db": "0.0.0-beta.1",

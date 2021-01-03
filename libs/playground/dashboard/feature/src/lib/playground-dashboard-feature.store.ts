@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import {
+  DashboardDatasource,
   PlaygroundDashboardDataAccessService,
   Widget,
   WidgetType,
@@ -18,12 +19,24 @@ export class PlaygroundDashboardFeatureStore extends ComponentStore<PlaygroundDa
     super()
     this.setState({
       widgets: [
-        { id: 'uptime', type: WidgetType.uptime, title: 'Application Uptime', data$: this.data.uptime$ },
+        {
+          id: 'chart',
+          type: WidgetType.chart,
+          title: 'Render Charts',
+          data$: this.data.get(DashboardDatasource.charts),
+        },
         {
           id: 'html',
           type: WidgetType.html,
-          title: 'Some HTML',
+          title: 'Render HTML',
           content: `<h3 class="text-pink-400">Hola Mundo!</h3>`,
+        },
+        {
+          id: 'uptime',
+          type: WidgetType.uptime,
+          title: 'Render Counters',
+          content: 'Application Uptime',
+          data$: this.data.get(DashboardDatasource.uptime),
         },
       ],
     })
