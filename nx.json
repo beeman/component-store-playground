@@ -29,6 +29,15 @@
     "playground-auth-feature": {
       "tags": ["scope:auth", "type:ui"]
     },
+    "playground-dashboard-data-access": {
+      "tags": []
+    },
+    "playground-dashboard-feature": {
+      "tags": []
+    },
+    "playground-dashboard-ui": {
+      "tags": []
+    },
     "playground-e2e": {
       "tags": [],
       "implicitDependencies": ["playground"]

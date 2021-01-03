@@ -16,6 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@component-store-playground/playground/auth/feature": ["libs/playground/auth/feature/src/index.ts"],
+      "@component-store-playground/playground/dashboard/data-access": [
+        "libs/playground/dashboard/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/dashboard/feature": ["libs/playground/dashboard/feature/src/index.ts"],
+      "@component-store-playground/playground/dashboard/ui": ["libs/playground/dashboard/ui/src/index.ts"],
       "@component-store-playground/playground/forms-demo/data-access": [
         "libs/playground/forms-demo/data-access/src/index.ts"
       ],

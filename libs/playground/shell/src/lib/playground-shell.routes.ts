@@ -18,6 +18,13 @@ export const playgroundShellRoutes: Routes = [
           import('@component-store-playground/playground/auth/feature').then((m) => m.PlaygroundAuthFeatureModule),
       },
       {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('@component-store-playground/playground/dashboard/feature').then(
+            (m) => m.PlaygroundDashboardFeatureModule,
+          ),
+      },
+      {
         path: 'todos',
         loadChildren: () =>
           import('@component-store-playground/playground/todos/feature').then((m) => m.PlaygroundTodosFeatureModule),

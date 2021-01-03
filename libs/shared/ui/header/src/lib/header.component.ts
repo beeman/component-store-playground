@@ -15,6 +15,7 @@ import { UiStore } from '@component-store-playground/shared/data-access/ui-store
 })
 export class HeaderComponent {
   links: { label: string; path: string }[] = [
+    { label: 'Dashboard', path: 'dashboard' },
     { label: 'Forms', path: 'forms' },
     { label: 'Todos', path: 'todos' },
     { label: 'Workflows', path: 'workflows' },

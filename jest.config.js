@@ -31,5 +31,8 @@ module.exports = {
     '<rootDir>/libs/playground/forms-demo/forms-demo-list/feature',
     '<rootDir>/libs/playground/forms-demo/data-access',
     '<rootDir>/libs/shared/util/custom-component-store',
+    '<rootDir>/libs/playground/dashboard/data-access',
+    '<rootDir>/libs/playground/dashboard/feature',
+    '<rootDir>/libs/playground/dashboard/ui',
   ],
 }

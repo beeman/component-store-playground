@@ -115,6 +115,81 @@
         }
       }
     },
+    "playground-dashboard-data-access": {
+      "projectType": "library",
+      "root": "libs/playground/dashboard/data-access",
+      "sourceRoot": "libs/playground/dashboard/data-access/src",
+      "prefix": "component-store-playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/dashboard/data-access/src/**/*.ts",
+              "libs/playground/dashboard/data-access/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/dashboard/data-access"],
+          "options": {
+            "jestConfig": "libs/playground/dashboard/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-dashboard-feature": {
+      "projectType": "library",
+      "root": "libs/playground/dashboard/feature",
+      "sourceRoot": "libs/playground/dashboard/feature/src",
+      "prefix": "component-store-playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/dashboard/feature/src/**/*.ts",
+              "libs/playground/dashboard/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/dashboard/feature"],
+          "options": {
+            "jestConfig": "libs/playground/dashboard/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-dashboard-ui": {
+      "projectType": "library",
+      "root": "libs/playground/dashboard/ui",
+      "sourceRoot": "libs/playground/dashboard/ui/src",
+      "prefix": "component-store-playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/dashboard/ui/src/**/*.ts",
+              "libs/playground/dashboard/ui/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/dashboard/ui"],
+          "options": {
+            "jestConfig": "libs/playground/dashboard/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "playground-e2e": {
       "root": "apps/playground-e2e",
       "sourceRoot": "apps/playground-e2e/src",
