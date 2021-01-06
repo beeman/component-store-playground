@@ -37,9 +37,53 @@ export class ReduxComponentStore<TState extends object> extends ImmerComponentSt
 
     if (this.isExtensionPresent) {
       const temp = (args: Observable<ValueType> | ValueType) => {
-        const callerName = new Error().stack?.match(/\[as (\w+)]/)?.[1]
+        const errorStack = new Error().stack
+
+        if (errorStack?.includes('.setState') || errorStack?.includes('.patchState')) {
+          return ((fn as unknown) as Function)(args)
+        }
+
+        const callerName = errorStack?.match(/\[as (\w+)]/)?.[1]
+
         if (isObservable(args)) {
           args.pipe(takeUntil(this.destroy$)).subscribe((payload: ValueType) => {
+            this.devToolsConnection?.send({ type: `[${this.constructor.name}] ${callerName}`, payload }, this.get())
+          })
+        } else {
+          this.devToolsConnection?.send({ type: `[${this.constructor.name}] ${callerName}`, payload: args }, this.get())
+        }
+
+        return ((fn as unknown) as Function)(args)
+      }
+
+      return (temp as unknown) as ReturnType
+    }
+
+    return (fn as unknown) as ReturnType
+  }
+
+  effect<
+    ProvidedType = void,
+    OriginType extends Observable<ProvidedType> | unknown = Observable<ProvidedType>,
+    ObservableType = OriginType extends Observable<infer A> ? A : never,
+    ReturnType = ProvidedType | ObservableType extends void
+      ? () => void
+      : (observableOrValue: Observable<ObservableType> | ObservableType) => Subscription
+  >(generator: (origin$: OriginType) => Observable<unknown>): ReturnType {
+    const fn = super.effect(generator)
+
+    if (this.isExtensionPresent) {
+      const temp = (args: ObservableType | Observable<ObservableType>) => {
+        const errorStack = new Error().stack
+
+        if (errorStack?.includes('.setState') || errorStack?.includes('.patchState')) {
+          return ((fn as unknown) as Function)(args)
+        }
+
+        const callerName = errorStack?.match(/\[as (\w+)]/)?.[1]
+
+        if (isObservable(args)) {
+          args.pipe(takeUntil(this.destroy$)).subscribe((payload: ObservableType) => {
             this.devToolsConnection?.send({ type: `[${this.constructor.name}] ${callerName}`, payload }, this.get())
           })
         } else {
