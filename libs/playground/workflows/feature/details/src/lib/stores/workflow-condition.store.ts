@@ -1,6 +1,11 @@
-import { Injectable } from '@angular/core'
+import { Inject, Injectable } from '@angular/core'
 import { WorkflowCondition } from '@component-store-playground/playground/workflows/data-access'
-import { ImmerComponentStore } from 'ngrx-immer/component-store'
+import {
+  IS_EXTENSION_PRESENT,
+  REDUX_DEVTOOLS_EXTENSION_CONNECTION,
+  ReduxComponentStore,
+  ReduxDevtoolsExtensionConnection,
+} from '@component-store-playground/shared/util/component-store-devtools'
 import { tap, withLatestFrom } from 'rxjs/operators'
 import { WorkflowDetailsStore } from './workflow-details.store'
 
@@ -9,7 +14,7 @@ interface WorkflowConditionState {
 }
 
 @Injectable()
-export class WorkflowConditionStore extends ImmerComponentStore<WorkflowConditionState> {
+export class WorkflowConditionStore extends ReduxComponentStore<WorkflowConditionState> {
   readonly conditionId$ = this.select((s) => s.conditionId)
   readonly condition$ = this.select(
     this.conditionId$,
@@ -18,8 +23,12 @@ export class WorkflowConditionStore extends ImmerComponentStore<WorkflowConditio
   )
   readonly vm$ = this.select(this.condition$, (condition) => ({ condition }))
 
-  constructor(private readonly workflowDetailStore: WorkflowDetailsStore) {
-    super()
+  constructor(
+    private readonly workflowDetailStore: WorkflowDetailsStore,
+    @Inject(IS_EXTENSION_PRESENT) isExtensionPresent?: boolean,
+    @Inject(REDUX_DEVTOOLS_EXTENSION_CONNECTION) devToolsConnection?: ReduxDevtoolsExtensionConnection,
+  ) {
+    super(undefined, isExtensionPresent, devToolsConnection)
   }
 
   readonly deleteConditionEffect = this.effect(($) =>

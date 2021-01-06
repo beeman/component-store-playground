@@ -622,6 +622,32 @@
         }
       }
     },
+    "shared-util-component-store-devtools": {
+      "projectType": "library",
+      "root": "libs/shared/util/component-store-devtools",
+      "sourceRoot": "libs/shared/util/component-store-devtools/src",
+      "prefix": "component-store-playground",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/util/component-store-devtools/tsconfig.lib.json",
+              "libs/shared/util/component-store-devtools/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/util/component-store-devtools/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/util/component-store-devtools"],
+          "options": {
+            "jestConfig": "libs/shared/util/component-store-devtools/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "shared-util-rx": {
       "root": "libs/shared/util/rx",
       "sourceRoot": "libs/shared/util/rx/src",

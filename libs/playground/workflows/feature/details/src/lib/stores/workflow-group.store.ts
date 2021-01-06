@@ -1,5 +1,10 @@
-import { Injectable } from '@angular/core'
-import { ImmerComponentStore } from 'ngrx-immer/component-store'
+import { Inject, Injectable } from '@angular/core'
+import {
+  IS_EXTENSION_PRESENT,
+  REDUX_DEVTOOLS_EXTENSION_CONNECTION,
+  ReduxComponentStore,
+  ReduxDevtoolsExtensionConnection,
+} from '@component-store-playground/shared/util/component-store-devtools'
 import { tap, withLatestFrom } from 'rxjs/operators'
 import { WorkflowDetailsStore } from './workflow-details.store'
 
@@ -10,7 +15,7 @@ interface WorkflowGroupState {
 }
 
 @Injectable()
-export class WorkflowGroupStore extends ImmerComponentStore<WorkflowGroupState> {
+export class WorkflowGroupStore extends ReduxComponentStore<WorkflowGroupState> {
   readonly groupId$ = this.select((s) => s.groupId!)
   readonly group$ = this.select(this.groupId$, this.workflowDetailStore.groupNodes$, (groupId, groupNodes) =>
     groupNodes.get(groupId),
@@ -32,8 +37,12 @@ export class WorkflowGroupStore extends ImmerComponentStore<WorkflowGroupState> 
     }),
   )
 
-  constructor(private readonly workflowDetailStore: WorkflowDetailsStore) {
-    super()
+  constructor(
+    private readonly workflowDetailStore: WorkflowDetailsStore,
+    @Inject(IS_EXTENSION_PRESENT) isExtensionPresent?: boolean,
+    @Inject(REDUX_DEVTOOLS_EXTENSION_CONNECTION) devToolsConnection?: ReduxDevtoolsExtensionConnection,
+  ) {
+    super(undefined, isExtensionPresent, devToolsConnection)
   }
 
   readonly toggleCollapse = this.updater((state) => {

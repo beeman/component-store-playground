@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Inject, Injectable } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import {
   NormalizedWorkflowGroup,
@@ -9,9 +9,14 @@ import {
   WorkflowType,
 } from '@component-store-playground/playground/workflows/data-access'
 import { randomId, WorkflowHelper } from '@component-store-playground/playground/workflows/util'
+import {
+  IS_EXTENSION_PRESENT,
+  REDUX_DEVTOOLS_EXTENSION_CONNECTION,
+  ReduxComponentStore,
+  ReduxDevtoolsExtensionConnection,
+} from '@component-store-playground/shared/util/component-store-devtools'
 import { ApiResponse } from '@component-store-playground/shared/util/rx'
 import { tapResponse } from '@ngrx/component-store'
-import { ImmerComponentStore } from 'ngrx-immer/component-store'
 import { map, pluck, switchMap, withLatestFrom } from 'rxjs/operators'
 
 /**
@@ -64,7 +69,7 @@ interface WorkflowDetailsState {
 }
 
 @Injectable()
-export class WorkflowDetailsStore extends ImmerComponentStore<WorkflowDetailsState> {
+export class WorkflowDetailsStore extends ReduxComponentStore<WorkflowDetailsState> {
   readonly maxDepth$ = this.select((s) => s.maxDepth)
   readonly workflow$ = this.select((s) => s.workflow)
   readonly groupNodes$ = this.select((s) => s.groupNodes)
@@ -77,14 +82,23 @@ export class WorkflowDetailsStore extends ImmerComponentStore<WorkflowDetailsSta
     root: (groupNodes.values().next().value as WorkflowGroup)?.id,
   }))
 
-  constructor(private readonly service: WorkflowsService, route: ActivatedRoute) {
-    super({
-      saving: false,
-      maxDepth: 2,
-      workflow: { data: null, status: 'idle', error: '' },
-      groupNodes: new Map<string, NormalizedWorkflowGroup>(),
-      conditionNodes: new Map<string, WorkflowCondition>(),
-    })
+  constructor(
+    private readonly service: WorkflowsService,
+    route: ActivatedRoute,
+    @Inject(IS_EXTENSION_PRESENT) isExtensionPresent?: boolean,
+    @Inject(REDUX_DEVTOOLS_EXTENSION_CONNECTION) devToolsConnection?: ReduxDevtoolsExtensionConnection,
+  ) {
+    super(
+      {
+        saving: false,
+        maxDepth: 2,
+        workflow: { data: null, status: 'idle', error: '' },
+        groupNodes: new Map<string, NormalizedWorkflowGroup>(),
+        conditionNodes: new Map<string, WorkflowCondition>(),
+      },
+      isExtensionPresent,
+      devToolsConnection,
+    )
     this.initializeEffect(route.params.pipe(pluck('workflowId')))
   }
 

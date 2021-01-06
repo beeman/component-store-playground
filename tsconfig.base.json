@@ -53,6 +53,9 @@
       "@component-store-playground/shared/ui/icon": ["libs/shared/ui/icon/src/index.ts"],
       "@component-store-playground/shared/ui/loading": ["libs/shared/ui/loading/src/index.ts"],
       "@component-store-playground/shared/ui/page": ["libs/shared/ui/page/src/index.ts"],
+      "@component-store-playground/shared/util/component-store-devtools": [
+        "libs/shared/util/component-store-devtools/src/index.ts"
+      ],
       "@component-store-playground/shared/util/rx": ["libs/shared/util/rx/src/index.ts"],
       "@csp-playground/shared/data-access/idb": ["libs/playground/shared/data-access/idb/src/index.ts"]
     }

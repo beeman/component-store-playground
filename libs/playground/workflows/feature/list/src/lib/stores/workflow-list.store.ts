@@ -1,8 +1,13 @@
-import { Injectable } from '@angular/core'
+import { Inject, Injectable } from '@angular/core'
 import { Workflow, WorkflowGroup, WorkflowsService } from '@component-store-playground/playground/workflows/data-access'
+import {
+  IS_EXTENSION_PRESENT,
+  REDUX_DEVTOOLS_EXTENSION_CONNECTION,
+  ReduxComponentStore,
+  ReduxDevtoolsExtensionConnection,
+} from '@component-store-playground/shared/util/component-store-devtools'
 import { ApiResponse } from '@component-store-playground/shared/util/rx'
 import { tapResponse } from '@ngrx/component-store'
-import { ImmerComponentStore } from 'ngrx-immer/component-store'
 import { mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators'
 
 interface WorkflowListState {
@@ -11,12 +16,20 @@ interface WorkflowListState {
 }
 
 @Injectable()
-export class WorkflowListStore extends ImmerComponentStore<WorkflowListState> {
-  constructor(private readonly service: WorkflowsService) {
-    super({
-      workflows: { data: [], error: '', status: 'idle' },
-      saving: false,
-    })
+export class WorkflowListStore extends ReduxComponentStore<WorkflowListState> {
+  constructor(
+    private readonly service: WorkflowsService,
+    @Inject(IS_EXTENSION_PRESENT) isExtensionPresent?: boolean,
+    @Inject(REDUX_DEVTOOLS_EXTENSION_CONNECTION) devToolsConnection?: ReduxDevtoolsExtensionConnection,
+  ) {
+    super(
+      {
+        workflows: { data: [], error: '', status: 'idle' },
+        saving: false,
+      },
+      isExtensionPresent,
+      devToolsConnection,
+    )
   }
 
   readonly workflows$ = this.select((s) => s.workflows)
