@@ -22,11 +22,7 @@ export class WorkflowDetailsComponent {
   readonly fields = [
     FormField.fieldRow(
       [
-        FormField.input(
-          'workflowName',
-          { label: 'Workflow Name', description: 'Testing description' },
-          { className: 'col-span-3' },
-        ),
+        FormField.input('workflowName', { label: 'Workflow Name' }, { className: 'col-span-3' }),
         FormField.number(
           'maxDepth',
           { label: 'Max Depth' },
