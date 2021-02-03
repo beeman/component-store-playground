@@ -5,16 +5,19 @@ describe('WorkflowHelper', () => {
   const tree: WorkflowGroup = {
     id: '1',
     type: WorkflowType.group,
+    level: 0,
     children: [
       {
         id: '2',
         parentId: '1',
         type: WorkflowType.group,
+        level: 1,
         children: [
           {
             id: '4',
             parentId: '2',
             type: WorkflowType.group,
+            level: 2,
             children: [{ id: '5', parentId: '4', type: WorkflowType.condition, value: false }],
           },
         ],
@@ -26,6 +29,7 @@ describe('WorkflowHelper', () => {
     .set('1', {
       id: '1',
       type: WorkflowType.group,
+      level: 0,
       children: [
         { id: '2', type: WorkflowType.group },
         { id: '3', type: WorkflowType.condition },
@@ -33,12 +37,14 @@ describe('WorkflowHelper', () => {
     })
     .set('2', {
       id: '2',
+      level: 1,
       parentId: '1',
       type: WorkflowType.group,
       children: [{ id: '4', type: WorkflowType.group }],
     })
     .set('4', {
       id: '4',
+      level: 2,
       parentId: '2',
       type: WorkflowType.group,
       children: [{ id: '5', type: WorkflowType.condition }],

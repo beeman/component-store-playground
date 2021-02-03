@@ -28,7 +28,7 @@ describe('WorkflowDetailsStore', () => {
           of({
             status: 'success',
             error: '',
-            data: { id: '1', name: 'foo', group: rootGroup },
+            data: { id: '1', name: 'foo', group: rootGroup, maxDepth: 2 },
           }),
       }),
       mockProvider(ActivatedRoute, {
@@ -47,10 +47,10 @@ describe('WorkflowDetailsStore', () => {
     partial: Partial<{
       workflow: Workflow
       loading: boolean
-      maxDepth: number
       root: string
+      currentMaxLevel: number
     }> = {},
-  ) => ({ workflow: null, loading: false, maxDepth: 2, root: undefined, ...partial })
+  ) => ({ workflow: null, currentMaxLevel: 0, loading: false, root: undefined, ...partial })
 
   beforeEach(() => {
     spectator = createService()
@@ -74,7 +74,11 @@ describe('WorkflowDetailsStore', () => {
     it('should vm$ emit default values after effect ran', () => {
       const observerSpy = subscribeSpyTo(vm$)
       expect(observerSpy.getValues()).toEqual([
-        getVm({ workflow: { id: '1', name: 'foo', group: rootGroup }, root: rootGroup.id }),
+        getVm({
+          workflow: { id: '1', name: 'foo', group: rootGroup, maxDepth: 2 },
+          root: rootGroup.id,
+          currentMaxLevel: 1,
+        }),
       ])
     })
 
@@ -86,7 +90,7 @@ describe('WorkflowDetailsStore', () => {
   it('should addGroup to groupNodes', () => {
     const mockedNewGroupId = mockRandomId()
 
-    spectator.service.addGroup(normalizedRootGroup.id)
+    spectator.service.addGroup({ parentId: normalizedRootGroup.id, level: normalizedRootGroup.level })
     const observerSpy = subscribeSpyTo(
       spectator.service.groupNodes$.pipe(
         map((groupNodes) => groupNodes.get(mockedNewGroupId)),
@@ -98,6 +102,7 @@ describe('WorkflowDetailsStore', () => {
       type: WorkflowType.group,
       children: [],
       parentId: normalizedRootGroup.id,
+      level: 1,
     })
   })
 
@@ -161,7 +166,7 @@ describe('WorkflowDetailsStore', () => {
   })
 
   it('should call denormalize and service.update on saveWorkflowEffect', () => {
-    spectator.service.saveWorkflowEffect()
+    spectator.service.saveWorkflowEffect({ workflowName: 'workflow name', maxDepth: 3 })
 
     combineLatest([
       spectator.service.groupNodes$.pipe(take(1)),

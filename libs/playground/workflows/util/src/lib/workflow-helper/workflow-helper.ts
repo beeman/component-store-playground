@@ -14,11 +14,13 @@ export class WorkflowHelper {
     group: WorkflowGroup,
     groupNodes: Map<string, NormalizedWorkflowGroup> = new Map<string, NormalizedWorkflowGroup>(),
     conditionNodes: Map<string, WorkflowCondition> = new Map<string, WorkflowCondition>(),
+    level = 0,
   ): { groupNodes: Map<string, NormalizedWorkflowGroup>; conditionNodes: Map<string, WorkflowCondition> } {
     if (group.parentId == null) {
       groupNodes.set(group.id!, {
         id: group.id,
         type: WorkflowType.group,
+        level,
         children: group.children!.map((child) => ({ type: child.type, id: child.id })),
       })
     }
@@ -30,9 +32,10 @@ export class WorkflowHelper {
             id: child.id,
             parentId: group.id,
             type: WorkflowType.group,
+            level: level + 1,
             children: child.children!.map((item) => ({ type: item.type, id: item.id })),
           })
-          this.normalize(child, groupNodes, conditionNodes)
+          this.normalize(child, groupNodes, conditionNodes, level + 1)
         } else {
           conditionNodes.set(child.id!, {
             id: child.id,

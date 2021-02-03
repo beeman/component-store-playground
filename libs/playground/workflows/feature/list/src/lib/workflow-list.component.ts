@@ -32,6 +32,7 @@ export class WorkflowListComponent implements OnInit {
         id: randomId(),
         type: WorkflowType.group,
         children: [],
+        level: 0,
       },
     })
     task.value = ''

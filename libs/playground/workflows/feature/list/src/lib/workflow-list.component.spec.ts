@@ -49,7 +49,8 @@ describe('WorkflowListComponent', () => {
     const workflow: Workflow = {
       id: '1',
       name: 'foo',
-      group: { id: '2', children: [], type: WorkflowType.group },
+      group: { id: '2', children: [], type: WorkflowType.group, level: 0 },
+      maxDepth: 2,
     }
     spectator.component.deleteWorkflow(workflow)
     expect(store.deleteWorkflowEffect).toHaveBeenCalledWith(workflow)

@@ -16,6 +16,7 @@ export interface WorkflowCondition extends WorkflowItem {
 
 export interface WorkflowGroup extends WorkflowItem {
   readonly type: WorkflowType.group
+  level: number
   children: (WorkflowGroup | WorkflowCondition)[]
 }
 

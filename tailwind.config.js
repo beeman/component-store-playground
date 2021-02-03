@@ -8,7 +8,11 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      opacity: ['disabled'],
+      cursor: ['disabled'],
+      pointerEvents: ['disabled'],
+    },
   },
   plugins: [require('@tailwindcss/forms')],
 }

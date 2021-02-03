@@ -3,18 +3,33 @@
     <div
       class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 shadow-lg rounded-lg overflow-hidden py-4 px-6"
     >
-      <div class="flex-grow flex justify-between">
-        <h3 class="font-normal px-2 py-3 leading-tight">{{ vm.workflow?.name }}</h3>
-        <button class="bg-green-400 hover:bg-green-500 text-white py-1 px-2 rounded" (click)="saveWorkflow()">
-          Save
-        </button>
+      <div class="flex-grow flex justify-between gap-4">
+        <div class="flex flex-grow items-center">
+          <playground-form
+            class="w-full"
+            [form]="form"
+            [fields]="fields"
+            [model]="{
+              workflowName: vm.workflow?.name,
+              maxDepth: vm.workflow?.maxDepth,
+              currentMaxLevel: vm.currentMaxLevel || 0
+            }"
+          ></playground-form>
+        </div>
       </div>
+      <button
+        [disabled]="form.invalid"
+        class="bg-green-400 hover:bg-green-500 text-white py-1 px-2 rounded disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none"
+        (click)="saveWorkflow()"
+      >
+        Save
+      </button>
       <div class="w-full mt-6">
         <playground-loading [loading]="vm.loading"></playground-loading>
 
         <ng-container *ngIf="!vm.workflow?.group"> No workflow group!</ng-container>
         <ng-container *ngIf="vm.workflow?.group">
-          <playground-workflow-group [groupId]="vm.root!" [level]="0"></playground-workflow-group>
+          <playground-workflow-group [groupId]="vm.root!"></playground-workflow-group>
         </ng-container>
       </div>
     </div>

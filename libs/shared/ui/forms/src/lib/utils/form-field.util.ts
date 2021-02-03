@@ -58,8 +58,8 @@ export class FormField implements FormlyFieldConfig {
     return this.field(key, 'multicheckbox', templateOptions, options)
   }
 
-  static number(key: string, templateOptions?: FormlyTemplateOptions, options?: any): FormlyFieldConfig {
-    return this.input(key, { ...templateOptions, type: 'number' }, { ...options })
+  static number(key: string, templateOptions?: FormlyTemplateOptions, options?: FormlyFieldConfig): FormlyFieldConfig {
+    return this.input(key, { ...templateOptions, type: 'number' }, { ...(options || {}) })
   }
 
   static password(key: string, templateOptions?: FormlyTemplateOptions, options?: any): FormlyFieldConfig {

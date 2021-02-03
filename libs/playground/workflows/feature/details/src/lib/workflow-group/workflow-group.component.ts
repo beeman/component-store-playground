@@ -17,7 +17,7 @@ import { WorkflowGroupStore } from '../stores'
 })
 export class WorkflowGroupComponent implements OnInit {
   @Input() groupId!: string
-  @Input() level!: number
+  @Input() level = 0
   type = WorkflowType
 
   readonly vm$ = this.workflowGroupStore.vm$

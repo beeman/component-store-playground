@@ -16,12 +16,14 @@ export const firstLevelGroup: WorkflowGroup = {
   id: '2',
   parentId: '1',
   type: WorkflowType.group,
+  level: 1,
   children: [secondLevelCondition],
 }
 
 export const rootGroup: WorkflowGroup = {
   id: '1',
   type: WorkflowType.group,
+  level: 0,
   children: [firstLevelGroup],
 }
 

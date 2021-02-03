@@ -117,7 +117,10 @@ describe('WorkflowGroupStore', () => {
 
     spectator.service.addGroupEffect()
 
-    expect(mockedDetailsStore.addGroup).toHaveBeenCalledWith(normalizedFirstGroupNoChild.id)
+    expect(mockedDetailsStore.addGroup).toHaveBeenCalledWith({
+      parentId: normalizedFirstGroupNoChild.id,
+      level: normalizedFirstGroupNoChild.level,
+    })
     expect(observerSpy.getLastValue()).toEqual(getVm({ group: updatedGroup, hasNoChildren: false }))
   })
 

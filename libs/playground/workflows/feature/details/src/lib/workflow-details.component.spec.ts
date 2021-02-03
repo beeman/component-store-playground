@@ -9,7 +9,12 @@ describe('WorkflowDetailsComponent', () => {
   let spectator: Spectator<WorkflowDetailsComponent>
   let store: SpyObject<WorkflowDetailsStore>
 
-  const workflow: Workflow = { id: '1', name: 'foo', group: { id: '2', type: WorkflowType.group, children: [] } }
+  const workflow: Workflow = {
+    id: '1',
+    name: 'foo',
+    group: { id: '2', type: WorkflowType.group, children: [], level: 2 },
+    maxDepth: 2,
+  }
 
   const createComponent = createComponentFactory({
     component: WorkflowDetailsComponent,
@@ -18,8 +23,8 @@ describe('WorkflowDetailsComponent', () => {
         vm$: of({
           workflow,
           loading: status === 'loading',
-          maxDepth: 2,
           root: '1',
+          currentMaxLevel: 1,
         }),
         saveWorkflowEffect: jest.fn(),
       }),
@@ -35,10 +40,6 @@ describe('WorkflowDetailsComponent', () => {
   it('should create', () => {
     expect(spectator.component).toBeTruthy()
     expect(spectator.component.vm$).toBe(store.vm$)
-  })
-
-  it('should render workflow name', () => {
-    expect(spectator.query('h3')).toHaveText(workflow.name)
   })
 
   it('should invoke store.saveWorkflowEffect on saveWorkflow', () => {

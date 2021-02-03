@@ -12,7 +12,7 @@ import { randomId, WorkflowHelper } from '@component-store-playground/playground
 import { ApiResponse } from '@component-store-playground/shared/util/rx'
 import { tapResponse } from '@ngrx/component-store'
 import { ImmerComponentStore } from 'ngrx-immer/component-store'
-import { map, pluck, switchMap, withLatestFrom } from 'rxjs/operators'
+import { map, pluck, switchMap, tap, withLatestFrom } from 'rxjs/operators'
 
 /**
  * tree: {
@@ -57,33 +57,40 @@ import { map, pluck, switchMap, withLatestFrom } from 'rxjs/operators'
 
 interface WorkflowDetailsState {
   saving: boolean
-  maxDepth: number
   workflow: ApiResponse<Workflow>
   groupNodes: Map<string, NormalizedWorkflowGroup>
   conditionNodes: Map<string, WorkflowCondition>
+  currentLevels: Set<number>
+}
+
+interface AddGroupParams {
+  parentId: string
+  level: number
 }
 
 @Injectable()
 export class WorkflowDetailsStore extends ImmerComponentStore<WorkflowDetailsState> {
-  readonly maxDepth$ = this.select((s) => s.maxDepth)
   readonly workflow$ = this.select((s) => s.workflow)
+  readonly maxDepth$ = this.select(this.workflow$, (workflow) => workflow.data?.maxDepth || 2)
   readonly groupNodes$ = this.select((s) => s.groupNodes)
   readonly conditionNodes$ = this.select((s) => s.conditionNodes)
 
-  readonly vm$ = this.select(this.state$, ({ workflow: { data, status }, maxDepth, groupNodes }) => ({
-    workflow: data,
-    loading: status === 'loading',
-    maxDepth,
-    root: (groupNodes.values().next().value as WorkflowGroup)?.id,
-  }))
+  readonly vm$ = this.select(this.state$, ({ workflow: { data, status }, groupNodes, currentLevels }) => {
+    return {
+      workflow: data,
+      loading: status === 'loading',
+      root: (groupNodes.values().next().value as WorkflowGroup)?.id,
+      currentMaxLevel: Math.max(...currentLevels.values()),
+    }
+  })
 
   constructor(private readonly service: WorkflowsService, route: ActivatedRoute) {
     super({
       saving: false,
-      maxDepth: 2,
       workflow: { data: null, status: 'idle', error: '' },
       groupNodes: new Map<string, NormalizedWorkflowGroup>(),
       conditionNodes: new Map<string, WorkflowCondition>(),
+      currentLevels: new Set<number>(),
     })
     this.initializeEffect(route.params.pipe(pluck('workflowId')))
   }
@@ -102,6 +109,7 @@ export class WorkflowDetailsStore extends ImmerComponentStore<WorkflowDetailsSta
                 workflow,
                 groupNodes,
                 conditionNodes,
+                currentLevels: new Set<number>([...groupNodes.values()].map((group) => group.level)),
               })
             }
           }, console.error),
@@ -110,15 +118,17 @@ export class WorkflowDetailsStore extends ImmerComponentStore<WorkflowDetailsSta
     ),
   )
 
-  readonly addGroup = this.updater<string>((state, parentId) => {
+  readonly addGroup = this.updater<AddGroupParams>((state, { parentId, level }) => {
     const newGroupId = randomId()
     state.groupNodes!.set(newGroupId, {
       id: newGroupId,
       parentId,
       type: WorkflowType.group,
       children: [],
+      level: level + 1,
     })
     state.groupNodes.get(parentId!)?.children.push({ id: newGroupId, type: WorkflowType.group })
+    state.currentLevels.add(level + 1)
   })
 
   readonly addCondition = this.updater<string>((state, parentId) => {
@@ -138,6 +148,11 @@ export class WorkflowDetailsStore extends ImmerComponentStore<WorkflowDetailsSta
 
     const parent = state.groupNodes.get(group.parentId!) as NormalizedWorkflowGroup
     parent.children = parent.children?.filter((child) => child.id !== groupId) ?? []
+
+    const isLastGroupAtLevel = ![...state.groupNodes.values()].some((groupNode) => groupNode.level === group.level)
+    if (isLastGroupAtLevel) {
+      state.currentLevels.delete(group.level)
+    }
   })
 
   readonly removeCondition = this.updater<string>((state, conditionId) => {
@@ -154,18 +169,27 @@ export class WorkflowDetailsStore extends ImmerComponentStore<WorkflowDetailsSta
     }
   })
 
-  readonly saveWorkflowEffect = this.effect(($) =>
-    $.pipe(
+  readonly saveWorkflowEffect = this.effect<{ workflowName: string; maxDepth: number }>((saveParams$) =>
+    saveParams$.pipe(
       withLatestFrom(this.groupNodes$, this.conditionNodes$, this.workflow$),
-      map(([, groupNodes, conditionNodes, { data }]) => {
+      map(([{ workflowName, maxDepth }, groupNodes, conditionNodes, { data }]) => {
         const denormalizedTree = WorkflowHelper.denormalize(groupNodes, conditionNodes)
         return {
           ...data,
-          name: data!.name,
+          maxDepth,
+          name: workflowName,
           group: denormalizedTree,
         }
       }),
-      switchMap((updatedWorkflow: Workflow) => this.service.update(updatedWorkflow.id!, updatedWorkflow)),
+      switchMap((updatedWorkflow: Workflow) =>
+        this.service.update(updatedWorkflow.id!, updatedWorkflow).pipe(
+          tap((workflow) => {
+            this.patchState((state) => ({
+              workflow: { ...state.workflow, data: workflow },
+            }))
+          }),
+        ),
+      ),
     ),
   )
 }
