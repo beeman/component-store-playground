@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
+import { SharedUiFormsModule } from '@component-store-playground/shared/ui/forms'
 import { SharedUiIconModule } from '@component-store-playground/shared/ui/icon'
 import { SharedUiLoadingModule } from '@component-store-playground/shared/ui/loading'
 import { SharedUiPageModule } from '@component-store-playground/shared/ui/page'
@@ -20,6 +21,7 @@ enableMapSet()
     SharedUiLoadingModule,
     SharedUiIconModule,
     ReactiveFormsModule,
+    SharedUiFormsModule,
   ],
   declarations: [WorkflowDetailsComponent, WorkflowGroupComponent, WorkflowConditionComponent],
 })

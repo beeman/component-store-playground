@@ -42,8 +42,11 @@ export class WorkflowGroupStore extends ImmerComponentStore<WorkflowGroupState> 
 
   readonly addGroupEffect = this.effect(($) =>
     $.pipe(
-      withLatestFrom(this.groupId$),
-      tap(([, groupId]) => this.workflowDetailStore.addGroup(groupId)),
+      withLatestFrom(
+        this.groupId$,
+        this.select((s) => s.level),
+      ),
+      tap(([, groupId, level]) => this.workflowDetailStore.addGroup({ parentId: groupId, level: level! })),
     ),
   )
 

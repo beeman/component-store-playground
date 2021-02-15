@@ -80,7 +80,7 @@ describe('WorkflowListStore', () => {
 
       it('should call service.items with previous workflow$', () => {
         const prevData: Workflow[] = [
-          { id: '1', name: 'foo', group: { id: '2', type: WorkflowType.group, children: [] } },
+          { id: '1', name: 'foo', group: { id: '2', type: WorkflowType.group, children: [], level: 0 }, maxDepth: 2 },
         ]
         spectator.service.patchState({ workflows: { data: prevData, status: 'success', error: '' } })
 
@@ -98,24 +98,29 @@ describe('WorkflowListStore', () => {
     it('should call service methods properly on addWorkflowEffect', () => {
       const observerSpy = subscribeSpyTo(vm$)
       service.create.mockReturnValueOnce(
-        of({ id: '1', name: 'foo', group: { id: '2', type: WorkflowType.group, children: [] } }),
+        of({ id: '1', name: 'foo', group: { id: '2', type: WorkflowType.group, children: [], level: 0 }, maxDepth: 2 }),
       )
 
       const addWorkflowInput: { name: string; group: WorkflowGroup } = {
         name: 'new workflow',
-        group: { id: '2', type: WorkflowType.group, children: [] },
+        group: { id: '2', type: WorkflowType.group, children: [], level: 0 },
       }
       spectator.service.addWorkflowEffect(addWorkflowInput)
 
       expect(observerSpy.getLastValue()).toEqual(getVm({ saving: true }))
-      expect(service.create).toHaveBeenCalledWith(addWorkflowInput)
+      expect(service.create).toHaveBeenCalledWith({ ...addWorkflowInput, maxDepth: 2 })
       expect(service.items).toHaveBeenCalled()
     })
 
     it('should call service.delete on deleteWorkflowEffect', () => {
       service.delete.mockReturnValueOnce(of(true))
 
-      const workflow: Workflow = { id: '1', name: 'foo', group: { id: '2', type: WorkflowType.group, children: [] } }
+      const workflow: Workflow = {
+        id: '1',
+        name: 'foo',
+        group: { id: '2', type: WorkflowType.group, children: [], level: 0 },
+        maxDepth: 2,
+      }
       spectator.service.deleteWorkflowEffect(workflow)
 
       expect(service.delete).toHaveBeenCalledWith(workflow.id)

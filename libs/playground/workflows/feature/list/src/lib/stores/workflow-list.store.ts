@@ -50,7 +50,7 @@ export class WorkflowListStore extends ImmerComponentStore<WorkflowListState> {
   readonly addWorkflowEffect = this.effect<{ name: string; group: WorkflowGroup }>((input$) =>
     input$.pipe(
       tap(() => this.patchState({ saving: true })),
-      mergeMap((input) => this.service.create(input).pipe(this.reload)),
+      mergeMap((input) => this.service.create({ ...input, maxDepth: 2 }).pipe(this.reload)),
     ),
   )
 
