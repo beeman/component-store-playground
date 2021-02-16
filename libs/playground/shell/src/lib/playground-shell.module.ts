@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common'
+import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { SharedDataAccessIdbModule } from '@component-store-playground/shared/data-access/idb'
@@ -10,6 +11,7 @@ import { playgroundShellRoutes } from './playground-shell.routes'
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     SharedDataAccessIdbModule,
     RouterModule.forRoot(playgroundShellRoutes),
     SharedUiHeaderModule,

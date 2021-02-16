@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { UiStore } from '@component-store-playground/shared/data-access/ui-store'
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'playground-header',
@@ -14,11 +15,7 @@ import { UiStore } from '@component-store-playground/shared/data-access/ui-store
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  links: { label: string; path: string }[] = [
-    { label: 'Forms', path: 'forms' },
-    { label: 'Todos', path: 'todos' },
-    { label: 'Workflows', path: 'workflows' },
-  ]
+  navItems$ = this.service.navItems$.pipe(map((navItems) => navItems.filter((navItem) => !navItem.hideOnNavbar)))
   vm$ = this.service.vm$
 
   constructor(private readonly service: UiStore) {}

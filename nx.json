@@ -33,6 +33,21 @@
       "tags": [],
       "implicitDependencies": ["playground"]
     },
+    "playground-fetch-demo-data-access": {
+      "tags": ["scope:fetch-demo", "type:data-access"]
+    },
+    "playground-fetch-demo-feature-client-side-filter": {
+      "tags": ["scope:fetch-demo", "type:ui"]
+    },
+    "playground-fetch-demo-feature-list": {
+      "tags": ["scope:fetch-demo", "type:ui"]
+    },
+    "playground-fetch-demo-feature-shell": {
+      "tags": ["scope:fetch-demo", "type:ui"]
+    },
+    "playground-fetch-demo-ui-paginator": {
+      "tags": ["scope:fetch-demo", "type:ui"]
+    },
     "playground-forms-demo-data-access": {
       "tags": ["scope:forms-demo", "type:data-access"]
     },
@@ -75,6 +90,9 @@
     "shared-data-access-idb": {
       "tags": ["scope:playground", "type:data-access"]
     },
+    "shared-data-access-models": {
+      "tags": ["scope:playground", "type:data-access"]
+    },
     "shared-data-access-ui-store": {
       "tags": ["scope:playground", "type:data-access"]
     },
@@ -94,6 +112,9 @@
       "tags": ["scope:playground", "type:ui"]
     },
     "shared-ui-page": {
+      "tags": ["scope:playground", "type:ui"]
+    },
+    "shared-ui-sidenav": {
       "tags": ["scope:playground", "type:ui"]
     },
     "shared-util-rx": {

@@ -31,5 +31,12 @@ module.exports = {
     '<rootDir>/libs/playground/forms-demo/forms-demo-list/feature',
     '<rootDir>/libs/playground/forms-demo/data-access',
     '<rootDir>/libs/shared/util/custom-component-store',
+    '<rootDir>/libs/playground/fetch-demo/feature/shell',
+    '<rootDir>/libs/playground/fetch-demo/feature/list',
+    '<rootDir>/libs/playground/fetch-demo/feature/client-side-filter',
+    '<rootDir>/libs/shared/ui/sidenav',
+    '<rootDir>/libs/shared/data-access/models',
+    '<rootDir>/libs/playground/fetch-demo/ui/paginator',
+    '<rootDir>/libs/playground/fetch-demo/data-access',
   ],
 }

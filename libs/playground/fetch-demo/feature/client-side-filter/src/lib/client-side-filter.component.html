@@ -1,0 +1,46 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <playground-paginator
+    [totalRecords]="vm.total"
+    [rows]="vm.limit"
+    (pageChange)="onPageChange($event)"
+  ></playground-paginator>
+  <div class="w-full">
+    <playground-loading
+      class="absolute top-2/4 left-2/4 translate-x-2/4 translate-y-2/4 z-50"
+      [loading]="vm.isLoading"
+    ></playground-loading>
+    <table class="border-collapse w-full" [class.overlay]="vm.isLoading">
+      <thead>
+        <tr>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+            Name
+          </th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+            Detail URL
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let pokemon of vm.pokemons"
+          class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
+        >
+          <td
+            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+          >
+            <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Name</span>
+            {{ pokemon.name }}
+          </td>
+          <td
+            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static"
+          >
+            <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+              Detail URL
+            </span>
+            {{ pokemon.url }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>

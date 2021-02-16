@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.overlay {
+  @apply relative;
+}
+
+.overlay::before {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.3);
+  @apply absolute w-full h-full left-0 top-0;
+}

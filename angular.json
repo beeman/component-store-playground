@@ -141,6 +141,131 @@
         }
       }
     },
+    "playground-fetch-demo-data-access": {
+      "projectType": "library",
+      "root": "libs/playground/fetch-demo/data-access",
+      "sourceRoot": "libs/playground/fetch-demo/data-access/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/fetch-demo/data-access/src/**/*.ts",
+              "libs/playground/fetch-demo/data-access/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/fetch-demo/data-access"],
+          "options": {
+            "jestConfig": "libs/playground/fetch-demo/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-fetch-demo-feature-client-side-filter": {
+      "projectType": "library",
+      "root": "libs/playground/fetch-demo/feature/client-side-filter",
+      "sourceRoot": "libs/playground/fetch-demo/feature/client-side-filter/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/fetch-demo/feature/client-side-filter/src/**/*.ts",
+              "libs/playground/fetch-demo/feature/client-side-filter/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/fetch-demo/feature/client-side-filter"],
+          "options": {
+            "jestConfig": "libs/playground/fetch-demo/feature/client-side-filter/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-fetch-demo-feature-list": {
+      "projectType": "library",
+      "root": "libs/playground/fetch-demo/feature/list",
+      "sourceRoot": "libs/playground/fetch-demo/feature/list/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/fetch-demo/feature/list/src/**/*.ts",
+              "libs/playground/fetch-demo/feature/list/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/fetch-demo/feature/list"],
+          "options": {
+            "jestConfig": "libs/playground/fetch-demo/feature/list/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-fetch-demo-feature-shell": {
+      "projectType": "library",
+      "root": "libs/playground/fetch-demo/feature/shell",
+      "sourceRoot": "libs/playground/fetch-demo/feature/shell/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/fetch-demo/feature/shell/src/**/*.ts",
+              "libs/playground/fetch-demo/feature/shell/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/fetch-demo/feature/shell"],
+          "options": {
+            "jestConfig": "libs/playground/fetch-demo/feature/shell/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-fetch-demo-ui-paginator": {
+      "projectType": "library",
+      "root": "libs/playground/fetch-demo/ui/paginator",
+      "sourceRoot": "libs/playground/fetch-demo/ui/paginator/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/fetch-demo/ui/paginator/src/**/*.ts",
+              "libs/playground/fetch-demo/ui/paginator/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/fetch-demo/ui/paginator"],
+          "options": {
+            "jestConfig": "libs/playground/fetch-demo/ui/paginator/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "playground-forms-demo-data-access": {
       "root": "libs/playground/forms-demo/data-access",
       "sourceRoot": "libs/playground/forms-demo/data-access/src",
@@ -469,6 +594,27 @@
         }
       }
     },
+    "shared-data-access-models": {
+      "root": "libs/shared/data-access/models",
+      "sourceRoot": "libs/shared/data-access/models/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/data-access/models/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/data-access/models"],
+          "options": {
+            "jestConfig": "libs/shared/data-access/models/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "shared-data-access-ui-store": {
       "root": "libs/shared/data-access/ui-store",
       "sourceRoot": "libs/shared/data-access/ui-store/src",
@@ -622,6 +768,28 @@
         }
       }
     },
+    "shared-ui-sidenav": {
+      "projectType": "library",
+      "root": "libs/shared/ui/sidenav",
+      "sourceRoot": "libs/shared/ui/sidenav/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/ui/sidenav/src/**/*.ts", "libs/shared/ui/sidenav/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui/sidenav"],
+          "options": {
+            "jestConfig": "libs/shared/ui/sidenav/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "shared-util-rx": {
       "root": "libs/shared/util/rx",
       "sourceRoot": "libs/shared/util/rx/src",
@@ -650,11 +818,15 @@
   },
   "schematics": {
     "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress",
       "strict": true
     },
     "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
       "unitTestRunner": "jest",
       "strict": true
     },
