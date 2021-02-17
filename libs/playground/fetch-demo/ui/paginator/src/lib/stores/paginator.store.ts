@@ -77,9 +77,7 @@ export class PaginatorStore extends ImmerComponentStore<PaginatorStoreState> {
       tap(([newPage, pageCount, rows]) => {
         if (newPage >= 0 && newPage <= pageCount) {
           const first = rows * newPage
-          this.patchState({
-            first,
-          })
+          this.patchState({ first })
           this.$pageChanged.next({
             page: newPage,
             first,
@@ -109,13 +107,7 @@ export class PaginatorStore extends ImmerComponentStore<PaginatorStoreState> {
     ),
   )
 
-  readonly firstPageEffect = this.effect((trigger$) =>
-    trigger$.pipe(
-      tap(() => {
-        this.changePageEffect(1)
-      }),
-    ),
-  )
+  readonly firstPageEffect = this.changePageEffect.bind(this, 1)
 
   readonly lastPageEffect = this.effect((trigger$) =>
     trigger$.pipe(
