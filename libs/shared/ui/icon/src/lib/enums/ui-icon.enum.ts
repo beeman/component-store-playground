@@ -11,4 +11,8 @@ export enum UiIcon {
   spinner = 'spinner',
   sun = 'sun',
   trash = 'trash',
+  chevronLeft = 'chevronLeft',
+  doubleChevronLeft = 'doubleChevronLeft',
+  chevronRight = 'chevronRight',
+  doubleChevronRight = 'doubleChevronRight',
 }

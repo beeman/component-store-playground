@@ -54,6 +54,16 @@ export class PaginatorComponent {
     event.preventDefault?.()
   }
 
+  firstPage(event: MouseEvent) {
+    this.paginatorStore.firstPageEffect()
+    event.preventDefault?.()
+  }
+
+  lastPage(event: MouseEvent) {
+    this.paginatorStore.lastPageEffect()
+    event.preventDefault?.()
+  }
+
   onPageLinkClick(event: MouseEvent, page: number) {
     this.changePage(page)
     event.preventDefault?.()

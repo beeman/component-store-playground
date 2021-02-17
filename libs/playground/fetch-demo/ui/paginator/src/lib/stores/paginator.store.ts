@@ -36,12 +36,12 @@ export class PaginatorStore extends ImmerComponentStore<PaginatorStoreState> {
     const end = Math.min(pageCount - 1, start + visiblePages - 1)
 
     //check when approaching to last page
-    const delta = end - start + 1
-    start = Math.max(0, start - (5 - delta))
+    const delta = () => end - start + 1
+    start = Math.max(0, start - (5 - delta()))
 
-    return delta < 0
+    return delta() < 0
       ? []
-      : Array(delta)
+      : Array(delta())
           .fill(undefined)
           .map((_, ind) => ind + start + 1)
   })
@@ -105,6 +105,23 @@ export class PaginatorStore extends ImmerComponentStore<PaginatorStoreState> {
       withLatestFrom(this.page$),
       tap(([, page]) => {
         this.changePageEffect(page - 1)
+      }),
+    ),
+  )
+
+  readonly firstPageEffect = this.effect((trigger$) =>
+    trigger$.pipe(
+      tap(() => {
+        this.changePageEffect(1)
+      }),
+    ),
+  )
+
+  readonly lastPageEffect = this.effect((trigger$) =>
+    trigger$.pipe(
+      withLatestFrom(this.pageCount$),
+      tap(([, pageCount]) => {
+        this.changePageEffect(pageCount)
       }),
     ),
   )

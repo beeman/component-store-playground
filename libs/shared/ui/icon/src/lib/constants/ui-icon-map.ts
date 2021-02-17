@@ -73,3 +73,77 @@ export const uiIconMap: Map<UiIcon, string> = new Map<UiIcon, string>()
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
 </svg>`,
   )
+  .set(
+    UiIcon.chevronLeft,
+    `
+  <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-chevron-left w-4 h-4"
+      >
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>`,
+  )
+  .set(
+    UiIcon.doubleChevronLeft,
+    `
+  <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-chevron-left w-4 h-4"
+      >
+        <polyline points="15 18 9 12 15 6"></polyline>
+        <polyline points="21 18 15 12 21 6"></polyline>
+      </svg>`,
+  )
+  .set(
+    UiIcon.chevronRight,
+    `
+  <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-chevron-right w-4 h-4"
+      >
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>`,
+  )
+  .set(
+    UiIcon.doubleChevronRight,
+    `
+  <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-chevron-right w-4 h-4"
+      >
+        <polyline points="9 18 15 12 9 6"></polyline>
+        <polyline points="4 18 9 12 3 6"></polyline>
+      </svg>`,
+  )
