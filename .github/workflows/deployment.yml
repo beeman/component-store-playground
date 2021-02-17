@@ -7,10 +7,17 @@ on:
 jobs:
   deploy:
     name: Run deployment
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
+        os: [ ubuntu-latest ]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: Run deployment
         run: |
           yarn
