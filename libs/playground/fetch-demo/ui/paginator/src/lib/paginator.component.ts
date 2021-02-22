@@ -36,10 +36,6 @@ export class PaginatorComponent {
 
   constructor(private readonly paginatorStore: PaginatorStore) {}
 
-  changePage(page: number) {
-    this.paginatorStore.changePageEffect(page)
-  }
-
   prevPage(event: MouseEvent) {
     this.paginatorStore.prevPageEffect()
     event.preventDefault?.()
@@ -61,7 +57,7 @@ export class PaginatorComponent {
   }
 
   onPageLinkClick(event: MouseEvent, page: number) {
-    this.changePage(page)
+    this.paginatorStore.changePageEffect(page)
     event.preventDefault?.()
   }
 }
