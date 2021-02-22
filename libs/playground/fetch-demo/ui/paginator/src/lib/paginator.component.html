@@ -1,4 +1,4 @@
-<div class="flex text-gray-700 dark:text-white">
+<div class="flex text-gray-700 dark:text-white items-center">
   <ng-container *ngIf="vm$ | async as vm">
     <div
       class="h-8 w-8 mr-1 flex justify-center items-center"
@@ -37,6 +37,11 @@
       (click)="lastPage($event)"
     >
       <playground-icon icon="doubleChevronRight"></playground-icon>
+    </div>
+    <div *ngIf="rowsPerPageOptions.length">
+      <select class="form-select" [formControl]="rowsPerPageControl">
+        <option *ngFor="let rpp of rowsPerPageOptions" [value]="rpp">{{ rpp }}</option>
+      </select>
     </div>
   </ng-container>
 </div>

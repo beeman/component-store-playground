@@ -1,7 +1,7 @@
 <ng-container *ngIf="vm$ | async as vm">
   <playground-paginator
     [totalRecords]="vm.total"
-    [rows]="vm.limit"
+    [rowsPerPageOptions]="[10, 20, 40, 60]"
     (pageChange)="onPageChange($event)"
   ></playground-paginator>
   <div class="w-full">

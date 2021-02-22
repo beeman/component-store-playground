@@ -50,11 +50,13 @@ export class PaginatorStore extends ImmerComponentStore<PaginatorStoreState> {
     this.page$,
     this.pageCount$,
     this.pageLinks$,
-    (page, pageCount, pageLinks) => ({
+    this.rows$,
+    (page, pageCount, pageLinks, rows) => ({
       currentPage: page,
       isLastPage: page === pageCount,
       isFirstPage: page === 1,
       pageLinks,
+      rows,
     }),
     { debounce: true },
   )

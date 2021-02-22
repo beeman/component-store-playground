@@ -1,13 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, Output } from '@angular/core'
-import type { Observable } from 'rxjs'
+import { FormControl } from '@angular/forms'
+import { tap } from 'rxjs/operators'
 import { PaginatorStore } from './stores'
-
-interface PaginatorVm {
-  currentPage: number
-  isLastPage: boolean
-  isFirstPage: boolean
-  pageLinks: number[]
-}
 
 @Component({
   selector: 'playground-paginator',
@@ -27,16 +21,18 @@ export class PaginatorComponent {
     this.paginatorStore.updateTotalRecords(total)
   }
 
-  @Input() set rows(rows: number) {
-    this.paginatorStore.updateRows(rows)
-  }
-
   // TODO(chau): implement rowsPerPageOptions
-  // @Input() rowsPerPageOptions: number[] = []
+  @Input() rowsPerPageOptions: number[] = []
 
   @Output() pageChange = this.paginatorStore.pageChanged$
 
-  vm$: Observable<PaginatorVm> = this.paginatorStore.vm$
+  vm$ = this.paginatorStore.vm$.pipe(
+    tap(({ rows }) => {
+      this.rowsPerPageControl.setValue(rows.toString(), { emitEvent: false })
+    }),
+  )
+
+  rowsPerPageControl = new FormControl()
 
   constructor(private readonly paginatorStore: PaginatorStore) {}
 
