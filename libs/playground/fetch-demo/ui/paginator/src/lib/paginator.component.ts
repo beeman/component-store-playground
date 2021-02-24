@@ -1,18 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, HostBinding, Input, Output } from '@angular/core'
 import { FormControl } from '@angular/forms'
-import { tap } from 'rxjs/operators'
+import { map, tap } from 'rxjs/operators'
 import { PaginatorStore } from './stores'
 
 @Component({
   selector: 'playground-paginator',
   templateUrl: './paginator.component.html',
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PaginatorStore],
 })
@@ -21,10 +14,11 @@ export class PaginatorComponent {
     this.paginatorStore.updateTotalRecords(total)
   }
 
-  // TODO(chau): implement rowsPerPageOptions
   @Input() rowsPerPageOptions: number[] = []
 
   @Output() pageChange = this.paginatorStore.pageChanged$
+
+  @HostBinding('class') hostClass = 'inline-flex text-gray-700 dark:text-white items-center'
 
   vm$ = this.paginatorStore.vm$.pipe(
     tap(({ rows }) => {
@@ -34,7 +28,9 @@ export class PaginatorComponent {
 
   rowsPerPageControl = new FormControl()
 
-  constructor(private readonly paginatorStore: PaginatorStore) {}
+  constructor(private readonly paginatorStore: PaginatorStore) {
+    paginatorStore.rowsPerPageChangeEffect(this.rowsPerPageControl.valueChanges.pipe(map(Number)))
+  }
 
   prevPage(event: MouseEvent) {
     this.paginatorStore.prevPageEffect()

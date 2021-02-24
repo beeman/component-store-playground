@@ -28,4 +28,10 @@ export class ClientSideFilterComponent {
 
     this.queryControl.setValue('')
   }
+
+  onPokemonClick(id?: string) {
+    if (id) {
+      this.pokemonClientSideFilterStore.goToDetail(id)
+    }
+  }
 }

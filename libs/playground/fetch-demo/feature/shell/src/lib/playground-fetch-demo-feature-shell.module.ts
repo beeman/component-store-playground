@@ -13,6 +13,13 @@ import { RouterModule } from '@angular/router'
             (m) => m.PlaygroundFetchDemoFeatureListModule,
           ),
       },
+      {
+        path: ':id',
+        loadChildren: () =>
+          import('@component-store-playground/playground/fetch-demo/feature/detail').then(
+            (m) => m.PlaygroundFetchDemoFeatureDetailModule,
+          ),
+      },
     ]),
   ],
 })

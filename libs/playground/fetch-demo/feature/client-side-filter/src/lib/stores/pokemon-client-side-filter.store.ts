@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
 import type { Pokemon } from '@component-store-playground/playground/fetch-demo/data-access'
 import { PokemonService } from '@component-store-playground/playground/fetch-demo/data-access'
 import type { ApiResponseStatus } from '@component-store-playground/shared/util/rx'
@@ -34,7 +35,7 @@ export class PokemonClientSideFilterStore extends ImmerComponentStore<PokemonCli
     { debounce: true },
   )
 
-  constructor(private readonly pokemonService: PokemonService) {
+  constructor(private readonly pokemonService: PokemonService, private readonly router: Router) {
     super({
       status: 'idle',
       filteredPokemons: [],
@@ -87,14 +88,14 @@ export class PokemonClientSideFilterStore extends ImmerComponentStore<PokemonCli
     query$.pipe(
       withLatestFrom(this.select((state) => state.originalPokemons)),
       tap(([query, originalPokemons]) => {
-        if (query) {
-          this.patchState({
-            filteredPokemons: originalPokemons.filter((pokemon) =>
-              pokemon.name.toLowerCase().includes(query.toLowerCase()),
-            ),
-          })
-        }
+        this.patchState({
+          filteredPokemons: query
+            ? originalPokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(query.toLowerCase()))
+            : originalPokemons,
+        })
       }),
     ),
   )
+
+  readonly goToDetail = this.effect<string>((id$) => id$.pipe(switchMap((id) => this.router.navigate(['/fetch', id]))))
 }

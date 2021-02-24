@@ -9,7 +9,7 @@
         <a
           *ngFor="let link of navItems$ | async"
           class="hover:bg-purple-400 hover:text-purple-900 rounded bg-purple-800 px-2 py-1"
-          routerLinkActive="bg-blue-400"
+          routerLinkActive="border border-violet-400"
           [routerLink]="link.path"
         >
           {{ link.label }}

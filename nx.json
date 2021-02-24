@@ -39,6 +39,9 @@
     "playground-fetch-demo-feature-client-side-filter": {
       "tags": ["scope:fetch-demo", "type:ui"]
     },
+    "playground-fetch-demo-feature-detail": {
+      "tags": ["scope:fetch-demo", "type:ui"]
+    },
     "playground-fetch-demo-feature-list": {
       "tags": ["scope:fetch-demo", "type:ui"]
     },
@@ -46,6 +49,9 @@
       "tags": ["scope:fetch-demo", "type:ui"]
     },
     "playground-fetch-demo-ui-paginator": {
+      "tags": ["scope:fetch-demo", "type:ui"]
+    },
+    "playground-fetch-demo-ui-pokemon-card": {
       "tags": ["scope:fetch-demo", "type:ui"]
     },
     "playground-forms-demo-data-access": {

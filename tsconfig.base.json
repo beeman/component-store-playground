@@ -22,6 +22,9 @@
       "@component-store-playground/playground/fetch-demo/feature/client-side-filter": [
         "libs/playground/fetch-demo/feature/client-side-filter/src/index.ts"
       ],
+      "@component-store-playground/playground/fetch-demo/feature/detail": [
+        "libs/playground/fetch-demo/feature/detail/src/index.ts"
+      ],
       "@component-store-playground/playground/fetch-demo/feature/list": [
         "libs/playground/fetch-demo/feature/list/src/index.ts"
       ],
@@ -30,6 +33,9 @@
       ],
       "@component-store-playground/playground/fetch-demo/ui/paginator": [
         "libs/playground/fetch-demo/ui/paginator/src/index.ts"
+      ],
+      "@component-store-playground/playground/fetch-demo/ui/pokemon-card": [
+        "libs/playground/fetch-demo/ui/pokemon-card/src/index.ts"
       ],
       "@component-store-playground/playground/forms-demo/data-access": [
         "libs/playground/forms-demo/data-access/src/index.ts"

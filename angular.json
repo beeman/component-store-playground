@@ -191,6 +191,31 @@
         }
       }
     },
+    "playground-fetch-demo-feature-detail": {
+      "projectType": "library",
+      "root": "libs/playground/fetch-demo/feature/detail",
+      "sourceRoot": "libs/playground/fetch-demo/feature/detail/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/fetch-demo/feature/detail/src/**/*.ts",
+              "libs/playground/fetch-demo/feature/detail/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/fetch-demo/feature/detail"],
+          "options": {
+            "jestConfig": "libs/playground/fetch-demo/feature/detail/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "playground-fetch-demo-feature-list": {
       "projectType": "library",
       "root": "libs/playground/fetch-demo/feature/list",
@@ -261,6 +286,31 @@
           "outputs": ["coverage/libs/playground/fetch-demo/ui/paginator"],
           "options": {
             "jestConfig": "libs/playground/fetch-demo/ui/paginator/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "playground-fetch-demo-ui-pokemon-card": {
+      "projectType": "library",
+      "root": "libs/playground/fetch-demo/ui/pokemon-card",
+      "sourceRoot": "libs/playground/fetch-demo/ui/pokemon-card/src",
+      "prefix": "playground",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/playground/fetch-demo/ui/pokemon-card/src/**/*.ts",
+              "libs/playground/fetch-demo/ui/pokemon-card/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/playground/fetch-demo/ui/pokemon-card"],
+          "options": {
+            "jestConfig": "libs/playground/fetch-demo/ui/pokemon-card/jest.config.js",
             "passWithNoTests": true
           }
         }

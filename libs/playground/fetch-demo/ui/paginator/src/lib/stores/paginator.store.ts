@@ -8,6 +8,7 @@ interface PaginatorStoreState {
   totalRecords: number
   rows: number
   first: number
+  rowsPerPage: number
 }
 
 @Injectable()
@@ -62,7 +63,7 @@ export class PaginatorStore extends ImmerComponentStore<PaginatorStoreState> {
   )
 
   constructor() {
-    super({ rows: 20, totalRecords: 0, first: 1 })
+    super({ rows: 20, totalRecords: 0, first: 1, rowsPerPage: 20 })
   }
 
   readonly updateRows = this.updater<number>((state, value) => {
@@ -116,6 +117,17 @@ export class PaginatorStore extends ImmerComponentStore<PaginatorStoreState> {
       withLatestFrom(this.pageCount$),
       tap(([, pageCount]) => {
         this.changePageEffect(pageCount)
+      }),
+    ),
+  )
+
+  readonly rowsPerPageChangeEffect = this.effect<number>((rowsPerPage$) =>
+    rowsPerPage$.pipe(
+      tap((rowsPerPage) => {
+        this.patchState({
+          rows: rowsPerPage,
+        })
+        this.changePageEffect(1)
       }),
     ),
   )

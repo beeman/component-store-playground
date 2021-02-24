@@ -38,5 +38,7 @@ module.exports = {
     '<rootDir>/libs/shared/data-access/models',
     '<rootDir>/libs/playground/fetch-demo/ui/paginator',
     '<rootDir>/libs/playground/fetch-demo/data-access',
+    '<rootDir>/libs/playground/fetch-demo/feature/detail',
+    '<rootDir>/libs/playground/fetch-demo/ui/pokemon-card',
   ],
 }
