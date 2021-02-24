@@ -4,7 +4,6 @@ import { SimplifiedPokemon } from '@component-store-playground/playground/fetch-
 @Component({
   selector: 'playground-pokemon-card',
   templateUrl: './pokemon-card.component.html',
-  styleUrls: ['./pokemon-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonCardComponent {
