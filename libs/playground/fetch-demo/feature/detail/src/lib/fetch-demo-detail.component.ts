@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, HostListener, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, HostBinding, HostListener } from '@angular/core'
 import { PokemonDetailStore } from './stores'
 
 @Component({
@@ -14,14 +14,12 @@ import { PokemonDetailStore } from './stores'
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PokemonDetailStore],
 })
-export class FetchDemoDetailComponent implements OnInit {
+export class FetchDemoDetailComponent {
   readonly vm$ = this.pokemonDetailStore.vm$
 
   @HostBinding('class') hostClass = 'flex gap-4 items-center justify-center'
 
   constructor(private readonly pokemonDetailStore: PokemonDetailStore) {}
-
-  ngOnInit(): void {}
 
   nextId() {
     this.pokemonDetailStore.nextIdEffect()

@@ -24,7 +24,6 @@ export class PokemonDetailStore extends ImmerComponentStore<PokemonDetailState> 
     this.status$,
     (pokemon, status) => ({
       isLoading: status === 'loading',
-      pokemon,
       simplifiedPokemon: PokemonDetailStore.getSimplifiedPokemon(pokemon),
     }),
     { debounce: true },

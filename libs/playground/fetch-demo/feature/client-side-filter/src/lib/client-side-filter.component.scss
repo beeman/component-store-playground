@@ -1,6 +1,5 @@
 :host {
-  @apply flex;
-  @apply flex-col;
+  @apply flex flex-col;
 }
 
 .overlay {
@@ -10,9 +9,5 @@
 .overlay::before {
   content: '';
   background-color: rgba(0, 0, 0, 0.3);
-  @apply absolute;
-  @apply w-full;
-  @apply h-full;
-  @apply left-0;
-  @apply top-0;
+  @apply absolute w-full h-full left-0 right-0;
 }
