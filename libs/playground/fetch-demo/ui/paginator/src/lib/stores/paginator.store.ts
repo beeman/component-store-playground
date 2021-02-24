@@ -66,10 +66,6 @@ export class PaginatorStore extends ImmerComponentStore<PaginatorStoreState> {
     super({ rows: 20, totalRecords: 0, first: 1, rowsPerPage: 20 })
   }
 
-  readonly updateRows = this.updater<number>((state, value) => {
-    state.rows = value
-  })
-
   readonly updateTotalRecords = this.updater<number>((state, value) => {
     state.totalRecords = value
   })
