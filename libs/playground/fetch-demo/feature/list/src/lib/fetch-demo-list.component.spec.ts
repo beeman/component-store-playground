@@ -1,24 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { RouterTestingModule } from '@angular/router/testing'
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 
 import { FetchDemoListComponent } from './fetch-demo-list.component'
 
 describe('FetchDemoListComponent', () => {
-  let component: FetchDemoListComponent
-  let fixture: ComponentFixture<FetchDemoListComponent>
+  let spectator: Spectator<FetchDemoListComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [FetchDemoListComponent],
-    }).compileComponents()
+  const createComponent = createComponentFactory({
+    component: FetchDemoListComponent,
+    imports: [RouterTestingModule],
+    shallow: true,
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FetchDemoListComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
+    spectator = createComponent()
   })
 
   it('should create', () => {
-    expect(component).toBeTruthy()
+    expect(spectator.component).toBeTruthy()
   })
 })

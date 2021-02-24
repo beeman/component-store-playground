@@ -1,24 +1,32 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { SimplifiedPokemon } from '@component-store-playground/playground/fetch-demo/data-access'
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 
 import { PokemonCardComponent } from './pokemon-card.component'
 
-describe('PokemonCardComponent', () => {
-  let component: PokemonCardComponent
-  let fixture: ComponentFixture<PokemonCardComponent>
+function getPokemon(): SimplifiedPokemon {
+  return {
+    name: '',
+    hiddenAbility: '',
+    ability: '',
+    stats: [],
+    type: '',
+    image: '',
+  }
+}
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [PokemonCardComponent],
-    }).compileComponents()
+describe('PokemonCardComponent', () => {
+  let spectator: Spectator<PokemonCardComponent>
+
+  const createComponent = createComponentFactory({
+    component: PokemonCardComponent,
+    shallow: true,
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PokemonCardComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
+    spectator = createComponent({ props: { pokemon: getPokemon() } })
   })
 
   it('should create', () => {
-    expect(component).toBeTruthy()
+    expect(spectator.component).toBeTruthy()
   })
 })

@@ -1,24 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { createComponentFactory, mockProvider, Spectator, SpyObject } from '@ngneat/spectator/jest'
 
 import { PaginatorComponent } from './paginator.component'
+import { PaginatorStore } from './stores'
 
 describe('PaginatorComponent', () => {
-  let component: PaginatorComponent
-  let fixture: ComponentFixture<PaginatorComponent>
+  let spectator: Spectator<PaginatorComponent>
+  let mockedPaginatorStore: SpyObject<PaginatorStore>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [PaginatorComponent],
-    }).compileComponents()
+  const createComponent = createComponentFactory({
+    component: PaginatorComponent,
+    providers: [mockProvider(PaginatorStore)],
+    shallow: true,
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PaginatorComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
+    spectator = createComponent()
+    mockedPaginatorStore = spectator.inject(PaginatorStore, true)
   })
 
   it('should create', () => {
-    expect(component).toBeTruthy()
+    expect(spectator.component).toBeTruthy()
   })
 })

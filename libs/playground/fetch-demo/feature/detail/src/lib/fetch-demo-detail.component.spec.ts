@@ -1,24 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { RouterTestingModule } from '@angular/router/testing'
+import { createComponentFactory, mockProvider, Spectator, SpyObject } from '@ngneat/spectator/jest'
 
 import { FetchDemoDetailComponent } from './fetch-demo-detail.component'
+import { PokemonDetailStore } from './stores'
 
 describe('FetchDemoDetailComponent', () => {
-  let component: FetchDemoDetailComponent
-  let fixture: ComponentFixture<FetchDemoDetailComponent>
+  let spectator: Spectator<FetchDemoDetailComponent>
+  let mockedPokemonDetailStore: SpyObject<PokemonDetailStore>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [FetchDemoDetailComponent],
-    }).compileComponents()
+  const createComponent = createComponentFactory({
+    component: FetchDemoDetailComponent,
+    providers: [mockProvider(PokemonDetailStore)],
+    imports: [RouterTestingModule, HttpClientTestingModule],
+    shallow: true,
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FetchDemoDetailComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
+    spectator = createComponent()
+    mockedPokemonDetailStore = spectator.inject(PokemonDetailStore, true)
   })
 
   it('should create', () => {
-    expect(component).toBeTruthy()
+    expect(spectator.component).toBeTruthy()
   })
 })

@@ -1,24 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { RouterTestingModule } from '@angular/router/testing'
+import { createComponentFactory, mockProvider, Spectator, SpyObject } from '@ngneat/spectator/jest'
 
 import { ClientSideFilterComponent } from './client-side-filter.component'
+import { PokemonClientSideFilterStore } from './stores'
 
 describe('ClientSideFilterComponent', () => {
-  let component: ClientSideFilterComponent
-  let fixture: ComponentFixture<ClientSideFilterComponent>
+  let spectator: Spectator<ClientSideFilterComponent>
+  let mockedPokemonClientSideStore: SpyObject<PokemonClientSideFilterStore>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ClientSideFilterComponent],
-    }).compileComponents()
+  const createComponent = createComponentFactory({
+    component: ClientSideFilterComponent,
+    providers: [mockProvider(PokemonClientSideFilterStore)],
+    imports: [RouterTestingModule, HttpClientTestingModule],
+    shallow: true,
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClientSideFilterComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
+    spectator = createComponent()
   })
 
   it('should create', () => {
-    expect(component).toBeTruthy()
+    expect(spectator.component).toBeTruthy()
   })
 })
