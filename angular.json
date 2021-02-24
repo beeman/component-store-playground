@@ -85,8 +85,14 @@
           }
         },
         "deploy": {
-          "builder": "@angular/fire:deploy",
-          "options": {}
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/component-store-playground/",
+            "repo": "https://github.com/beeman/component-store-playground.git",
+            "name": "bot",
+            "email": "bot@example.com",
+            "cname": ""
+          }
         }
       }
     },
