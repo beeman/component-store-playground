@@ -36,6 +36,13 @@ export const playgroundShellRoutes: Routes = [
             (m) => m.PlaygroundFormsDemoFeatureShellModule,
           ),
       },
+      {
+        path: 'fetch',
+        loadChildren: () =>
+          import('@component-store-playground/playground/fetch-demo/feature/shell').then(
+            (m) => m.PlaygroundFetchDemoFeatureShellModule,
+          ),
+      },
     ],
   },
 ]

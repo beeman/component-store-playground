@@ -11,8 +11,7 @@ import { FieldType } from '@ngx-formly/core'
       class="shadow-sm block w-full dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md"
       [class.is-invalid]="showError"
       [formlyAttributes]="field"
-    >
-    </textarea>
+    ></textarea>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

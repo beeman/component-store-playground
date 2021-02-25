@@ -1,0 +1,55 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="flex items-center justify-between pb-4">
+    <input
+      type="text"
+      class="form-input w-2/4 rounded border-purple-600 dark:bg-gray-900 dark:text-white"
+      placeholder="Filter by pokemon name..."
+      [formControl]="queryControl"
+    />
+    <playground-paginator
+      [totalRecords]="vm.total"
+      [rowsPerPageOptions]="[10, 20, 40, 60]"
+      (pageChange)="onPageChange($event)"
+    ></playground-paginator>
+  </div>
+  <div class="w-full">
+    <playground-loading
+      class="absolute top-2/4 left-2/4 translate-x-2/4 translate-y-2/4 z-50"
+      [loading]="vm.isLoading"
+    ></playground-loading>
+    <table class="border-collapse w-full" [class.overlay]="vm.isLoading">
+      <thead>
+        <tr>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+            Name
+          </th>
+          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+            Detail URL
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let pokemon of vm.pokemons"
+          class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0 cursor-pointer"
+          (click)="onPokemonClick(pokemon.id)"
+        >
+          <td
+            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+          >
+            <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Name</span>
+            {{ pokemon.name | titlecase }}
+          </td>
+          <td
+            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+          >
+            <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+              Detail URL
+            </span>
+            {{ pokemon.url }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>

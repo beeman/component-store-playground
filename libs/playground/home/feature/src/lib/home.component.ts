@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { UiStore } from '@component-store-playground/shared/data-access/ui-store'
 
 @Component({
   selector: 'playground-home',
@@ -13,9 +14,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  links = [
-    { label: 'Forms', path: '/forms' },
-    { label: 'Todos', path: '/todos' },
-    { label: 'Workflows', path: '/workflows' },
-  ]
+  readonly navItems$ = this.uiStore.navItems$
+  constructor(private readonly uiStore: UiStore) {}
 }

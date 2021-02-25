@@ -16,6 +16,27 @@
     "baseUrl": ".",
     "paths": {
       "@component-store-playground/playground/auth/feature": ["libs/playground/auth/feature/src/index.ts"],
+      "@component-store-playground/playground/fetch-demo/data-access": [
+        "libs/playground/fetch-demo/data-access/src/index.ts"
+      ],
+      "@component-store-playground/playground/fetch-demo/feature/client-side-filter": [
+        "libs/playground/fetch-demo/feature/client-side-filter/src/index.ts"
+      ],
+      "@component-store-playground/playground/fetch-demo/feature/detail": [
+        "libs/playground/fetch-demo/feature/detail/src/index.ts"
+      ],
+      "@component-store-playground/playground/fetch-demo/feature/list": [
+        "libs/playground/fetch-demo/feature/list/src/index.ts"
+      ],
+      "@component-store-playground/playground/fetch-demo/feature/shell": [
+        "libs/playground/fetch-demo/feature/shell/src/index.ts"
+      ],
+      "@component-store-playground/playground/fetch-demo/ui/paginator": [
+        "libs/playground/fetch-demo/ui/paginator/src/index.ts"
+      ],
+      "@component-store-playground/playground/fetch-demo/ui/pokemon-card": [
+        "libs/playground/fetch-demo/ui/pokemon-card/src/index.ts"
+      ],
       "@component-store-playground/playground/forms-demo/data-access": [
         "libs/playground/forms-demo/data-access/src/index.ts"
       ],
@@ -46,6 +67,7 @@
       ],
       "@component-store-playground/playground/workflows/util": ["libs/playground/workflows/util/src/index.ts"],
       "@component-store-playground/shared/data-access/idb": ["libs/shared/data-access/idb/src/index.ts"],
+      "@component-store-playground/shared/data-access/models": ["libs/shared/data-access/models/src/index.ts"],
       "@component-store-playground/shared/data-access/ui-store": ["libs/shared/data-access/ui-store/src/index.ts"],
       "@component-store-playground/shared/ui/footer": ["libs/shared/ui/footer/src/index.ts"],
       "@component-store-playground/shared/ui/forms": ["libs/shared/ui/forms/src/index.ts"],
@@ -53,6 +75,7 @@
       "@component-store-playground/shared/ui/icon": ["libs/shared/ui/icon/src/index.ts"],
       "@component-store-playground/shared/ui/loading": ["libs/shared/ui/loading/src/index.ts"],
       "@component-store-playground/shared/ui/page": ["libs/shared/ui/page/src/index.ts"],
+      "@component-store-playground/shared/ui/sidenav": ["libs/shared/ui/sidenav/src/index.ts"],
       "@component-store-playground/shared/util/rx": ["libs/shared/util/rx/src/index.ts"],
       "@csp-playground/shared/data-access/idb": ["libs/playground/shared/data-access/idb/src/index.ts"]
     }

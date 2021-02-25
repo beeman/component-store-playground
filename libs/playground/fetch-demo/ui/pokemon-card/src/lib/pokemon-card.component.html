@@ -1,0 +1,68 @@
+<div
+  *ngIf="pokemon.name; else skeleton"
+  class="bg-gradient-to-br max-h-120 max-w-xs p-4 rounded max-w-xs max-h-120 w-xs h-120"
+  [class]="pokemonTypeColorMap[pokemon.type]?.outer"
+>
+  <div class="rounded grid grid-cols-1 grid-rows-3 h-full">
+    <div
+      class="row-span-1 relative flex items-center justify-center bg-gradient-to-br rounded-t"
+      [class]="pokemonTypeColorMap[pokemon.type]?.innerHeader"
+    >
+      <img class="w-1/2" [src]="pokemon.image" [alt]="pokemon.name" />
+      <h3
+        class="absolute -bottom-4 right-4 px-1 py-0.5 uppercase text-lg tracking-tight font-extralight"
+        [class]="pokemonTypeColorMap[pokemon.type]?.type"
+      >
+        {{ pokemon.type }}
+      </h3>
+    </div>
+    <div
+      class="row-span-2 flex flex-col w-full items-center justify-between p-4 bg-gradient-to-br rounded-b"
+      [class]="pokemonTypeColorMap[pokemon.type]?.innerFooter"
+    >
+      <div class="w-full flex flex-col items-center gap-4">
+        <h2 class="text-xl font-bold tracking-wider text-black">{{ pokemon.name | titlecase }}</h2>
+        <table class="w-full">
+          <tbody>
+            <tr *ngFor="let stat of pokemon.stats">
+              <th class="w-1/2 text-right pr-1 font-light text-sm text-black">{{ stat.stat.name | uppercase }}</th>
+              <td class="w-1/2 text-left pl-1 font-bold text-sm text-black">{{ stat.base_stat }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="w-full grid grid-cols-2 justify-between">
+        <h4 class="text-left text-lg font-bold text-black">
+          <span class="block font-extralight tracking-wide text-sm">Ability</span>
+          {{ pokemon.ability | titlecase }}
+        </h4>
+        <h4 class="text-right text-lg font-bold text-black">
+          <span class="block font-extralight tracking-wide text-sm">Hidden Ability</span>
+          {{ pokemon.hiddenAbility | titlecase }}
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #skeleton>
+  <div
+    class="animate-pulse bg-gradient-to-br from-gray-300 to-gray-500 max-h-120 max-w-xs p-4 rounded max-w-xs max-h-120 w-xs h-120"
+  >
+    <div class="rounded grid grid-cols-1 grid-rows-3 h-full">
+      <div
+        class="animate-pulse row-span-1 relative flex items-center justify-center bg-gradient-to-br from-gray-500 to-gray-700 rounded-t"
+      >
+        <img class="w-1/2" [src]="pokemon.image" [alt]="pokemon.name" />
+        <h3
+          class="animate-pulse absolute -bottom-4 right-4 px-1 py-0.5 uppercase text-lg tracking-tight font-extralight bg-gray-600"
+        >
+          type
+        </h3>
+      </div>
+      <div
+        class="animate-pulse from-gray-100 to-gray-300 row-span-2 flex flex-col w-full items-center justify-between p-4 bg-gradient-to-br rounded-b"
+      ></div>
+    </div>
+  </div>
+</ng-template>

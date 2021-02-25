@@ -1,0 +1,13 @@
+:host {
+  @apply flex flex-col;
+}
+
+.overlay {
+  @apply relative;
+}
+
+.overlay::before {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.3);
+  @apply absolute w-full h-full left-0 right-0;
+}

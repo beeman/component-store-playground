@@ -1,11 +1,25 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   prefix: '',
   purge: {
-    content: ['./apps/**/*.html', './apps/**/*.ts', './libs/**/*.html', './libs/**/*.ts'],
+    enabled: process.argv.join(' ').includes('production'),
+    content: ['./apps/**/*.{html,ts}', './libs/**/*.{html,ts}'],
   },
   darkMode: 'class',
   theme: {
-    extend: {},
+    colors,
+    extend: {
+      height: {
+        120: '30rem',
+      },
+      width: {
+        xs: '20rem',
+      },
+      maxHeight: {
+        120: '30rem',
+      },
+    },
   },
   variants: {
     extend: {
@@ -14,5 +28,5 @@ module.exports = {
       pointerEvents: ['disabled'],
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/custom-forms')],
 }

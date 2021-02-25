@@ -15,6 +15,7 @@ describe('HeaderComponent', () => {
     providers: [
       mockProvider(UiStore, {
         vm$: of({ theme: 'dark', icon: UiIcon.sun }),
+        navItems$: of([]),
         toggleTheme: jest.fn(),
       }),
     ],
@@ -30,16 +31,11 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(spectator.component).toBeTruthy()
     expect(spectator.component.vm$).toBe(mockedUiStore.vm$)
+    expect(spectator.component.navItems$).toBeTruthy()
   })
 
   it('should have header text', () => {
     expect(spectator.query('header > div > a > span')).toHaveText('Component Store Playground')
-  })
-
-  it('should contain links', () => {
-    spectator.component.links.forEach((link) => {
-      expect(spectator.query(`a[href="/${link.path}"]`)).toHaveText(link.label)
-    })
   })
 
   it('should have button with icon', () => {

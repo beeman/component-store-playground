@@ -1,0 +1,48 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <div
+    class="h-8 w-8 mr-1 flex justify-center items-center"
+    [class]="vm.isFirstPage ? ['opacity-50', 'pointer-events-none', 'cursor-not-allowed'] : ['cursor-pointer']"
+    (click)="firstPage($event)"
+  >
+    <playground-icon icon="doubleChevronLeft"></playground-icon>
+  </div>
+  <div
+    class="h-8 w-8 mr-1 flex justify-center items-center"
+    [class]="vm.isFirstPage ? ['opacity-50', 'pointer-events-none', 'cursor-not-allowed'] : ['cursor-pointer']"
+    (click)="prevPage($event)"
+  >
+    <playground-icon icon="chevronLeft"></playground-icon>
+  </div>
+  <div class="flex h-8 font-medium">
+    <div
+      *ngFor="let pageLink of vm.pageLinks"
+      (click)="onPageLinkClick($event, pageLink)"
+      [class]="pageLink === vm.currentPage ? ['border-purple-600', 'border-t-2'] : ['border-t-0']"
+      class="w-8 md:flex justify-center items-center hidden cursor-pointer leading-5 ease-in"
+    >
+      {{ pageLink }}
+    </div>
+  </div>
+  <div
+    class="h-8 w-8 ml-1 flex justify-center items-center"
+    [class]="vm.isLastPage ? ['opacity-50', 'pointer-events-none', 'cursor-not-allowed'] : ['cursor-pointer']"
+    (click)="nextPage($event)"
+  >
+    <playground-icon icon="chevronRight"></playground-icon>
+  </div>
+  <div
+    class="h-8 w-8 ml-1 flex justify-center items-center"
+    [class]="vm.isLastPage ? ['opacity-50', 'pointer-events-none', 'cursor-not-allowed'] : ['cursor-pointer']"
+    (click)="lastPage($event)"
+  >
+    <playground-icon icon="doubleChevronRight"></playground-icon>
+  </div>
+  <div *ngIf="rowsPerPageOptions.length">
+    <select
+      class="form-select rounded dark:text-white dark:bg-gray-900 border-purple-600"
+      [formControl]="rowsPerPageControl"
+    >
+      <option *ngFor="let rpp of rowsPerPageOptions" [value]="rpp">{{ rpp }}</option>
+    </select>
+  </div>
+</ng-container>

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { SharedUiPageModule } from '@component-store-playground/shared/ui/page'
+import { SharedUiSidenavModule } from '@component-store-playground/shared/ui/sidenav'
 import { FormsDemoListComponent } from './forms-demo-list.component'
 
 @NgModule({
@@ -24,6 +25,7 @@ import { FormsDemoListComponent } from './forms-demo-list.component'
       },
     ]),
     SharedUiPageModule,
+    SharedUiSidenavModule,
   ],
   declarations: [FormsDemoListComponent],
 })

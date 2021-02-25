@@ -27,7 +27,7 @@
       <div class="w-full mt-6">
         <playground-loading [loading]="vm.loading"></playground-loading>
 
-        <ng-container *ngIf="!vm.workflow?.group"> No workflow group!</ng-container>
+        <ng-container *ngIf="!vm.workflow?.group">No workflow group!</ng-container>
         <ng-container *ngIf="vm.workflow?.group">
           <playground-workflow-group [groupId]="vm.root!"></playground-workflow-group>
         </ng-container>
